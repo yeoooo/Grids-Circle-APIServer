@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.gccoffee.model.EmailTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-09-01T14:53:24" hostname="igyeong-wons-MacBook-Pro.local" time="0.008">
+  <properties/>
+  <testcase name="입력은 유효한 이메일 형식이어야 한다." classname="com.example.gccoffee.model.EmailTest" time="0.006"/>
+  <testcase name="길이는 4에서 50 사이이어야 한다." classname="com.example.gccoffee.model.EmailTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
