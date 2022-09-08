@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - OrderServiceImplTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>OrderServiceImplTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.gccoffee.Service.html">com.example.gccoffee.Service</a> &gt; OrderServiceImplTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.235s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">주문 테스트</td>
+<td class="success">orderTest()</td>
+<td class="success">0.235s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>18:03:58.621 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+18:03:58.626 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+18:03:58.641 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.gccoffee.Service.OrderServiceImplTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+18:03:58.646 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.gccoffee.Service.OrderServiceImplTest], using SpringBootContextLoader
+18:03:58.648 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.gccoffee.Service.OrderServiceImplTest]: class path resource [com/example/gccoffee/Service/OrderServiceImplTest-context.xml] does not exist
+18:03:58.648 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.gccoffee.Service.OrderServiceImplTest]: class path resource [com/example/gccoffee/Service/OrderServiceImplTestContext.groovy] does not exist
+18:03:58.648 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.gccoffee.Service.OrderServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+18:03:58.649 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.gccoffee.Service.OrderServiceImplTest]: OrderServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:03:58.670 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.gccoffee.Service.OrderServiceImplTest]
+18:03:58.696 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/kyeong/dev/java/Grids-Circles-Clone-APIServer/build/classes/java/main/com/example/gccoffee/GcCoffeeApplication.class]
+18:03:58.696 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.gccoffee.GcCoffeeApplication for test class com.example.gccoffee.Service.OrderServiceImplTest
+18:03:58.742 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.gccoffee.Service.OrderServiceImplTest]: using defaults.
+18:03:58.742 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+18:03:58.753 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@54a3ab8f, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1968a49c, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6a1ebcff, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@19868320, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@50b0bc4c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@c20be82, org.springframework.test.context.transaction.TransactionalTestExecutionListener@13c612bd, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3ef41c66, org.springframework.test.context.event.EventPublishingTestExecutionListener@6b739528, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@622ef26a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@41de5768, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5f577419, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@28fa700e, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@3d526ad9, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@e041f0c]
+18:03:58.755 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@1e287667 testClass = OrderServiceImplTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2e6ee0bc testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@ea9b7c6, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@dcfda20, [ImportsContextCustomizer@4201a617 key = [@org.springframework.boot.test.context.SpringBootTest(args={}, webEnvironment=MOCK, value={}, properties={}, classes={}), @org.springframework.context.annotation.Import({org.springframework.data.jpa.repository.config.JpaAuditingRegistrar.class}), @org.springframework.test.context.BootstrapWith(org.springframework.boot.test.context.SpringBootTestContextBootstrapper.class), @org.springframework.data.jpa.repository.config.EnableJpaAuditing(auditorAwareRef=&quot;&quot;, setDates=true, modifyOnCreate=true, dateTimeProviderRef=&quot;&quot;)]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@3d484181, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@37bd68c3, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@53f48368, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@48b67364], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.3)
+
+2022-09-08 18:03:58.924  INFO 53255 --- [    Test worker] c.e.g.Service.OrderServiceImplTest       : Starting OrderServiceImplTest using Java 15.0.5 on igyeong-wons-MacBook-Pro.local with PID 53255 (started by kyeong in /Users/kyeong/dev/java/Grids-Circles-Clone-APIServer)
+2022-09-08 18:03:58.925  INFO 53255 --- [    Test worker] c.e.g.Service.OrderServiceImplTest       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-09-08 18:03:59.234  INFO 53255 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-08 18:03:59.262  INFO 53255 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 2 JPA repository interfaces.
+2022-09-08 18:03:59.514  INFO 53255 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-08 18:03:59.540  INFO 53255 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.10.Final
+2022-09-08 18:03:59.622  INFO 53255 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-08 18:03:59.668  INFO 53255 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-08 18:03:59.732  INFO 53255 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-08 18:03:59.747  INFO 53255 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Hibernate: drop table if exists order_item CASCADE 
+Hibernate: drop table if exists orders CASCADE 
+Hibernate: drop table if exists product CASCADE 
+Hibernate: create table order_item (order_item_id binary(255) not null, created_at timestamp, updated_at timestamp, count integer not null, order_price bigint not null, order_id binary(255), product_id binary(255), primary key (order_item_id))
+Hibernate: create table orders (order_id binary(255) not null, created_at timestamp, updated_at timestamp, address varchar(255), email varchar(255), order_status integer, postcode varchar(255), primary key (order_id))
+Hibernate: create table product (product_id binary(255) not null, created_at timestamp, updated_at timestamp, category integer, description varchar(255), price bigint not null, product_name varchar(255), quantity integer not null, primary key (product_id))
+Hibernate: alter table order_item add constraint FKt4dc2r9nbvbujrljv3e23iibt foreign key (order_id) references orders
+Hibernate: alter table order_item add constraint FK551losx9j75ss5d6bfsqvijna foreign key (product_id) references product
+2022-09-08 18:04:00.116  INFO 53255 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-08 18:04:00.119  INFO 53255 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-08 18:04:00.417  WARN 53255 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-08 18:04:00.668  INFO 53255 --- [    Test worker] c.e.g.Service.OrderServiceImplTest       : Started OrderServiceImplTest in 1.892 seconds (JVM running for 2.501)
+2022-09-08 18:04:00.682  INFO 53255 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@1e287667 testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@60317de8, testMethod = orderTest@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2e6ee0bc testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@ea9b7c6, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@dcfda20, [ImportsContextCustomizer@4201a617 key = [@org.springframework.boot.test.context.SpringBootTest(args={}, webEnvironment=MOCK, value={}, properties={}, classes={}), @org.springframework.context.annotation.Import({org.springframework.data.jpa.repository.config.JpaAuditingRegistrar.class}), @org.springframework.test.context.BootstrapWith(org.springframework.boot.test.context.SpringBootTestContextBootstrapper.class), @org.springframework.data.jpa.repository.config.EnableJpaAuditing(auditorAwareRef=&quot;&quot;, setDates=true, modifyOnCreate=true, dateTimeProviderRef=&quot;&quot;)]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@3d484181, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@37bd68c3, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@53f48368, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@48b67364], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@75d9b73c]; rollback [false]
+Hibernate: insert into product (created_at, updated_at, category, description, price, product_name, quantity, product_id) values (?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select * from Orders where email = ? and (created_at &gt;= timestampadd(day,-1, formatdatetime(?,'yyyy-MM-dd 14:00:00')) and created_at &lt;= formatdatetime(?, 'yyyy-MM-dd 19:00:00'))
+2022-09-08 18:04:00.864  INFO 53255 --- [    Test worker] c.e.gccoffee.Service.OrderServiceImpl    : New Order Created : com.example.gccoffee.model.Order@51d80f6e
+Hibernate: insert into orders (created_at, updated_at, address, email, order_status, postcode, order_id) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into order_item (created_at, updated_at, count, order_id, order_price, product_id, order_item_id) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: update product set created_at=?, updated_at=?, category=?, description=?, price=?, product_name=?, quantity=? where product_id=?
+Hibernate: select * from Orders where email = ? and (created_at &gt;= timestampadd(day,-1, formatdatetime(?,'yyyy-MM-dd 14:00:00')) and created_at &lt;= formatdatetime(?, 'yyyy-MM-dd 19:00:00'))
+2022-09-08 18:04:00.900  INFO 53255 --- [    Test worker] c.e.gccoffee.Service.OrderServiceImpl    : Order Already Exists : [OrderItem(id=763c79c5-df17-49bd-b331-c417d6702b94, product=Product(productId=89b7d7f4-9ad9-4f7f-81d0-79107155ec39, productName=CoffeeJoa, category=COFFEE_BEAN_PACKAGE, description=커피 조아?, price=100, quantity=0), order=com.example.gccoffee.model.Order@51d80f6e, orderPrice=100, count=2), OrderItem(id=null, product=Product(productId=89b7d7f4-9ad9-4f7f-81d0-79107155ec39, productName=CoffeeJoa, category=COFFEE_BEAN_PACKAGE, description=커피 조아?, price=100, quantity=0), order=com.example.gccoffee.model.Order@51d80f6e, orderPrice=100, count=1)]
+Hibernate: insert into order_item (created_at, updated_at, count, order_id, order_price, product_id, order_item_id) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: update product set created_at=?, updated_at=?, category=?, description=?, price=?, product_name=?, quantity=? where product_id=?
+2022-09-08 18:04:00.911  INFO 53255 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Committed transaction for test: [DefaultTestContext@1e287667 testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@60317de8, testMethod = orderTest@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2e6ee0bc testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@ea9b7c6, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@dcfda20, [ImportsContextCustomizer@4201a617 key = [@org.springframework.boot.test.context.SpringBootTest(args={}, webEnvironment=MOCK, value={}, properties={}, classes={}), @org.springframework.context.annotation.Import({org.springframework.data.jpa.repository.config.JpaAuditingRegistrar.class}), @org.springframework.test.context.BootstrapWith(org.springframework.boot.test.context.SpringBootTestContextBootstrapper.class), @org.springframework.data.jpa.repository.config.EnableJpaAuditing(auditorAwareRef=&quot;&quot;, setDates=true, modifyOnCreate=true, dateTimeProviderRef=&quot;&quot;)]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@3d484181, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@37bd68c3, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@53f48368, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@48b67364], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.5</a> at 2022. 9. 8. 오후 6:04:01</p>
+</div>
+</div>
+</body>
+</html>

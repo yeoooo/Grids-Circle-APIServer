@@ -1,25 +1,63 @@
 package com.example.gccoffee.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Getter
-@RequiredArgsConstructor
+@Entity
+@NoArgsConstructor
+@Setter
+@EnableJpaAuditing
+@Table(name = "orders")//2022-09-7_yeoooo : 테이블 이름이 order인 경우 오류
 public class Order extends BaseTimeEntity{
-    private final UUID orderId;
-    private final Email email;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "order_id")
+    private UUID id;
+
+    @Email(message = "format must be email")
+    private String email;
     @Setter
-    private  String address;
+    private String address;
     @Setter
-    private  String postcode;
-    private final List<OrderItem> orderItems;
+    private String postcode;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems = new ArrayList<>();
+
     @Setter
     private  OrderStatus orderStatus;
+
+//    private LocalDateTime createdAt;
+//    private LocalDateTime updatedAt;
+
+    public static Order createOrder(String email, String address, String postcode, OrderStatus orderStatus, OrderItem... orderItems){
+        Order order = new Order();
+        order.setEmail(email);
+        order.setAddress(address);
+        order.setPostcode(postcode);
+        order.setOrderStatus(orderStatus);
+        for (OrderItem orderItem: orderItems) {
+            order.addOrderItem(orderItem);
+        }
+        return order;
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+
+
 
 
 
