@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:replace="fragments/head::head"/>
+<body>
+<header th:replace="fragments/bodyHeader::bodyHeader"/>
+<nav th:replace="fragments/navigation::navigation"/>
+<!--<div class="col-md-5 mb-2 container-fluid">-->
+<!--<div style="background-color: beige">-->
+<!--    <div th:each="category:${categories}" th:text="${category}" style="background-color: beige">-->
+<!--        <div th:each="product:${products}" th:text="${product}"/>-->
+
+
+
+<!--        -->
+<!--    </div>-->
+<!--</div>-->
+<table>
+
+    <tr th:each="category:${categories}">
+        <td th:text= "${category}" style="color:beige"/>
+        <td th:each="product:${products}" th:text="${product}" style = "color:beige">
+<!--        <td th:text="${product}" style = "color:beige"/>-->
+<!--        </tr>-->
+<!--        <td th:if=""></td>-->
+<!--        <td th:text="${category}" style="color: beige">-->
+<!--            <img src="/static/assets/img/products-03.jpg"/>-->
+<!--        </td>-->
+
+    </td>
+</table>
+<footer th:replace="fragments/footer::footer"/>
+</body>
+</html>

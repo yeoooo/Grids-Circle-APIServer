@@ -14,12 +14,12 @@ import java.util.UUID;
 public interface OrderService {
     public Order order(String email, String address, String postCode, UUID productId, int count);
 
-    public Order cancelOrder(Order o);
+    public void cancelOrder(UUID o);
 
     public Order updateOrder(Order order);
 
     public List<Order> findByEmail(String email);
-//    public Order findByEmailAndDayOrder(String email, LocalDateTime localDatetime);
+
 
 
 }

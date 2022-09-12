@@ -52,8 +52,14 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public Order cancelOrder(Order o) {
-        return null;
+    public void cancelOrder(UUID uuid) {
+        Optional<Order> foundOne = orderRepository.findById(uuid);
+        if (foundOne.isEmpty()) {
+            throw new IllegalStateException("Already deleted Order");
+        }else{
+            foundOne.get().cancelOrder();
+            log.info("order deleted : {}", foundOne);
+        }
     }
 
     @Override
@@ -63,7 +69,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<Order> findByEmail(String email) {
-        return null;
+        return orderRepository.findByEmail(email);
     }
 
 //    @Override

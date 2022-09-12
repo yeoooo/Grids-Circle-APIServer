@@ -1,10 +1,15 @@
 package com.example.gccoffee.Service;
 
 import com.example.gccoffee.Repository.ProductRepository;
+import com.example.gccoffee.model.Category;
 import com.example.gccoffee.model.Product;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -12,6 +17,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
     public final ProductRepository productRepository;
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
     public Product save(Product product) {
@@ -25,12 +31,42 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product update(Product product) {
-        return null;
+    public Product update(Product product, String name, Category category, String description) {
+        Product target = productRepository.findById(product.getProductId()).get();
+        target.setProductName(name);
+        target.setCategory(category);
+        target.setDescription(description);
+
+
+        return target;
     }
 
     @Override
     public Optional<Product> findById(UUID id) {
-        return productRepository.findById(id);
+        Optional<Product> product =  productRepository.findById(id);
+        if (product.isEmpty()) {
+            throw new IllegalStateException("there's no such product");
+        }else{
+            return product;
+        }
     }
+
+    @Override
+    public String delete(UUID id) {
+        Optional<Product> target = findById(id);
+        productRepository.delete(target.get());
+        return target.get().toString();
+
+    }
+
+    @Override
+    public List<Product> findByCategory(Category category) {
+        List<Product> found = productRepository.findByCategory(category);
+//        if (found.size() == 0) {
+//            throw new IllegalStateException("there is no product with the category");
+//        } else {
+            return found;
+//        }
+    }
+
 }
