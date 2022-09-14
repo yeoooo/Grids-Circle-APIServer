@@ -15,10 +15,13 @@
 <!--</div>-->
 <!--<table>-->
 
-<div th:each="category,i:${categories}">
+<div class="row justify-content-center m-4">
+<h1 class="text-center" style="color : beige">상품 관리</h1>
+</div>
+<div th:each="product,i:${products}">
     <div class="row justify-content-center m-4">
         <div class="col text-end"><a th:href="order_management" style="color: beige; text-decoration-line: none;" th:if="${i.index == 0}">주문 관리 ></a></div>
-        <h1 class="text-center" style="color : beige" th:text="${category}"></h1>
+        <h2 class="text-center" style="color : beige" th:text="${product.getKey()}"></h2>
 
     </div>
     <div class="card" style="margin-bottom: 50px">
@@ -26,16 +29,16 @@
             <div class="col-md-9 mt-4 d-flex flex-column align-items-start p-3 pt-0" id="gd">
                 <h5 class="flex-grow-0"><b>상품 목록</b></h5>
                 <ul class="list-group products">
-                    <li class="list-group-item d-flex mt-2" th:each="product,j:${products}" th:if="${product.getValue() == category}" th:id="${j}">
+                    <li class="list-group-item d-flex mt-2" th:each="p:${product.getValue()}" th:if="${p.getCategory() == product.getKey()}" th:id="${j}">
                         <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt=""></div>
                         <div class="col">
 <!--                        <div class="col" th:if="${product.getValue() == category}">-->
-                            <div class="row text-muted" style="font-size: 10px" th:text="${category}"></div>
-                            <div class="row" th:text="${product.getKey().getName()}"></div>
+                            <div class="row text-muted" style="font-size: 10px" th:text="${product.getKey()}"></div>
+                            <div class="row" th:text="${p.getName()}"></div>
                         </div>
-                        <div class="col text-center price text-muted" th:text="${product.getKey().getUpdatedAt().toLocalDate()}" style = "font-size: 12px"></div>
-                        <div class="col text-center price" th:text="${product.getKey().getPrice()}+'원'" style="font-size: 12px"></div>
-                        <div class="col text-center price" th:text="${product.getKey().getQuantity()}" style="font-size: 12px"></div>
+                        <div class="col text-center price text-muted" th:text="${p.getUpdatedAt().toLocalDate()}" style = "font-size: 12px"></div>
+                        <div class="col text-center price" th:text="${p.getPrice()}+'원'" style="font-size: 12px"></div>
+                        <div class="col text-center price" th:text="${p.getQuantity()}" style="font-size: 12px"></div>
                         <div class="col text-end action"><a class="btn btn-small btn-outline-dark" id="updateBtn"; href="" style="font-size: 13px">수정</a></div>
                         <div class="col text-end action"><a class="btn btn-small btn-outline-danger" id="deleteBtn" onclick=deleteProduct(); style="font-size: 13px">삭제</a></div>
                     </li>
@@ -53,8 +56,13 @@
                                 <label class="form-label" >카테고리</label>
 <!--                                <input class="form-control mb-1">-->
                                 <br>
-                                <span th:text="${category}"/>
-                                    <input type="hidden" th:value="${category}" th:id="category" th:name="category">
+                                <span th:text="${product.getKey()}"/>
+                                    <input type="hidden" th:value="${product.getKey()}" th:name="category" >
+<!--                                    <input type="hidden" th:value="${product.getKey()}" th:name="category">-->
+<!--                                <script th:inline="javascript">-->
+<!--                                    alert(/*[[${product.getKey()}]]*/)-->
+
+<!--                                </script>-->
 <!--                                <input type="hidden" th:value="${category}">-->
                             </div>
                             <div class="mb-3">

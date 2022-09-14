@@ -31,9 +31,9 @@ public class ProductController extends BaseTimeEntity {
     @GetMapping("/management")
     public String getProductList(Model model) {
         Category[] categories = Category.values();
-        HashMap<ProductDTO,Category> map = new HashMap<>();
-        for (Category c : categories) {
-            List<ProductDTO> products = productService.findByCategory(c).stream().map(
+        HashMap<Category,List> map = new HashMap<>();
+        for (Category c : categories) {//2022-09-14_yeoooo : 카테고리 이름 : 카테고리에 해당하는 제품
+            map.put(c, productService.findByCategory(c).stream().map(
                     product -> new ProductDTO(product.getProductName(),
                             product.getDescription(),
                             product.getCategory(),
@@ -41,27 +41,55 @@ public class ProductController extends BaseTimeEntity {
                             product.getQuantity(),
                             product.getCreatedAt(),
                             product.getUpdatedAt())
-            ).collect(Collectors.toList());
-
-            for (ProductDTO p : products) {
-                map.put(p,c);
-            }
+            ).collect(Collectors.toList()));
         }
+        log.info("map completed : {}", map);
         model.addAttribute("products", map);
-        model.addAttribute("categories", categories);
+//        model.addAttribute("categories", categories);
         model.addAttribute("productForm", new ProductForm());
 
         return "management";
     }
+// @GetMapping("/management")
+//    public String getProductList(Model model) {
+//        Category[] categories = Category.values();
+//
+//        HashMap<ProductDTO,Category> map = new HashMap<>();
+//        for (Category c : categories) {
+//            List<ProductDTO> products = productService.findByCategory(c).stream().map(
+//                    product -> new ProductDTO(product.getProductName(),
+//                            product.getDescription(),
+//                            product.getCategory(),
+//                            product.getPrice(),
+//                            product.getQuantity(),
+//                            product.getCreatedAt(),
+//                            product.getUpdatedAt())
+//            ).collect(Collectors.toList());
+//
+//            for (ProductDTO p : products) {
+//                map.put(p,c);
+//                log.info("put in map : {}",p);
+//            }
+//        }
+//        log.info("map completed : {}", map);
+//        model.addAttribute("products", map);
+//        model.addAttribute("categories", categories);
+//        model.addAttribute("productForm", new ProductForm());
+//
+//        return "management";
+//    }
 
     @PostMapping("/management")
-    public String registry(ProductForm productForm) {
-        Product newProduct = Product.builder()
-                .productName(productForm.getProductName())
+    public String register(ProductForm productForm) {
+        ProductDTO newProductDTO = ProductDTO.builder()
+                .name(productForm.getProductName())
                 .category(productForm.getCategory())
                 .price(productForm.getPrice())
                 .quantity(productForm.getQuantity())
                 .build();
+
+        Product newProduct = newProductDTO.toEntity();
+        log.info("product's category => {}",newProduct.getCategory());
         if (productService.findByName(newProduct.getProductName()).isEmpty()){
             productService.save(newProduct);
             log.info("product : {} is registered with\n price :{} and \nstock quantity : {}\n in category : {} ", newProduct.getProductName(), newProduct.getPrice(), newProduct.getQuantity(),newProduct.getCategory());

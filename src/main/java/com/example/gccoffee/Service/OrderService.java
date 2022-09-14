@@ -20,6 +20,8 @@ public interface OrderService {
 
     public List<Order> findByEmail(String email);
 
+    public List<Order> findAll();
+
 
 
 }

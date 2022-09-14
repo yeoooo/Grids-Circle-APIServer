@@ -21,6 +21,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Transactional
 public class OrderServiceImpl implements OrderService{
+
+
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
     private final Logger log = LoggerFactory.getLogger(getClass());
@@ -76,6 +78,11 @@ public class OrderServiceImpl implements OrderService{
 //    public Order findByEmailAndDayOrder(String email, LocalDateTime localDatetime) {
 //        return orderRepository.findByEmailAndDayOrder(email, localDatetime);
 //    }
+
+    @Override
+    public List<Order> findAll() {
+        return orderRepository.findAll();
+    }
 
 
 }

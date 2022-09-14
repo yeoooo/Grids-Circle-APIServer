@@ -1,5 +1,6 @@
 package com.example.gccoffee.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -17,6 +18,7 @@ public class ProductDTO{
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
+    @Builder
     public ProductDTO(String name, String description, Category category, long price, int quantity, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.name = name;
         this.description = description;
@@ -25,6 +27,16 @@ public class ProductDTO{
         this.quantity = quantity;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    public Product toEntity() {
+        return Product.builder()
+                .productName(name)
+                .quantity(quantity)
+                .description(description)
+                .category(category)
+                .price(price)
+                .build();
     }
 
 }
