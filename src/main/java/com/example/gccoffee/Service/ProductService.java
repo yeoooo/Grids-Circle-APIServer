@@ -20,4 +20,6 @@ public interface ProductService {
 
     public List<Product> findByCategory(Category category);
 
+    public Optional<Product> findByName(String productName);
+
 }

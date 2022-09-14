@@ -2,6 +2,7 @@ package com.example.gccoffee.Service;
 
 import com.example.gccoffee.Repository.ProductRepository;
 import com.example.gccoffee.model.Category;
+import com.example.gccoffee.model.OrderStatus;
 import com.example.gccoffee.model.Product;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -99,6 +100,7 @@ class ProductServiceImplTest {
     @Rollback(value = false)
     public void categorySearchTest() throws Exception {
         //given
+
         Product coffeeBean = Product.builder()
                 .productName("CoffeeJoa")
                 .category(Category.COFFEE_BEAN_PACKAGE)
@@ -132,21 +134,21 @@ class ProductServiceImplTest {
         productService.save(coffeeCup);
         productService.save(coffeeCup1);
 
-//        //when
-//        List<Product> foundBean = productService.findByCategory(Category.COFFEE_BEAN_PACKAGE);
-//        List<Product> foundCup = productService.findByCategory(Category.COFFEE_CUP);
-//        //then
-//        for (Product p :
-//                foundBean) {
-//            log.info("found bean => {}", p);
-//        }
-//
-//        for (Product p :
-//                foundCup) {
-//            log.info("found cup => {}", p);
-//        }
-//        org.assertj.core.api.Assertions.assertThat(foundBean.size() != 0);
-//        org.assertj.core.api.Assertions.assertThat(foundCup.size() != 0);
+        //when
+        List<Product> foundBean = productService.findByCategory(Category.COFFEE_BEAN_PACKAGE);
+        List<Product> foundCup = productService.findByCategory(Category.COFFEE_CUP);
+        //then
+        for (Product p :
+                foundBean) {
+            log.info("found bean => {}", p);
+        }
+
+        for (Product p :
+                foundCup) {
+            log.info("found cup => {}", p);
+        }
+        org.assertj.core.api.Assertions.assertThat(foundBean.size() != 0);
+        org.assertj.core.api.Assertions.assertThat(foundCup.size() != 0);
 
 
     }
