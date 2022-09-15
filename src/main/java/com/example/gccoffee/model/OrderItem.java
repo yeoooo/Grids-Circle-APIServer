@@ -11,7 +11,6 @@ import java.util.UUID;
 @Setter
 @ToString
 @NoArgsConstructor
-@EnableJpaAuditing
 public class OrderItem extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -12,7 +12,7 @@ public interface ProductService {
 
     public Product cancel(Product product);
 
-    public Product update(Product product, String name, Category category, String description);
+    public Product update(Product id,String name, long price, int quantity, String description);
 
     public Optional<Product> findById(UUID id);
 
@@ -22,5 +22,6 @@ public interface ProductService {
 
     public Optional<Product> findByName(String productName);
 
+//    public Optional<UUID> findIdByName(String productName);
     
 }

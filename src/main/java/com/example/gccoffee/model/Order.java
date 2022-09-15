@@ -16,7 +16,7 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @Setter
-@EnableJpaAuditing
+
 @Table(name = "orders")//2022-09-7_yeoooo : 테이블 이름이 order인 경우 오류
 public class Order extends BaseTimeEntity{
     @Id

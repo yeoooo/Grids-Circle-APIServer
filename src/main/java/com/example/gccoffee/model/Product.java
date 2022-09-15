@@ -5,6 +5,7 @@ import net.bytebuddy.asm.Advice;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 
@@ -12,7 +13,6 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @ToString
-@EnableJpaAuditing
 public class Product extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,7 +32,26 @@ public class Product extends BaseTimeEntity{
 
     public int quantity;
 
-    @Builder
+
+
+//    @Builder
+//    public Product update(ProductDTO dto) {
+//        this.productName = dto.getName();
+//        this.price = dto.getPrice();
+//        this.quantity = dto.getQuantity();
+//        this.description = dto.getDescription();
+//        return this;
+//    }
+   @Builder
+    public Product(ProductDTO dto) {
+        this.productId = dto.getId();
+        this.productName = dto.getName();
+        this.price = dto.getPrice();
+        this.quantity = dto.getQuantity();
+        this.category = dto.getCategory();
+        this.description = dto.getDescription();
+    }
+
     public Product(UUID productId, String productName, Category category, String description, long price, int quantity) {
         this.productId = productId;
         this.productName = productName;
@@ -41,6 +60,10 @@ public class Product extends BaseTimeEntity{
         this.price = price;
         this.quantity = quantity;
     }
+
+
+
+
     public void addQuantity(int cnt){
         this.quantity += cnt;
     }

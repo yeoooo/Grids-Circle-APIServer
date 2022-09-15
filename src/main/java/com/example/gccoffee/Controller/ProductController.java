@@ -14,15 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
-@EnableJpaAuditing
 public class ProductController extends BaseTimeEntity {
 
     private final ProductService productService;
@@ -34,7 +30,9 @@ public class ProductController extends BaseTimeEntity {
         HashMap<Category,List> map = new HashMap<>();
         for (Category c : categories) {//2022-09-14_yeoooo : 카테고리 이름 : 카테고리에 해당하는 제품
             map.put(c, productService.findByCategory(c).stream().map(
-                    product -> new ProductDTO(product.getProductName(),
+                    product -> new ProductDTO(
+                            product.getProductId(),
+                            product.getProductName(),
                             product.getDescription(),
                             product.getCategory(),
                             product.getPrice(),
@@ -81,7 +79,8 @@ public class ProductController extends BaseTimeEntity {
 
     @PostMapping("/management")
     public String register(ProductForm productForm) {
-        ProductDTO newProductDTO = ProductDTO.builder()
+        ProductDTO newProductDTO = ProductDTO
+                .builder()
                 .name(productForm.getProductName())
                 .category(productForm.getCategory())
                 .price(productForm.getPrice())
@@ -100,19 +99,33 @@ public class ProductController extends BaseTimeEntity {
         return "redirect:/management";
     }
 
-//    @RequestMapping
-//    public String updateProduct() {
-//        return null;
-//    }
+    @RequestMapping("/management/product/update")
+    public String updateProduct(@RequestParam("id") UUID id, @RequestParam("name") String productName, @RequestParam("price") long price, @RequestParam("quantity") int quantity) {
+        Optional<Product> targetProduct = productService.findById(id);
+            log.info("product updated => with\n" +
+                    "id = {}\n"+
+                    "name = {}\n"+
+                    "price = {}\n"+
+                    "quantity = {}\n",
+                    targetProduct.get(),productName,price,quantity);
+        if (targetProduct.isEmpty()) {
+            throw new IllegalStateException("No Product found.");
+        }else{
+            productService.update(targetProduct.get(), productName, price, quantity, null);
+        }
+
+        return "redirect:/management";
+    }
 //
-    @GetMapping("/management/delete")
-    public String deleteProduct(@Param("productName") String productName) {
+    @RequestMapping("/management/product/delete")
+    public String deleteProduct(@RequestParam("name") String productName) {
+        log.info("requested delete from productName : {} ", productName);
         try {
             Optional<Product> foundOne = productService.findByName(productName);
             productService.delete(foundOne.get().getProductId());
         }catch(Exception e){
             log.info("no product to deleted");
-            return "redirect:/management";
+//            return "redirect:/management";
         }
 
         return "redirect:/management";
