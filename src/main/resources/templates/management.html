@@ -41,7 +41,8 @@
                         <div class="col text-center price" th:text="${p.getPrice()}+'원'" style="font-size: 12px" th:id="${p.getName()}+_price"></div>
                         <div class="col text-center price" th:text="${p.getQuantity()}" style="font-size: 12px" th:id="${p.getName()}+_quantity"></div>
                         <div class="col text-end action"><a class="btn btn-small btn-outline-dark" style="font-size: 13px" onclick="updateProduct(this.id)" th:id="${p.getName()}+_updateBtn">수정</a></div>
-                        <div class="col text-end action"><a class="btn btn-small btn-outline-danger" id="deleteBtn" th:href="@{management/product/delete(name=${p.getName()})}" style="font-size: 13px">삭제</a></div>
+<!--                        <div class="col text-end action"><a class="btn btn-small btn-outline-danger" id="deleteBtn" onclick="deleteProduct(this.id)" th:href="@{management/product/delete(name=${p.getName()})}" style="font-size: 13px">삭제</a></div>-->
+                        <div class="col text-end action"><a class="btn btn-small btn-outline-danger" id="deleteBtn" onclick="deleteProduct(this.id)" th:id="${p.getName()}+_updateBtn" style="font-size: 13px">삭제</a></div>
                     </li>
                 </ul>
             </div>
@@ -159,13 +160,10 @@
         productUpdateForm.hidden=true
         back.hidden=true
 
-    function deleteProduct() {
-        let deleteBtn = document.getElementById("deleteBtn");
-        // if(confirm(/*[[${i}]]*/ + "삭제하시겠습니까?")){
-        if(confirm("를 삭제하시겠습니까?")){
-            // deleteBtn.innerHTML(onclick(location.href = "/management/delete"));
-            // console.log(deleteBtn.parentElement.parentElement.);
-            // location = "/management/delete";
+    function deleteProduct(id) {
+        product_id = id;
+        if(confirm(document.getElementById(id).parentElement.parentElement.getAttribute("id") + " 삭제하시겠습니까?")){
+            location = "management/product/delete?id=" + document.getElementById(product_id).parentElement.parentElement.getAttribute("value");
         }
     }
     function updateProduct(id) {

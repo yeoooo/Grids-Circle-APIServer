@@ -48,34 +48,6 @@ public class ProductController extends BaseTimeEntity {
 
         return "management";
     }
-// @GetMapping("/management")
-//    public String getProductList(Model model) {
-//        Category[] categories = Category.values();
-//
-//        HashMap<ProductDTO,Category> map = new HashMap<>();
-//        for (Category c : categories) {
-//            List<ProductDTO> products = productService.findByCategory(c).stream().map(
-//                    product -> new ProductDTO(product.getProductName(),
-//                            product.getDescription(),
-//                            product.getCategory(),
-//                            product.getPrice(),
-//                            product.getQuantity(),
-//                            product.getCreatedAt(),
-//                            product.getUpdatedAt())
-//            ).collect(Collectors.toList());
-//
-//            for (ProductDTO p : products) {
-//                map.put(p,c);
-//                log.info("put in map : {}",p);
-//            }
-//        }
-//        log.info("map completed : {}", map);
-//        model.addAttribute("products", map);
-//        model.addAttribute("categories", categories);
-//        model.addAttribute("productForm", new ProductForm());
-//
-//        return "management";
-//    }
 
     @PostMapping("/management")
     public String register(ProductForm productForm) {
@@ -118,14 +90,13 @@ public class ProductController extends BaseTimeEntity {
     }
 //
     @RequestMapping("/management/product/delete")
-    public String deleteProduct(@RequestParam("name") String productName) {
-        log.info("requested delete from productName : {} ", productName);
+    public String deleteProduct(@RequestParam("id") UUID id) {
+        log.info("requested delete from productId : {} ", id);
         try {
-            Optional<Product> foundOne = productService.findByName(productName);
+            Optional<Product> foundOne = productService.findById(id);
             productService.delete(foundOne.get().getProductId());
         }catch(Exception e){
             log.info("no product to deleted");
-//            return "redirect:/management";
         }
 
         return "redirect:/management";
