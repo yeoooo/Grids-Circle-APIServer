@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:replace="fragments/head::head"/>
+<body>
+<header th:replace="fragments/bodyHeader::bodyHeader"/>
+<nav th:replace="fragments/navigation::navigation"/>
+<!--<div class="col-md-5 mb-2 container-fluid">-->
+<!--<div style="background-color: beige">-->
+<!--    <div th:each="category:${categories}" th:text="${category}" style="background-color: beige">-->
+<!--        <div th:each="product:${products}" th:text="${product}"/>-->
+
+
+<!--        -->
+<!--    </div>-->
+<!--</div>-->
+<!--<table>-->
+
+<div class="row justify-content-center m-4">
+<div class="col text-end"><a th:href="@{/management/order}" style="color: beige; text-decoration-line: none;">주문 관리 ></a></div>
+<h1 class="text-center" style="color : beige">상품 관리</h1>
+</div>
+<div th:each="product,i:${products}">
+    <div class="row justify-content-center m-4">
+        <h2 class="text-center" style="color : beige" th:text="${product.getKey()}"></h2>
+
+    </div>
+    <div class="card" style="margin-bottom: 50px">
+        <div class="row">
+            <div class="col-md-9 mt-4 d-flex flex-column align-items-start p-3 pt-0" id="gd">
+                <h5 class="flex-grow-0"><b>상품 목록</b></h5>
+                <ul class="list-group products">
+                    <li class="list-group-item d-flex mt-2" th:each="p:${product.getValue()}" th:if="${p.getCategory() == product.getKey()}" th:id="${p.getName()}" th:value="${p.getId()}">
+
+                        <div class="col-1"><img class="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt=""></div>
+                        <div class="col">
+                            <div class="row text-muted" style="font-size: 10px">제품명</div>
+                            <div class="row" th:text="${p.getName()}" id="name"></div>
+                        </div>
+                        <div class="col-2">
+                            <div class="row text-muted" style="font-size: 10px">등록일</div>
+                            <div class="row" th:text="${p.getUpdatedAt().toLocalDate()}" style = "font-size: 12px"></div>
+                        </div>
+                        <div class="col">
+                            <div class="row text-muted" style="font-size: 10px">가격</div>
+                            <div class="row" th:text="${p.getPrice()}+'원'" style="font-size: 12px" th:id="${p.getName()}+_price"></div>
+                        </div>
+                        <div class="col">
+                            <div class="row text-muted" style="font-size: 10px">재고</div>
+                            <div class="row" th:text="${p.getQuantity()}" style="font-size: 12px" th:id="${p.getName()}+_quantity"></div>
+                        </div>
+                        <div class="col-1"><a class="btn btn-small btn-outline-dark" style="font-size: 13px" onclick="updateProduct(this.id)" th:id="${p.getName()}+_updateBtn">수정</a></div>
+
+                        <div class="col-1"><a class="btn btn-small btn-outline-danger" id="deleteBtn" onclick="deleteProduct(this.id)" th:id="${p.getName()}+_updateBtn" style="font-size: 13px">삭제</a></div>
+                    </li>
+                </ul>
+            </div>
+                    <div class="col-md-3 summary p-3">
+                        <div>
+                            <h5 class="m-0 p-0"><b>상품 등록</b></h5>
+                            <hr>
+                        </div>
+
+                        <form id = "productForm" th:action="@{/management/product}" th:object="${productForm}" method="post">
+                            <div class="mb-3">
+
+                                <label class="form-label" >카테고리</label>
+<!--                                <input class="form-control mb-1">-->
+                                <br>
+                                <span th:text="${product.getKey()}"/>
+<!--                                    <input type="hidden" th:value="${product.getKey()}" th:name="category" >-->
+<!--                                    <input type="hidden" th:value="${product.getKey()}" th:name="category">-->
+<!--                                <script th:inline="javascript">-->
+<!--                                    alert(/*[[${product.getKey()}]]*/)-->
+
+<!--                                </script>-->
+<!--                                <input type="hidden" th:value="${category}">-->
+                            </div>
+                            <div class="mb-3">
+                                <label th:for="productName" class="form-label">상품명</label>
+                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName">
+<!--                                <input class="form-control mb-1" type="text">-->
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" >가격</label>
+                                <input type="number" class="form-control mb-1" th:field="*{price}" id="inputPrice">
+<!--                                <input type="number" class="form-control mb-1">-->
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">재고</label>
+                                <input type="number" class="form-control" th:field="*{quantity}" id="inputQuantity">
+<!--                                <input type="number" class="form-control">-->
+                            </div>
+<!--                            <div>당일 오후 2시 이후의 주문은 다음날 배송을 시작합니다.</div>-->
+                        </form>
+<!--                        <form id = "productUpdateForm" th:action="@{/management/product/update}" th:object="${productForm}" method="post">-->
+                        <form id = "productUpdateForm" th:action="@{/management/product/update}" th:object="${productForm}" method="post">
+                            <div class="mb-3">
+
+                                <label class="form-label" >카테고리</label>
+                                <!--                                <input class="form-control mb-1">-->
+                                <br>
+                                <span th:text="${product.getKey()}"/>
+                                <input type="hidden" th:value="${product.getKey()}" th:name="category">
+                                <!--                                    <input type="hidden" th:value="${product.getKey()}" th:name="category">-->
+                                <!--                                <script th:inline="javascript">-->
+                                <!--                                    alert(/*[[${product.getKey()}]]*/)-->
+
+                                <!--                                </script>-->
+                                <!--                                <input type="hidden" th:value="${category}">-->
+                            </div>
+                            <div class="mb-3">
+                                <label th:for="productName" class="form-label">상품명</label>
+                                <input class="form-control mb-1" type="text" value="" th:field="*{productName}" id="updateInputName" placeholder="update">
+                                <!--                                <input class="form-control mb-1" type="text">-->
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" >가격</label>
+                                <input type="number" class="form-control mb-1" value="" th:field="*{price}" id="updateInputPrice">
+                                <!--                                <input type="number" class="form-control mb-1">-->
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">재고</label>
+                                <input type="number" class="form-control" value="" th:field="*{quantity}" id="updateInputQuantity">
+                                <!--                                <input type="number" class="form-control">-->
+                            </div>
+                            <!--                            <div>당일 오후 2시 이후의 주문은 다음날 배송을 시작합니다.</div>-->
+                        </form>
+<!--                        <div class="row pt-2 pb-2 border-top">-->
+<!--                            <h5 class="col">총금액</h5>-->
+<!--                            <h5 class="col text-end">15000원</h5>-->
+<!--                        </div>-->
+                        <button class="btn btn-dark col-12" type="submit" form="productForm" id="submitBtn">상품 등록</button>
+<!--                        <button class="btn btn-dark col-12" type="submit" form="productUpdateForm" id="updateSubmitBtn" onclick="submitUpdate()">상품 수정</button>-->
+                        <button class="btn btn-warning col-12" type="button" form="productUpdateForm" id="updateSubmitBtn" onclick="submitUpdate()">상품 수정</button>
+                        <div class="row pt-2 pb-2 border-top">
+                            <!--                            <h5 class="col">총금액</h5>-->
+                            <!--                            <h5 class="col text-end">15000원</h5>-->
+                            <a th:href="@{/management/product}" class="col text-end" style="text-decoration-line: none" id="backToRegister"> < 돌아가기 </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+</div>
+<!--        </div>-->
+    <!--            <div th:each="product:${products}">-->
+    <!--                <div class="card" th:if="${product.getValue == category}"  style="background-color : wheat; color:black">-->
+    <!--                    <span th:text ="${product.getKey().getName()}"></span>-->
+    <!--                    <span th:text ="${product.getKey().getDescription()}"></span>-->
+    <!--                    <span th:text ="${product.getKey().getPrice()}"></span>-->
+    <!--                    <span th:text ="${product.getKey().getQuantity()}"></span>-->
+    <!--                </div>-->
+    <!--            </div>-->
+
+    <!--</table>-->
+    <footer th:replace="fragments/footer::footer"/>
+</div>
+<script th:inline="javascript">
+        let updateSubmitBtn = document.getElementById("updateSubmitBtn")
+        let productUpdateForm = document.getElementById("productUpdateForm");
+        let productForm = document.getElementById("productForm");
+        let submitBtn = document.getElementById("submitBtn")
+        let back = document.getElementById("backToRegister")
+        let product_id;
+
+
+        updateSubmitBtn.hidden=true
+        productUpdateForm.hidden=true
+        back.hidden=true
+
+    function deleteProduct(id) {
+        product_id = id;
+        if(confirm(document.getElementById(id).parentElement.parentElement.getAttribute("id") + " 삭제하시겠습니까?")){
+            location = "product/delete"+
+                "?id=" + document.getElementById(product_id).parentElement.parentElement.getAttribute("value");
+        }
+    }
+    function updateProduct(id) {
+        product_id = id;
+        productForm.hidden = true;
+        submitBtn.hidden = true;
+        productUpdateForm.hidden = false;
+        updateSubmitBtn.hidden = false;
+        back.hidden = false;
+
+        document.getElementById("updateInputName").setAttribute("value", document.getElementById(id).parentElement.parentElement.getAttribute("id"));
+        document.getElementById("updateInputPrice").setAttribute("value", document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_price').innerText.slice(0,-1));
+        document.getElementById("updateInputQuantity").setAttribute("value", document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_quantity').innerText);
+    }
+
+    function submitUpdate() {
+
+
+        productUpdateForm.setAttribute("action", "/management/product/update" +
+            "?id=" + document.getElementById(product_id).parentElement.parentElement.getAttribute("value") +
+            "\&name=" + document.getElementById("updateInputName").value +
+            "\&price=" + document.getElementById("updateInputPrice").value +
+            "\&quantity=" + document.getElementById("updateInputQuantity").value);
+        productUpdateForm.submit();
+    }
+</script>
+</body>
+
+</html>

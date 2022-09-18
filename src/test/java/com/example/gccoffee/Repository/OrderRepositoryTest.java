@@ -36,13 +36,13 @@ class OrderRepositoryTest {
         //given
         //given
         Product p = new Product();
-        p.builder()
-                .productId(UUID.randomUUID())
-                .category(Category.COFFEE_BEAN_PACKAGE)
-                .description("this is coffee")
-                .price(100)
-                .productName("this coffee")
-                .build();
+//        p.builder()
+//                .productId(UUID.randomUUID())
+//                .category(Category.COFFEE_BEAN_PACKAGE)
+//                .description("this is coffee")
+//                .price(100)
+//                .productName("this coffee")
+//                .build();
 
         Order o = new Order();
         o.setId(UUID.randomUUID());

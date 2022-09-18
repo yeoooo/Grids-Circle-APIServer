@@ -1,6 +1,7 @@
 package com.example.gccoffee.Service;
 
 import com.example.gccoffee.model.Order;
+import com.example.gccoffee.model.OrderStatus;
 import com.example.gccoffee.model.Product;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public interface OrderService {
 
     public List<Order> findAll();
 
+    public List<Order> findByOrderStatus(OrderStatus orderStatus);
 
 
 }

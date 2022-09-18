@@ -33,14 +33,6 @@ public class ProductDTO{
     }
 
     public Product toEntity() {
-//        return Product.builder()
-//                .productId(id)
-//                .productName(name)
-//                .quantity(quantity)
-//                .description(description)
-//                .category(category)
-//                .price(price)
-//                .build();
         return new Product(
                 id,
                 name,

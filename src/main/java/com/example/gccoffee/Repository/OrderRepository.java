@@ -1,8 +1,11 @@
 package com.example.gccoffee.Repository;
 
 import com.example.gccoffee.model.Order;
+import com.example.gccoffee.model.OrderStatus;
+import com.example.gccoffee.model.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -29,4 +32,6 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
     @Query(nativeQuery = true, value = FIND_BY_EMAIL_AND_DAYORDER_QUERY_H2)
     public Optional<Order> findByEmailAndDayOrder(@Param("email")String email, @Param("date") LocalDateTime localDatetime);
 
+    public List<Order> findByOrderStatus(OrderStatus orderStatus);
+    
 }

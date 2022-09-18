@@ -28,6 +28,7 @@ public class OrderServiceImpl implements OrderService{
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
+    @Transactional
     public Order order(String email, String address, String postCode , UUID productId, int count) {
         Optional<Order> targetOrder = orderRepository.findByEmailAndDayOrder(email, LocalDateTime.now());
         Optional<Product> targetProduct = productRepository.findById(productId);
@@ -54,6 +55,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    @Transactional
     public void cancelOrder(UUID uuid) {
         Optional<Order> foundOne = orderRepository.findById(uuid);
         if (foundOne.isEmpty()) {
@@ -65,6 +67,7 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    @Transactional
     public Order updateOrder(Order order) {
         return null;
     }
@@ -84,5 +87,8 @@ public class OrderServiceImpl implements OrderService{
         return orderRepository.findAll();
     }
 
-
+    @Override
+    public List<Order> findByOrderStatus(OrderStatus orderStatus) {
+        return orderRepository.findByOrderStatus(orderStatus);
+    }
 }

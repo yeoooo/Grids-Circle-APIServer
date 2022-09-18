@@ -24,7 +24,7 @@ public class ProductController extends BaseTimeEntity {
     private final ProductService productService;
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    @GetMapping("/management")
+    @GetMapping("/management/product")
     public String getProductList(Model model) {
         Category[] categories = Category.values();
         HashMap<Category,List> map = new HashMap<>();
@@ -46,10 +46,10 @@ public class ProductController extends BaseTimeEntity {
 //        model.addAttribute("categories", categories);
         model.addAttribute("productForm", new ProductForm());
 
-        return "management";
+        return "product_management";
     }
 
-    @PostMapping("/management")
+    @PostMapping("/management/product")
     public String register(ProductForm productForm) {
         ProductDTO newProductDTO = ProductDTO
                 .builder()
@@ -68,7 +68,7 @@ public class ProductController extends BaseTimeEntity {
             log.info("product name is duplicated one : {}", newProduct.getProductName());
         }
 
-        return "redirect:/management";
+        return "redirect:/management/product";
     }
 
     @RequestMapping("/management/product/update")
@@ -86,7 +86,7 @@ public class ProductController extends BaseTimeEntity {
             productService.update(targetProduct.get(), productName, price, quantity, null);
         }
 
-        return "redirect:/management";
+        return "redirect:/management/product";
     }
 //
     @RequestMapping("/management/product/delete")
@@ -99,6 +99,6 @@ public class ProductController extends BaseTimeEntity {
             log.info("no product to deleted");
         }
 
-        return "redirect:/management";
+        return "redirect:/management/product";
     }
 }

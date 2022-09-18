@@ -18,7 +18,6 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
-@EnableJpaAuditing
 class OrderServiceImplTest {
     @Autowired
     OrderService orderService;
@@ -31,23 +30,27 @@ class OrderServiceImplTest {
     @Rollback(value = false)
     public void orderTest() throws Exception {
         //given
+//
+//          public Product(UUID productId, String productName, Category category, String description, long price, int quantity) {
+//            this.productId = productId;
+//            this.productName = productName;
+//            this.category = category;
+//            this.description = description;
+//            this.price = price;
+//            this.quantity = quantity;
+//        }
+        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.COFFEE_BEAN_PACKAGE, "커피 조아?", 100L, 3);
 
-        Product p = Product.builder()
-                .productName("CoffeeJoa")
-                .category(Category.COFFEE_BEAN_PACKAGE)
-                .description("커피 조아?")
-                .price(100)
-                .quantity(3)
-                .build();
+
         //when
-        productService.save(p);
+//        productService.save(p);
 
 
 //        Order o = new Order();
-        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 2);
+//        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 2);
 //        System.out.println("p.getProductId().toString() = " + p.getProductId().toString());
         orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 1);
-//        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
+        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
         //when
 
         //then
@@ -60,13 +63,7 @@ class OrderServiceImplTest {
     public void stockTest() throws Exception {
         //given
 
-        Product p = Product.builder()
-                .productName("CoffeeJoa")
-                .category(Category.COFFEE_BEAN_PACKAGE)
-                .description("커피 조아?")
-                .price(100)
-                .quantity(3)
-                .build();
+        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.COFFEE_BEAN_PACKAGE, "커피 조아?", 100L, 3);
         //when
         productService.save(p);
 
@@ -88,13 +85,7 @@ class OrderServiceImplTest {
     public void totalPriceTest() throws Exception {
         //given
 
-        Product p = Product.builder()
-                .productName("CoffeeJoa")
-                .category(Category.COFFEE_BEAN_PACKAGE)
-                .description("커피 조아?")
-                .price(100)
-                .quantity(100)
-                .build();
+        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.COFFEE_BEAN_PACKAGE, "커피 조아?", 100L, 3);
         //when
         productService.save(p);
 
@@ -113,13 +104,7 @@ class OrderServiceImplTest {
     public void orderCancelTest() throws Exception {
         //given
 
-        Product p = Product.builder()
-                .productName("CoffeeJoa")
-                .category(Category.COFFEE_BEAN_PACKAGE)
-                .description("커피 조아?")
-                .price(100)
-                .quantity(100)
-                .build();
+        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.COFFEE_BEAN_PACKAGE, "커피 조아?", 100L, 3);
         productService.save(p);
 
         Order o = orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);

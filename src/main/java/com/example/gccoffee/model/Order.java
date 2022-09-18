@@ -16,7 +16,6 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @Setter
-
 @Table(name = "orders")//2022-09-7_yeoooo : 테이블 이름이 order인 경우 오류
 public class Order extends BaseTimeEntity{
     @Id
@@ -35,7 +34,7 @@ public class Order extends BaseTimeEntity{
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @Setter
-    private  OrderStatus orderStatus;
+    private OrderStatus orderStatus;
 
 //    private LocalDateTime createdAt;
 //    private LocalDateTime updatedAt;
@@ -72,7 +71,14 @@ public class Order extends BaseTimeEntity{
         return orderItems.stream().mapToLong(OrderItem::getTotalPrice).sum();
     }
 
-
+    @Builder
+    public Order(OrderDTO dto) {
+        this.id = dto.getId();
+        this.email = dto.getEmail();
+        this.address = dto.getAddress();
+        this.postcode = dto.getPostcode();
+        this.orderStatus = dto.getOrderStatus();
+    }
 
 
 

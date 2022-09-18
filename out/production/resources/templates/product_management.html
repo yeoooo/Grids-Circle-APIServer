@@ -16,11 +16,11 @@
 <!--<table>-->
 
 <div class="row justify-content-center m-4">
+<div class="col text-end"><a th:href="@{/management/order}" style="color: beige; text-decoration-line: none;">주문 관리 ></a></div>
 <h1 class="text-center" style="color : beige">상품 관리</h1>
 </div>
 <div th:each="product,i:${products}">
     <div class="row justify-content-center m-4">
-        <div class="col text-end"><a th:href="order_management" style="color: beige; text-decoration-line: none;" th:if="${i.index == 0}">주문 관리 ></a></div>
         <h2 class="text-center" style="color : beige" th:text="${product.getKey()}"></h2>
 
     </div>
@@ -31,18 +31,26 @@
                 <ul class="list-group products">
                     <li class="list-group-item d-flex mt-2" th:each="p:${product.getValue()}" th:if="${p.getCategory() == product.getKey()}" th:id="${p.getName()}" th:value="${p.getId()}">
 
-                        <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt=""></div>
+                        <div class="col-1"><img class="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt=""></div>
                         <div class="col">
-<!--                        <div class="col" th:if="${product.getValue() == category}">-->
-                            <div class="row text-muted" style="font-size: 10px" th:text="${product.getKey()}"></div>
+                            <div class="row text-muted" style="font-size: 10px">제품명</div>
                             <div class="row" th:text="${p.getName()}" id="name"></div>
                         </div>
-                        <div class="col text-center price text-muted" th:text="${p.getUpdatedAt().toLocalDate()}" style = "font-size: 12px"></div>
-                        <div class="col text-center price" th:text="${p.getPrice()}+'원'" style="font-size: 12px" th:id="${p.getName()}+_price"></div>
-                        <div class="col text-center price" th:text="${p.getQuantity()}" style="font-size: 12px" th:id="${p.getName()}+_quantity"></div>
-                        <div class="col text-end action"><a class="btn btn-small btn-outline-dark" style="font-size: 13px" onclick="updateProduct(this.id)" th:id="${p.getName()}+_updateBtn">수정</a></div>
-<!--                        <div class="col text-end action"><a class="btn btn-small btn-outline-danger" id="deleteBtn" onclick="deleteProduct(this.id)" th:href="@{management/product/delete(name=${p.getName()})}" style="font-size: 13px">삭제</a></div>-->
-                        <div class="col text-end action"><a class="btn btn-small btn-outline-danger" id="deleteBtn" onclick="deleteProduct(this.id)" th:id="${p.getName()}+_updateBtn" style="font-size: 13px">삭제</a></div>
+                        <div class="col-2">
+                            <div class="row text-muted" style="font-size: 10px">등록일</div>
+                            <div class="row" th:text="${p.getUpdatedAt().toLocalDate()}" style = "font-size: 12px"></div>
+                        </div>
+                        <div class="col">
+                            <div class="row text-muted" style="font-size: 10px">가격</div>
+                            <div class="row" th:text="${p.getPrice()}+'원'" style="font-size: 12px" th:id="${p.getName()}+_price"></div>
+                        </div>
+                        <div class="col">
+                            <div class="row text-muted" style="font-size: 10px">재고</div>
+                            <div class="row" th:text="${p.getQuantity()}" style="font-size: 12px" th:id="${p.getName()}+_quantity"></div>
+                        </div>
+                        <div class="col-1"><a class="btn btn-small btn-outline-dark" style="font-size: 13px" onclick="updateProduct(this.id)" th:id="${p.getName()}+_updateBtn">수정</a></div>
+
+                        <div class="col-1"><a class="btn btn-small btn-outline-danger" id="deleteBtn" onclick="deleteProduct(this.id)" th:id="${p.getName()}+_updateBtn" style="font-size: 13px">삭제</a></div>
                     </li>
                 </ul>
             </div>
@@ -52,14 +60,14 @@
                             <hr>
                         </div>
 
-                        <form id = "productForm" th:action="@{/management}" th:object="${productForm}" method="post">
+                        <form id = "productForm" th:action="@{/management/product}" th:object="${productForm}" method="post">
                             <div class="mb-3">
 
                                 <label class="form-label" >카테고리</label>
 <!--                                <input class="form-control mb-1">-->
                                 <br>
                                 <span th:text="${product.getKey()}"/>
-                                    <input type="hidden" th:value="${product.getKey()}" th:name="category" >
+<!--                                    <input type="hidden" th:value="${product.getKey()}" th:name="category" >-->
 <!--                                    <input type="hidden" th:value="${product.getKey()}" th:name="category">-->
 <!--                                <script th:inline="javascript">-->
 <!--                                    alert(/*[[${product.getKey()}]]*/)-->
@@ -127,7 +135,7 @@
                         <div class="row pt-2 pb-2 border-top">
                             <!--                            <h5 class="col">총금액</h5>-->
                             <!--                            <h5 class="col text-end">15000원</h5>-->
-                            <a th:href="@{/management}" class="col text-end" style="text-decoration-line: none" id="backToRegister"> < 돌아가기 </a>
+                            <a th:href="@{/management/product}" class="col text-end" style="text-decoration-line: none" id="backToRegister"> < 돌아가기 </a>
                         </div>
 
                     </div>
@@ -163,7 +171,8 @@
     function deleteProduct(id) {
         product_id = id;
         if(confirm(document.getElementById(id).parentElement.parentElement.getAttribute("id") + " 삭제하시겠습니까?")){
-            location = "management/product/delete?id=" + document.getElementById(product_id).parentElement.parentElement.getAttribute("value");
+            location = "product/delete"+
+                "?id=" + document.getElementById(product_id).parentElement.parentElement.getAttribute("value");
         }
     }
     function updateProduct(id) {

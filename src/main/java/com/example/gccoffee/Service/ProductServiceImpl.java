@@ -25,10 +25,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findByProductName(productName);
     }
 
-//    @Override
-//    public Optional<UUID> findIdByName(String productName) {
-//        return productRepository.findIdByName(productName);
-//    }
+    @Override
+    public List<Product> findAll() {
+        System.out.println("productService.findAll() = " + productRepository.findAll());
+        return productRepository.findAll();
+    }
 
 
     @Override

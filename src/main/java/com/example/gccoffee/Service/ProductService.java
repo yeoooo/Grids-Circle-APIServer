@@ -22,6 +22,7 @@ public interface ProductService {
 
     public Optional<Product> findByName(String productName);
 
+    public List<Product> findAll();
 //    public Optional<UUID> findIdByName(String productName);
     
 }

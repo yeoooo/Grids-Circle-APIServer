@@ -1,15 +1,20 @@
 package com.example.gccoffee.Controller;
 
 import com.example.gccoffee.Service.OrderService;
-import com.example.gccoffee.model.Category;
-import com.example.gccoffee.model.ProductDTO;
-import com.example.gccoffee.model.ProductForm;
+import com.example.gccoffee.model.*;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.swing.text.html.FormView;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,15 +24,51 @@ import java.util.stream.Collectors;
 public class OrderController {
 
     private final OrderService orderService;
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/order")
     public String order() {
         return "order";
     }
 
-    @GetMapping("/order_management")
+    @GetMapping("/management/order")
     public String getOrderList(Model model) {
-        model.addAttribute("orders",orderService.findAll());
+        List<Order> orders = orderService.findAll();
+        OrderStatus[] status = OrderStatus.values();
+        HashMap<OrderStatus, List> map = new HashMap<>();
+
+        Object[] mapKey = new Object[0];
+        for (OrderStatus s : status) {//2022-09-14_yeoooo : 카테고리 이름 : 카테고리에 해당하는 제품
+            map.put(s, orderService.findAll().stream().map(
+                    order ->
+                            OrderDTO.builder()
+                                    .id(order.getId())
+                                    .address(order.getAddress())
+                                    .email(order.getEmail())
+                                    .orderItems(order.getOrderItems())
+                                    .postcode(order.getPostcode())
+                                    .orderStatus(order.getOrderStatus())
+                                    .price(order.getTotalPrice())
+                                    .createdAt(order.getCreatedAt())
+                                    .updatedAt(order.getUpdatedAt())
+                                    .build()
+            ).collect(Collectors.toList()));
+            mapKey = map.keySet().toArray();
+            Arrays.sort(mapKey);
+
+//            Arrays.sort(Comparator.comparing());
+
+        }
+        log.info("map => {}",map);
+        model.addAttribute("orders", map);
+        model.addAttribute("status", mapKey);
         return "order_management";
     }
+//    @RequestMapping("/management/order")
+//    public String getOrderListByStatus(Model model, @RequestParam("status") OrderStatus orderStatus) {
+//        List<Order> orders = orderService.findByOrderStatus(orderStatus);
+//        model.addAttribute("orders", orders);
+//        return "product_management";
+//    }
+
 }

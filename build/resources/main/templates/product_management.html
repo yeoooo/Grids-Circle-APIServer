@@ -16,11 +16,11 @@
 <!--<table>-->
 
 <div class="row justify-content-center m-4">
+<div class="col text-end"><a th:href="@{/management/order}" style="color: beige; text-decoration-line: none;">주문 관리 ></a></div>
 <h1 class="text-center" style="color : beige">상품 관리</h1>
 </div>
 <div th:each="product,i:${products}">
     <div class="row justify-content-center m-4">
-        <div class="col text-end"><a th:href="order_management" style="color: beige; text-decoration-line: none;" th:if="${i.index == 0}">주문 관리 ></a></div>
         <h2 class="text-center" style="color : beige" th:text="${product.getKey()}"></h2>
 
     </div>
@@ -52,14 +52,14 @@
                             <hr>
                         </div>
 
-                        <form id = "productForm" th:action="@{/management}" th:object="${productForm}" method="post">
+                        <form id = "productForm" th:action="@{/management/product}" th:object="${productForm}" method="post">
                             <div class="mb-3">
 
                                 <label class="form-label" >카테고리</label>
 <!--                                <input class="form-control mb-1">-->
                                 <br>
                                 <span th:text="${product.getKey()}"/>
-                                    <input type="hidden" th:value="${product.getKey()}" th:name="category" >
+<!--                                    <input type="hidden" th:value="${product.getKey()}" th:name="category" >-->
 <!--                                    <input type="hidden" th:value="${product.getKey()}" th:name="category">-->
 <!--                                <script th:inline="javascript">-->
 <!--                                    alert(/*[[${product.getKey()}]]*/)-->
@@ -127,7 +127,7 @@
                         <div class="row pt-2 pb-2 border-top">
                             <!--                            <h5 class="col">총금액</h5>-->
                             <!--                            <h5 class="col text-end">15000원</h5>-->
-                            <a th:href="@{/management}" class="col text-end" style="text-decoration-line: none" id="backToRegister"> < 돌아가기 </a>
+                            <a th:href="@{/management/product}" class="col text-end" style="text-decoration-line: none" id="backToRegister"> < 돌아가기 </a>
                         </div>
 
                     </div>
@@ -163,7 +163,8 @@
     function deleteProduct(id) {
         product_id = id;
         if(confirm(document.getElementById(id).parentElement.parentElement.getAttribute("id") + " 삭제하시겠습니까?")){
-            location = "management/product/delete?id=" + document.getElementById(product_id).parentElement.parentElement.getAttribute("value");
+            location = "product/delete"+
+                "?id=" + document.getElementById(product_id).parentElement.parentElement.getAttribute("value");
         }
     }
     function updateProduct(id) {
