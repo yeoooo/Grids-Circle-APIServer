@@ -1,9 +1,9 @@
 package com.example.gccoffee.model;
 
 import lombok.*;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
+import java.util.Optional;
 import java.util.UUID;
 
 @Entity
@@ -29,12 +29,12 @@ public class OrderItem extends BaseTimeEntity{
     private int count;
 
 
-    public static OrderItem createOrderItem(Product product, long orderPrice, int count) {
+    public static OrderItem createOrderItem(Optional<Product> product, long orderPrice, int count) {
         OrderItem orderItem = new OrderItem();
-        orderItem.setProduct(product);
+        orderItem.setProduct(product.get());
         orderItem.setOrderPrice(orderPrice);
         orderItem.setCount(count);
-        product.removeQuantity(count);
+        product.get().removeQuantity(count);
         return orderItem;
     }
 
@@ -45,6 +45,7 @@ public class OrderItem extends BaseTimeEntity{
     public long getTotalPrice() {
         return getOrderPrice() * getCount();
     }
+
 
 
 

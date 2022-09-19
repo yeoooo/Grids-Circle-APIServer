@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -51,7 +52,7 @@ public class Order extends BaseTimeEntity{
         return order;
     }
 
-    public void addOrderItem(OrderItem orderItem) {
+    public void addOrderItem(OrderItem orderItem) {//2022-09-19_yeoooo : Order.addOrderItem을 통해 OrderItem을 넣어주어야 함
         orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
@@ -79,6 +80,8 @@ public class Order extends BaseTimeEntity{
         this.postcode = dto.getPostcode();
         this.orderStatus = dto.getOrderStatus();
     }
+
+
 
 
 

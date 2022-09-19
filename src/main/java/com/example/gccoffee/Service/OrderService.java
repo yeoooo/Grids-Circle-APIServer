@@ -1,19 +1,16 @@
 package com.example.gccoffee.Service;
 
 import com.example.gccoffee.model.Order;
+import com.example.gccoffee.model.OrderItem;
 import com.example.gccoffee.model.OrderStatus;
-import com.example.gccoffee.model.Product;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 @Service
 public interface OrderService {
-    public Order order(String email, String address, String postCode, UUID productId, int count);
+    public Order order(String email, String address, String postCode, List<OrderItem> orderItems) ;
 
     public void cancelOrder(UUID o);
 
@@ -24,6 +21,8 @@ public interface OrderService {
     public List<Order> findAll();
 
     public List<Order> findByOrderStatus(OrderStatus orderStatus);
+
+    public List<OrderItem> jsonToOrderItems(Object json);
 
 
 }

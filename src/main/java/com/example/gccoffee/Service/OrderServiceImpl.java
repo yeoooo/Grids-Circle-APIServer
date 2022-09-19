@@ -9,13 +9,12 @@ import com.example.gccoffee.model.Product;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -28,31 +27,57 @@ public class OrderServiceImpl implements OrderService{
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
-    @Transactional
-    public Order order(String email, String address, String postCode , UUID productId, int count) {
-        Optional<Order> targetOrder = orderRepository.findByEmailAndDayOrder(email, LocalDateTime.now());
-        Optional<Product> targetProduct = productRepository.findById(productId);
-        if (targetProduct.isEmpty()){
-            throw new IllegalArgumentException("no such product");
-
-        }else if(targetProduct.get().getQuantity() == 0){
-            throw new IllegalArgumentException("product out of stock");
+    public List<OrderItem> jsonToOrderItems(Object json) {
+        List<OrderItem> orderItems = new ArrayList<>();
+        System.out.println("json = " + json);
+        for (Object o : (List) json) {
+            orderItems.add(OrderItem.createOrderItem(
+                    productRepository.findById(UUID.fromString(((HashMap<String, ?>) o).get("productId").toString())),
+                    Long.valueOf(((HashMap<String, Integer>) o).get("price")),
+                    (int) ((HashMap<String, ?>) o).get("quantity")
+            ));
         }
-        else {
-            OrderItem orderItem = OrderItem.createOrderItem(targetProduct.get(), targetProduct.get().getPrice(), count);
-
-            if (targetOrder.isEmpty()) {//2022-09-8_yeoooo : 작일 14:00 부터 당일 14:00 까지의 주문이 없으면 새 주문 생성
-                Order order = Order.createOrder(email, address, postCode, OrderStatus.ACCEPTED, orderItem);
-                log.info("New Order Created : {}", order);
-                return orderRepository.save(order);
-
-            } else {//2022-09-8_yeoooo : 이전 주문이 있으면 해당 주문에 아이템 밀어넣기
-                targetOrder.get().addOrderItem(orderItem);
-                log.info("Order Already Exists : {}", targetOrder.get().getOrderItems());
-                return targetOrder.get();
-            }
-        }
+        return orderItems;
     }
+
+    @Override
+    @Transactional
+    public Order order(String email, String address, String postCode , List<OrderItem> orderItems) {
+        LocalDateTime now = LocalDateTime.now();
+//        Optional<Order> targetOrder = orderRepository.findByEmailAndDayOrder(email, );
+        Optional<Order> targetOrder;
+//        Optional<Order> targetOrder_new = orderRepository.findByEmailAndDayOrderNew(email, LocalDateTime.now());
+        if(now.isAfter(now.withHour(14).withMinute(0))){
+            //2022-09-19_yeoooo : 들어온 주문이 14시 이후인 경우
+            targetOrder = orderRepository.findByEmailAndDayOrderNew(email, now);
+        }else{
+            targetOrder = orderRepository.findByEmailAndDayOrder(email, now);
+        }
+        for (OrderItem o : orderItems) {
+            Optional<Product> targetProduct = productRepository.findById(o.getProduct().getProductId());
+            if (targetProduct.isEmpty()){
+                throw new IllegalArgumentException("no such product");
+
+            }else if(targetProduct.get().getQuantity() == 0){
+                throw new IllegalArgumentException("product out of stock");
+            }
+                if (targetOrder.isEmpty()) {//2022-09-8_yeoooo : 작일 14:00 부터 당일 14:00 까지의 주문이 없으면 새 주문 생성
+                    Order order = Order.createOrder(email, address, postCode, OrderStatus.ACCEPTED, o);
+//                    o.setOrderPrice(order.getTotalPrice());
+                    log.info("New Order Created : {}", order);
+                    log.info("New Order Created : {}", targetOrder);
+                    return orderRepository.save(order);
+                }
+                else {//2022-09-8_yeoooo : 이전 주문이 있으면 해당 주문에 아이템 밀어넣기
+                    targetOrder.get().addOrderItem(o);
+                    log.info("Order Already Exists : {}", targetOrder.get().getOrderItems());
+                    return targetOrder.get();
+                }
+            }
+        return targetOrder.get();
+
+    }
+
 
     @Override
     @Transactional
@@ -91,4 +116,6 @@ public class OrderServiceImpl implements OrderService{
     public List<Order> findByOrderStatus(OrderStatus orderStatus) {
         return orderRepository.findByOrderStatus(orderStatus);
     }
+
+
 }

@@ -49,8 +49,8 @@ class OrderServiceImplTest {
 //        Order o = new Order();
 //        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 2);
 //        System.out.println("p.getProductId().toString() = " + p.getProductId().toString());
-        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 1);
-        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
+//        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 1);
+//        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
         //when
 
         //then
@@ -72,9 +72,9 @@ class OrderServiceImplTest {
 
         //then
      Assertions.assertThrows(IllegalArgumentException.class, () -> {
-         orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 3);
-         orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
-         orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
+//         orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 3);
+//         orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
+//         orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
      }, "재고보다 많은 주문은 예외를 일으킨다");
 
     }
@@ -90,8 +90,8 @@ class OrderServiceImplTest {
         productService.save(p);
 
         //when
-        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
-        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
+//        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
+//        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
 
 //        then
         Assertions.assertEquals( 1000,orderService.findByEmail("asd@naver.com").get(0).getTotalPrice()
@@ -107,11 +107,11 @@ class OrderServiceImplTest {
         Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.COFFEE_BEAN_PACKAGE, "커피 조아?", 100L, 3);
         productService.save(p);
 
-        Order o = orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
+//        Order o = orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
         //when
-        orderService.cancelOrder(o.getId());
-        productService.findById(p.getProductId()).get().getQuantity();
-
+//        orderService.cancelOrder(o.getId());
+//        productService.findById(p.getProductId()).get().getQuantity();
+//
         //then
         Assertions.assertEquals(orderService.findByEmail("asd@naver.com").get(0).getOrderStatus(), OrderStatus.CANCELLED, "주문 상태는 취소로 바뀌어 있어야한다.");
     }

@@ -24,6 +24,7 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
     public static final String FIND_BY_EMAIL_QUERY = "select o from Order o where o.email = :email";
     public static final String FIND_BY_EMAIL_AND_DAYORDER_QUERY_MYSQL = "select o from Order o where o.email = :email and (DATEADD(DAY,-1,DATE_FORMAT(:localDateTime,'%Y-%m-%d-%T')) and o.date between DATE_FORMAT(:localDateTime,'%Y-%m-%d-%T')) ";
     public static final String FIND_BY_EMAIL_AND_DAYORDER_QUERY_H2 = "select * from Orders where email = :email and (created_at >= timestampadd(day,-1, formatdatetime(:date,'yyyy-MM-dd 14:00:00')) and created_at <= formatdatetime(:date, 'yyyy-MM-dd 14:00:00'))";
+    public static final String FIND_BY_EMAIL_AND_DAYORDER_NEW_QUERY_H2 = "select * from Orders where email = :email and (created_at > formatdatetime(:date, 'yyyy-MM-dd 14:00:00'))";
 //    select * from Orders where created_at >= timestampadd(day,-1, formatdatetime('2022-09-08 17:58:00','yyyy-MM-dd 14:00:00')) and created_at <= formatdatetime('2022-09-08 17:58:00', 'yyyy-MM-dd 14:00:00')
 
     @Query(FIND_BY_EMAIL_QUERY)
@@ -32,6 +33,10 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
     @Query(nativeQuery = true, value = FIND_BY_EMAIL_AND_DAYORDER_QUERY_H2)
     public Optional<Order> findByEmailAndDayOrder(@Param("email")String email, @Param("date") LocalDateTime localDatetime);
 
+    @Query(nativeQuery = true, value = FIND_BY_EMAIL_AND_DAYORDER_NEW_QUERY_H2)
+    public Optional<Order> findByEmailAndDayOrderNew(@Param("email")String email, @Param("date") LocalDateTime localDatetime);
+
     public List<Order> findByOrderStatus(OrderStatus orderStatus);
-    
+
+
 }

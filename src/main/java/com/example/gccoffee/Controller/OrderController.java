@@ -1,6 +1,7 @@
 package com.example.gccoffee.Controller;
 
 import com.example.gccoffee.Service.OrderService;
+import com.example.gccoffee.Service.ProductService;
 import com.example.gccoffee.model.*;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -24,12 +25,13 @@ import java.util.stream.Collectors;
 public class OrderController {
 
     private final OrderService orderService;
+    private final ProductService productService;
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    @GetMapping("/order")
-    public String order() {
-        return "order";
-    }
+//    @GetMapping("/order")
+//    public String order() {
+//        return "order";
+//    }
 
     @GetMapping("/management/order")
     public String getOrderList(Model model) {
@@ -64,11 +66,28 @@ public class OrderController {
         model.addAttribute("status", mapKey);
         return "order_management";
     }
-//    @RequestMapping("/management/order")
-//    public String getOrderListByStatus(Model model, @RequestParam("status") OrderStatus orderStatus) {
-//        List<Order> orders = orderService.findByOrderStatus(orderStatus);
-//        model.addAttribute("orders", orders);
-//        return "product_management";
-//    }
+    @GetMapping("/order")
+    public String getOrderListByStatus(Model model, @RequestParam(value = "category", required = false) Category category) {
+        Category[] categories = Category.values();
+        List<Product> products;
+        if (category == null) {
+            products = productService.findAll();
+        }else{
+            products = productService.findByCategory(category);
+        }
+        List<ProductDTO> dto = products.stream().map(
+                product ->
+                    ProductDTO.builder()
+                            .name(product.getProductName())
+                            .category(product.getCategory())
+                            .price(product.getPrice())
+                            .build()
+        ).collect(Collectors.toList());
+
+
+        model.addAttribute("products",dto);
+        model.addAttribute("categories",categories);
+        return "order";
+    }
 
 }
