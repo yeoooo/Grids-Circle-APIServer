@@ -43,7 +43,6 @@ public class ProductController extends BaseTimeEntity {
         }
         log.info("map completed : {}", map);
         model.addAttribute("products", map);
-//        model.addAttribute("categories", categories);
         model.addAttribute("productForm", new ProductForm());
 
         return "product_management";

@@ -57,11 +57,12 @@ public class OrderController {
             ).collect(Collectors.toList()));
             mapKey = map.keySet().toArray();
             Arrays.sort(mapKey);
+            log.info("map => {}",map);
+
 
 //            Arrays.sort(Comparator.comparing());
 
         }
-        log.info("map => {}",map);
         model.addAttribute("orders", map);
         model.addAttribute("status", mapKey);
         return "order_management";

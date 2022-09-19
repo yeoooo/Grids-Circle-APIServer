@@ -37,8 +37,6 @@ public class Order extends BaseTimeEntity{
     @Setter
     private OrderStatus orderStatus;
 
-//    private LocalDateTime createdAt;
-//    private LocalDateTime updatedAt;
 
     public static Order createOrder(String email, String address, String postcode, OrderStatus orderStatus, OrderItem... orderItems){
         Order order = new Order();

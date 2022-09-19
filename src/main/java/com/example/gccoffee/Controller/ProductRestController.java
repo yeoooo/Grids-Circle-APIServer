@@ -19,7 +19,6 @@ public class ProductRestController {
 
     @GetMapping("/api/v1/products")
     public List<Product> productList(@RequestParam Optional<Category> category) {
-
         List<Product> products = category
                 .map(productService::findByCategory)
                 .orElse(productService.findAll());
@@ -34,7 +33,6 @@ public class ProductRestController {
                 .email((String) lst.get("email"))
                 .address((String) lst.get("address"))
                 .orderStatus(OrderStatus.ACCEPTED)
-//                        .orderItems((HashMap<String, Object>)lst.get("orderItems"))
                 .postcode((String) lst.get("postcode"))
                 .orderItems(orderService.jsonToOrderItems(lst.get("orderItems")))
                 .build();
@@ -46,46 +44,6 @@ public class ProductRestController {
 
         orderService.order(newOrderDTO.getEmail(), newOrderDTO.getAddress(), newOrderDTO.getPostcode(), newOrderDTO.getOrderItems());
 
-    
-
-
-
-/**
- * PRODUCT_UUID = UUID.fromString((((LinkedHashMap<?, ?>) s).get("productId")).toString()))
- */
-
         }
-//        log.info("Got Param(orderItems) => {} ",orderForm.getOrderItems());
-//        orderForm.getOrderItems().stream().map(data ->
-//                data.getProduct()
-//        );
-
-//        Order order = Order.builder().dto(newOrderDTO).build();
-//        orderService.order(orderForm.getEmail(), orderForm.getAddress(), orderForm.getZipCode(), orderForm.getOrderItems());
-//        for (OrderItem o : orderForm.getOrderItems()) {
-//            log.info("got Param => {}", o);
-//        }
-//@PostMapping("/api/v1/orders")
-//    public void orderRequest(@RequestBody
-//                             Object orderForm) {
-//        OrderDTO newOrderDTO = OrderDTO.builder()
-//                .email(orderForm.getEmail())-9e99-2b
-//                .orderStatus(OrderStatus.ACCEPTED)
-//                .postcode(orderForm.getZipCode())
-//                .orderItems(orderForm.getOrderItems())
-//                .build();
-//        log.info("Got Parma(Address) => {} ",orderForm.getAddress());
-//        log.info("Got Parma(zipcode) => {} ",orderForm.getZipCode());
-//        log.info("Got Parma(email) => {} ",orderForm.getEmail());
-//        log.info("Got Parma(orderStatus) => {} ",orderForm.getOrderStatus());
-//        log.info("Got Parma(orderItems) => {} ",orderForm.getOrderItems());
-//        log.info("Got Param(Object) => {}", orderForm.orderItems);
-//        Order order = Order.builder().dto(newOrderDTO).build();
-//        orderService.order(orderForm.getEmail(), orderForm.getAddress(), orderForm.getZipCode(), orderForm.getOrderItems());
-//        for (OrderItem o : orderForm.getOrderItems()) {
-//            log.info("got Param => {}", o);
-//        }
-
-
 
 }

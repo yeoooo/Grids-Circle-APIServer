@@ -11,7 +11,5 @@ public class ProductForm {
     private Category category;
     private long price;
     private int quantity;
-//    private String description;
-//    private
 }
 

@@ -59,14 +59,6 @@ public class ProductServiceImpl implements ProductService {
                                 .description(description)
                                 .build()
                 ).build());
-//        ProductDTO.builder()
-//                .id(target.getProductId())
-//                .name(name)
-//                .price(price)
-//                .quantity(quantity)
-////                .category(target.getCategory())
-//                .description(description)
-//                .build()
 
     }
 
@@ -91,12 +83,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findByCategory(Category category) {
+        //2022-09-19_yeoooo : 추후 예외를 추가해야 할 것 같음
         List<Product> found = productRepository.findByCategory(category);
-//        if (found.size() == 0) {
-//            throw new IllegalStateException("there is no product with the category");
-//        } else {
-            return found;
-//        }
+        return found;
     }
 
 

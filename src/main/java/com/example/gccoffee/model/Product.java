@@ -32,16 +32,6 @@ public class Product extends BaseTimeEntity{
 
     public int quantity;
 
-
-
-//    @Builder
-//    public Product update(ProductDTO dto) {
-//        this.productName = dto.getName();
-//        this.price = dto.getPrice();
-//        this.quantity = dto.getQuantity();
-//        this.description = dto.getDescription();
-//        return this;
-//    }
    @Builder
     public Product(ProductDTO dto) {
         this.productId = dto.getId();
@@ -60,9 +50,6 @@ public class Product extends BaseTimeEntity{
         this.price = price;
         this.quantity = quantity;
     }
-
-
-
 
     public void addQuantity(int cnt){
         this.quantity += cnt;
