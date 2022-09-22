@@ -3,3 +3,6 @@
 
 #For idea
 */.idea
+
+#For Gradle
+*/.gradle
