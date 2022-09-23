@@ -1,6 +1,7 @@
 import React from 'react';
 import indexImg from "../assets/img/products-01.jpg";
 import {Link} from "react-router-dom";
+import '../assets/static/Main.css';
 
 
 

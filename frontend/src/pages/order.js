@@ -1,18 +1,21 @@
-// import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
+import '../assets/static/order.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import {ProductList} from "../components/ProductList";
 import {Summary} from "../components/Summary";
 import axios from "axios";
 import React, {useEffect, useState} from 'react';
 
 
-export function Order() {
+export function Order(c) {
+    const [targetCategory, setTargetCategory] = useState("");
+
     const [products, setProducts] = useState([
-        {productId: 'uuid-1', productName: '콜롬비아 커피 1', category: '커피빈', price: 5000, quantity: 300},
-        {productId: 'uuid-2', productName: '콜롬비아 커피 2', category: '커피빈', price: 5000, quantity: 300},
-        {productId: 'uuid-3', productName: '콜롬비아 커피 3', category: '커피빈', price: 5000, quantity: 300},
+        // {productId: 'uuid-1', productName: '콜롬비아 커피 1', category: '커피빈', price: 5000, quantity: 300},
+        // {productId: 'uuid-2', productName: '콜롬비아 커피 2', category: '커피빈', price: 5000, quantity: 300},
+        // {productId: 'uuid-3', productName: '콜롬비아 커피 3', category: '커피빈', price: 5000, quantity: 300},
 
     ]);
+
     const [items, setItems] = useState([]);
 
     const handleAddClicked = productId => {
@@ -59,11 +62,17 @@ export function Order() {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:8080/api/v1/products')
-            .then(v => setProducts(v.data));
-    }, []);
+        if(targetCategory.length > 0){
+        axios.get('http://localhost:8080/api/v1/products?category='+targetCategory)
+                .then(v => setProducts(v.data));
+        }
+        return () =>{
+            axios.get('http://localhost:8080/api/v1/products')
+                .then(v => setProducts(v.data));
+        };
 
 
+    }, [targetCategory]);
 
     const handleOrderSubmit = (order) => {
         if (items.length === 0) {
@@ -88,19 +97,19 @@ export function Order() {
         }
     }
     return <>(
+        <div className="row justify-content-center m-4">
+            <h1 className="text-center" style={{color : "beige"}}>주문서</h1>
+        </div>
         <div className="card">
             <div className="row">
                 <div className="col-md-8 mt-4 d-flex flex-column align-items-start p-3 pt-0">
-                    {/*<ProductList products={products} onAddClick={handleAddClicked} onRemoveClick={handleRemoveClicked}/>*/}
-                    <ProductList products={products} onAddClick={handleAddClicked} onRemoveClick={handleRemoveClicked}/>
-
+                    <ProductList products={products} onAddClick={handleAddClicked} onRemoveClick={handleRemoveClicked} setTargetCategory={setTargetCategory} />
                 </div>
                 <div className="col-md-4 summary p-4">
                     <Summary items={items} onOrderSubmit={handleOrderSubmit}/>
                 </div>
             </div>
         </div>
-        {/*</Link>*/}
         )
         </>
 }

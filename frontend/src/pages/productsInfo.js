@@ -6,7 +6,6 @@ import p1 from '../assets/img/products-01.jpg'
 export function ProductInfo() {
     return(
         <>
-        {/*<Link to="/products">*/}
             <section className="page-section">
                 <div className="container">
                     <div className="product-item">
@@ -61,7 +60,6 @@ export function ProductInfo() {
                     </div>
                 </div>
             </section>
-        {/*</Link>*/}
         </>
 )
 }
