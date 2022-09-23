@@ -27,6 +27,12 @@ public class ProductRestController {
         return products;
 
     }
+    @GetMapping("/api/v1/category")
+    public List<Category> categories() {
+        List<Category> categories = List.of(Category.values());
+        return categories;
+
+    }
     @PostMapping("/api/v1/orders")
     public void orderRequest(@RequestBody Map<String, Object> lst) {
         OrderDTO newOrderDTO = OrderDTO.builder()
