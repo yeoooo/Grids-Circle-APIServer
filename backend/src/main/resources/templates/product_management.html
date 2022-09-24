@@ -6,19 +6,15 @@
 <nav th:replace="fragments/navigation::navigation"/>
 
 <div class="row justify-content-center m-4">
-<div class="col text-end"><a th:href="@{/management/order}" style="color: beige; text-decoration-line: none;">주문 관리 ></a></div>
-<h1 class="text-center" style="color : beige">상품 관리</h1>
-</div>
-
-<!--<div th:each="product,i:${products}">-->
-<div th:each="product,i:${products}">
-    <div class="row justify-content-center m-4">
-        <h2 class="text-center" style="color : beige" th:text="${product.getKey()}"></h2>
+    <div class="col text-end">
+        <a th:href="@{/management/order}" style="color: beige; text-decoration-line: none;">주문 관리 ></a>
     </div>
-
+    <h1 class="text-center" style="color : beige">상품 관리</h1>
+</div>
+<div>
     <div class="card" style="margin-bottom: 50px">
         <div class="row">
-            <div class="col-md-9 mt-4 d-flex flex-column align-items-start p-3 pt-0" id="gd">
+            <div class="col-md-9 mt-4 d-flex flex-column align-items-start p-3 pt-0">
                 <h5 class="flex-grow-0"><b>상품 목록</b></h5>
 
                 <div class="row">
@@ -26,14 +22,15 @@
                         <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="전체" th:href="@{/management/product}"></a>
                     </div>
                     <div class="col" th:each="category : ${categories}">
-                        <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${category}" th:href="@{/order(category=${category})}"></a>
+                        <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${category}" th:href="@{/management/product(category=${category})}"></a>
                     </div>
                 </div>
 
                 <ul class="list-group products">
-                    <li class="list-group-item d-flex mt-2" th:each="p:${product.getValue()}" th:if="${p.getCategory() == product.getKey()}" th:id="${p.getName()}" th:value="${p.getId()}">
+                    <li class="list-group-item d-flex mt-2" th:each="p:${products}" th:id="${p.getName()}" th:value="${p.getId()}">
 
                         <div class="col-1"><img class="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt=""></div>
+                        <input type="hidden" th:id="${p.getName}+_category" th:value="${p.getCategory()}">
                         <div class="col">
                             <div class="row text-muted" style="font-size: 10px">제품명</div>
                             <div class="row" th:text="${p.getName()}" id="name"></div>
@@ -65,9 +62,14 @@
                         <form id = "productForm" th:action="@{/management/product}" th:object="${productForm}" method="post">
                             <div class="mb-3">
 
-                                <label class="form-label" >카테고리</label>
-                                <br>
-                                <span th:text="${product.getKey()}"/>
+
+                                <div class="form-group">
+                                    <label class="form-label" >카테고리</label>
+                                    <br>
+                                    <select class="form-control">
+                                        <option th:each="category : ${categories}" th:text="${category}"></option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label th:for="productName" class="form-label">상품명</label>
@@ -84,11 +86,13 @@
                         </form>
                         <form id = "productUpdateForm" th:action="@{/management/product/update}" th:object="${productForm}" method="post">
                             <div class="mb-3">
-
-                                <label class="form-label" >카테고리</label>
-                                <br>
-                                <span th:text="${product.getKey()}"/>
-                                <input type="hidden" th:value="${product.getKey()}" th:name="category">
+                                <div class="form-group">
+                                    <label class="form-label" >카테고리</label>
+                                    <br>
+                                    <select class="form-control" id="updateInputCategory">
+                                        <option th:each="category : ${categories}" th:text="${category}"></option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label th:for="productName" class="form-label">상품명</label>
@@ -116,18 +120,19 @@
 </div>
     <footer th:replace="fragments/footer::footer"/>
 </div>
+</body>
 <script th:inline="javascript">
-        let updateSubmitBtn = document.getElementById("updateSubmitBtn")
-        let productUpdateForm = document.getElementById("productUpdateForm");
-        let productForm = document.getElementById("productForm");
-        let submitBtn = document.getElementById("submitBtn")
-        let back = document.getElementById("backToRegister")
-        let product_id;
+    let updateSubmitBtn = document.getElementById("updateSubmitBtn")
+    let productUpdateForm = document.getElementById("productUpdateForm");
+    let productForm = document.getElementById("productForm");
+    let submitBtn = document.getElementById("submitBtn")
+    let back = document.getElementById("backToRegister")
+    let product_id;
 
 
-        updateSubmitBtn.hidden=true
-        productUpdateForm.hidden=true
-        back.hidden=true
+    updateSubmitBtn.hidden=true
+    productUpdateForm.hidden=true
+    back.hidden=true
 
     function deleteProduct(id) {
         product_id = id;
@@ -143,7 +148,12 @@
         productUpdateForm.hidden = false;
         updateSubmitBtn.hidden = false;
         back.hidden = false;
+        console.log(document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_category').value);
 
+
+
+        $("#updateInputCategory").val(document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_category').value).prop("selected", true);
+        // document.getElementById("updateInputCategory").setAttribute("value", document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_category').value);
         document.getElementById("updateInputName").setAttribute("value", document.getElementById(id).parentElement.parentElement.getAttribute("id"));
         document.getElementById("updateInputPrice").setAttribute("value", document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_price').innerText.slice(0,-1));
         document.getElementById("updateInputQuantity").setAttribute("value", document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_quantity').innerText);
@@ -160,6 +170,5 @@
         productUpdateForm.submit();
     }
 </script>
-</body>
 
 </html>

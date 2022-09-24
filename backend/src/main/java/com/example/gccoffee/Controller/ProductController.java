@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.swing.text.html.Option;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -25,11 +26,12 @@ public class ProductController extends BaseTimeEntity {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/management/product")
-    public String getProductList(Model model) {
+    public String getProductList(Model model, @RequestParam(required = false) Optional<Category> category) {
         Category[] categories = Category.values();
-        HashMap<Category,List> map = new HashMap<>();
-        for (Category c : categories) {//2022-09-14_yeoooo : 카테고리 이름 : 카테고리에 해당하는 제품
-            map.put(c, productService.findByCategory(c).stream().map(
+        List<ProductDTO> products;
+
+        if (category.isEmpty()) {
+            products = productService.findAll().stream().map(
                     product -> new ProductDTO(
                             product.getProductId(),
                             product.getProductName(),
@@ -39,10 +41,24 @@ public class ProductController extends BaseTimeEntity {
                             product.getQuantity(),
                             product.getCreatedAt(),
                             product.getUpdatedAt())
-            ).collect(Collectors.toList()));
+            ).collect(Collectors.toList());
+
+        }else{
+            products = productService.findByCategory(category.get()).stream().map(
+                    product -> new ProductDTO(
+                            product.getProductId(),
+                            product.getProductName(),
+                            product.getDescription(),
+                            product.getCategory(),
+                            product.getPrice(),
+                            product.getQuantity(),
+                            product.getCreatedAt(),
+                            product.getUpdatedAt())
+            ).collect(Collectors.toList());;
         }
-        log.info("map completed : {}", map);
-        model.addAttribute("products", map);
+
+        model.addAttribute("products", products);
+        model.addAttribute("categories", categories);
         model.addAttribute("productForm", new ProductForm());
 
         return "product_management";
@@ -57,6 +73,8 @@ public class ProductController extends BaseTimeEntity {
                 .price(productForm.getPrice())
                 .quantity(productForm.getQuantity())
                 .build();
+//
+//        log.info(" {} contains ? {}", categories, newProductDTO.getCategory());
 
         Product newProduct = newProductDTO.toEntity();
         log.info("product's category => {}",newProduct.getCategory());
