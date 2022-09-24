@@ -17,7 +17,8 @@
             <h5 class="flex-grow-0" th:text="${s}"></h5>
             <ul class="list-group products">
 
-                <li class="list-group-item d-flex mt-3" th:each="order:${orders.get(s)}" th:if="${order.getOrderStatus() == s}">
+                <li class="list-group-item mt-3" th:each="order:${orders.get(s)}" th:if="${order.getOrderStatus() == s}">
+                    <div class="d-flex">
                     <div class="col-2">
                         <div class="row text-muted">주문일</div>
                         <div class="row" th:text="${order.getUpdatedAt().toLocalDate()}"></div>
@@ -34,55 +35,42 @@
                         <div class="row text-muted">금액</div>
                         <div class="row" th:text="${order.getPrice()}"></div>
                     </div>
-<!--                    <div class="col text-end action"><a class="btn btn-small btn-outline-dark" href="">상세</a></div>-->
-<!--                    -->
-                </li>
-            </ul>
-            <div id="accordion">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Collapsible Group Item #1
-                            </button>
-                        </h5>
+                    <div class="col-2 text-end action"><a class="btn btn-small btn-outline-dark" href="">상세</a></div>
+                    </div>
+<!--                    <div class="collapse row" th:id="${order.getId()}">-->
+                    <div class=" row" th:id="${order.getId()}">
+                        <hr>
+                            <div class="col">
+                                <ul class="list-group products">
+                                    <div class="row text-muted">현재 상태</div>
+                                    <select class="form-control">
+                                        <option th:each="OrderStatus : ${status}" th:text="${OrderStatus}"></option>
+                                    </select>
+                                    <button class="btn-primary align-content-end">상태 저장</button>
+                                    <li class="list-group-item mt-3" th:each="item : ${order.getOrderItems()}">
+                                        <div class="col">
+                                        </div>
+                                        <div class="col">
+                                            <div class="row text-muted">상품명</div>
+                                            <div class="row" th:text="${item.getProduct().getProductName()}"></div>
+                                        </div>
+                                         <div class="col">
+                                                <div class="row text-muted">주문 수량</div>
+                                                <div class="row" th:text="${item.getCount()}"></div>
+                                            </div>
+                                         <div class="col">
+                                                <div class="row text-muted">상품명</div>
+                                                <div class="row" th:text="${item.getProduct().getProductName()}"></div>
+                                            </div>
+                                    </li>
+                                </ul>
+<!--                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.-->
+                            </div>
                     </div>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Collapsible Group Item #2
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                        <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Collapsible Group Item #3
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                        <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+                </li>
+            </ul>
 
         </div>
     </div>
