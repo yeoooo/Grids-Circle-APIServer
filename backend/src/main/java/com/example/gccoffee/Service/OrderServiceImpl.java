@@ -2,10 +2,7 @@ package com.example.gccoffee.Service;
 
 import com.example.gccoffee.Repository.OrderRepository;
 import com.example.gccoffee.Repository.ProductRepository;
-import com.example.gccoffee.model.Order;
-import com.example.gccoffee.model.OrderItem;
-import com.example.gccoffee.model.OrderStatus;
-import com.example.gccoffee.model.Product;
+import com.example.gccoffee.model.*;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +20,11 @@ public class OrderServiceImpl implements OrderService{
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
     private final Logger log = LoggerFactory.getLogger(getClass());
+
+    @Override
+    public Optional<Order> findById(UUID id) {
+        return orderRepository.findById(id);
+    }
 
     @Override
     public List<OrderItem> jsonToOrderItems(Object json) {
@@ -85,8 +87,21 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     @Transactional
-    public Order updateOrder(Order order) {
-        return null;
+    public Order changeOrderStatus(Order order, OrderStatus orderStatus) {
+        return orderRepository.save(
+                order.builder()
+                        .dto(OrderDTO.builder()
+                .id(order.getId())
+                .address(order.getAddress())
+                .orderStatus(orderStatus)
+                .price(order.getTotalPrice())
+                .orderItems(order.getOrderItems())
+                .postcode(order.getPostcode())
+                .createdAt(order.getCreatedAt())
+                .updatedAt(order.getUpdatedAt())
+                .email(order.getEmail())
+                .build())
+                .build());
     }
 
     @Override

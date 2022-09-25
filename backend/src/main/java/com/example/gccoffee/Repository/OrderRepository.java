@@ -32,5 +32,7 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
 
     public List<Order> findByOrderStatus(OrderStatus orderStatus);
 
+    public Optional<Order> findById(UUID id);
+
 
 }

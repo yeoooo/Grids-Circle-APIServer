@@ -9,15 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.swing.text.html.FormView;
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -68,7 +66,7 @@ public class OrderController {
         return "order_management";
     }
     @GetMapping("/order")
-    public String getOrderListByStatus(Model model, @RequestParam(value = "category", required = false) Category category) {
+    public String getOrderListByStatus(Model model, @RequestParam(value = "category", required = false) Category category, OrderUpdateForm orderUpdateForm) {
         Category[] categories = Category.values();
         List<Product> products;
         if (category == null) {
@@ -85,10 +83,19 @@ public class OrderController {
                             .build()
         ).collect(Collectors.toList());
 
-
+        model.addAttribute("OrderUpdateForm", orderUpdateForm);
         model.addAttribute("products",dto);
         model.addAttribute("categories",categories);
         return "order";
+    }
+
+    @RequestMapping("/management/order/update")
+    public String changeOrderStatus(OrderUpdateForm orderUpdateForm) {
+        log.info("id = {}_Order Status will be changed with => {}", orderUpdateForm.getId(),orderUpdateForm.getUpdateOrderStatus());
+        orderService.changeOrderStatus(orderService.findById(orderUpdateForm.getId()).get(), orderUpdateForm.getUpdateOrderStatus());
+
+        return "redirect:/management/order";
+
     }
 
 }

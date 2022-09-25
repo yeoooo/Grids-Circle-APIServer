@@ -37,34 +37,39 @@
                     </div>
                     <div class="col-2 text-end action"><a class="btn btn-small btn-outline-dark" href="">상세</a></div>
                     </div>
-<!--                    <div class="collapse row" th:id="${order.getId()}">-->
+
                     <div class=" row" th:id="${order.getId()}">
                         <hr>
                             <div class="col">
+                                <form id = "OrderUpdateForm" th:action="@{/management/order/update}" th:object="${OrderUpdateForm}">
+                                        <div class="row text-muted">현재 상태</div>
+                                            <select class="form-control" th:name="updateOrderStatus">
+<!--                                            <select class="form-control">-->
+                                                <option th:each="OrderStatus : ${status}" th:text="${OrderStatus}"></option>
+                                            </select>
+                                        <input type="hidden" th:value="${order.getId()}" th:name="id">
+
                                 <ul class="list-group products">
-                                    <div class="row text-muted">현재 상태</div>
-                                    <select class="form-control">
-                                        <option th:each="OrderStatus : ${status}" th:text="${OrderStatus}"></option>
-                                    </select>
-                                    <button class="btn-primary align-content-end">상태 저장</button>
-                                    <li class="list-group-item mt-3" th:each="item : ${order.getOrderItems()}">
-                                        <div class="col">
-                                        </div>
-                                        <div class="col">
-                                            <div class="row text-muted">상품명</div>
-                                            <div class="row" th:text="${item.getProduct().getProductName()}"></div>
-                                        </div>
-                                         <div class="col">
-                                                <div class="row text-muted">주문 수량</div>
-                                                <div class="row" th:text="${item.getCount()}"></div>
-                                            </div>
-                                         <div class="col">
+<!--                                    <form id = "OrderUpdateForm" th:action="@{/management/order/update}" th:object="${OrderUpdateForm}">-->
+                                        <li class="list-group-item mt-3" th:each="item : ${order.getOrderItems()}">
+                                            <div class="col">
+<!--                                                <input type="hidden" th:value="${order.getId()}"/>-->
                                                 <div class="row text-muted">상품명</div>
                                                 <div class="row" th:text="${item.getProduct().getProductName()}"></div>
                                             </div>
-                                    </li>
+                                             <div class="col">
+                                                    <div class="row text-muted">주문 수량</div>
+                                                    <div class="row" th:text="${item.getCount()}"></div>
+                                                </div>
+                                             <div class="col">
+                                                    <div class="row text-muted">상품명</div>
+                                                    <div class="row" th:text="${item.getProduct().getProductName()}"></div>
+                                            </div>
+                                        </li>
+                                    </form>
                                 </ul>
-<!--                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.-->
+                                <button class="btn btn-dark col-12" type="submit" form="OrderUpdateForm" style="margin-top: 3px; float:right">상태 저장</button>
+
                             </div>
                     </div>
 

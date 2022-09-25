@@ -6,6 +6,7 @@ import com.example.gccoffee.model.OrderStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -14,7 +15,7 @@ public interface OrderService {
 
     public void cancelOrder(UUID o);
 
-    public Order updateOrder(Order order);
+    public Order changeOrderStatus(Order order, OrderStatus orderStatus);
 
     public List<Order> findByEmail(String email);
 
@@ -23,6 +24,8 @@ public interface OrderService {
     public List<Order> findByOrderStatus(OrderStatus orderStatus);
 
     public List<OrderItem> jsonToOrderItems(Object json);
+
+    public Optional<Order> findById(UUID id);
 
 
 }
