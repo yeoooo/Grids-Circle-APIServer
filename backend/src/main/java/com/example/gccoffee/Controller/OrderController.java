@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.swing.text.html.FormView;
+import javax.swing.text.html.Option;
 import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -32,62 +33,99 @@ public class OrderController {
 //    }
 
     @GetMapping("/management/order")
-    public String getOrderList(Model model) {
-        List<Order> orders = orderService.findAll();
-        OrderStatus[] status = OrderStatus.values();
-        HashMap<OrderStatus, List> map = new HashMap<>();
+    public String getOrderList(Model model, @RequestParam(required = false)Optional<OrderStatus> status) {
+        OrderStatus[] statuses = OrderStatus.values();
+        List<OrderDTO> orders;
 
-        Object[] mapKey = new Object[0];
-        for (OrderStatus s : status) {//2022-09-14_yeoooo : 카테고리 이름 : 카테고리에 해당하는 제품
-            map.put(s, orderService.findAll().stream().map(
-                    order ->
+        if(status.isEmpty()) {
+            orders = orderService.findAll().stream().map(
+                    o -> OrderDTO.builder()
+                            .id(o.getId())
+                            .address(o.getAddress())
+                            .email(o.getEmail())
+                            .orderItems(o.getOrderItems())
+                            .postcode(o.getPostcode())
+                            .orderStatus(o.getOrderStatus())
+                            .price(o.getTotalPrice())
+                            .createdAt(o.getCreatedAt())
+                            .updatedAt(o.getUpdatedAt())
+                            .build()
+            ).collect(Collectors.toList());
+        }else {
+            orders = orderService.findByOrderStatus(status.get()).stream()
+                    .map(o ->
                             OrderDTO.builder()
-                                    .id(order.getId())
-                                    .address(order.getAddress())
-                                    .email(order.getEmail())
-                                    .orderItems(order.getOrderItems())
-                                    .postcode(order.getPostcode())
-                                    .orderStatus(order.getOrderStatus())
-                                    .price(order.getTotalPrice())
-                                    .createdAt(order.getCreatedAt())
-                                    .updatedAt(order.getUpdatedAt())
-                                    .build()
-            ).collect(Collectors.toList()));
-            mapKey = map.keySet().toArray();
-            Arrays.sort(mapKey);
-            log.info("map => {}",map);
+                            .id(o.getId())
+                            .address(o.getAddress())
+                            .email(o.getEmail())
+                            .orderItems(o.getOrderItems())
+                            .postcode(o.getPostcode())
+                            .orderStatus(o.getOrderStatus())
+                            .price(o.getTotalPrice())
+                            .createdAt(o.getCreatedAt())
+                            .updatedAt(o.getUpdatedAt())
+                            .build()
+            ).collect(Collectors.toList());
+        }
+        log.info("OrderStatus requestParam is : {}", status.isPresent());
+        model.addAttribute("orders", orders);
+        model.addAttribute("status", statuses);
+        return "order_management";
+
+//        HashMap<OrderStatus, List> map = new HashMap<>();
+//
+//        Object[] mapKey = new Object[0];
+//        for (OrderStatus s : status) {//2022-09-14_yeoooo : 카테고리 이름 : 카테고리에 해당하는 제품
+//            map.put(s, orderService.findAll().stream().map(
+//                    order ->
+//                            OrderDTO.builder()
+//                                    .id(order.getId())
+//                                    .address(order.getAddress())
+//                                    .email(order.getEmail())
+//                                    .orderItems(order.getOrderItems())
+//                                    .postcode(order.getPostcode())
+//                                    .orderStatus(order.getOrderStatus())
+//                                    .price(order.getTotalPrice())
+//                                    .createdAt(order.getCreatedAt())
+//                                    .updatedAt(order.getUpdatedAt())
+//                                    .build()
+//            ).collect(Collectors.toList()));
+//            mapKey = map.keySet().toArray();
+//            Arrays.sort(mapKey);
+//            log.info("map => {}",map);
 
 
 //            Arrays.sort(Comparator.comparing());
 
-        }
-        model.addAttribute("orders", map);
-        model.addAttribute("status", mapKey);
-        return "order_management";
-    }
-    @GetMapping("/order")
-    public String getOrderListByStatus(Model model, @RequestParam(value = "category", required = false) Category category, OrderUpdateForm orderUpdateForm) {
-        Category[] categories = Category.values();
-        List<Product> products;
-        if (category == null) {
-            products = productService.findAll();
-        }else{
-            products = productService.findByCategory(category);
-        }
-        List<ProductDTO> dto = products.stream().map(
-                product ->
-                    ProductDTO.builder()
-                            .name(product.getProductName())
-                            .category(product.getCategory())
-                            .price(product.getPrice())
-                            .build()
-        ).collect(Collectors.toList());
+//        }
+//        model.addAttribute("orders", map);
+//        model.addAttribute("status", mapKey);
 
-        model.addAttribute("OrderUpdateForm", orderUpdateForm);
-        model.addAttribute("products",dto);
-        model.addAttribute("categories",categories);
-        return "order";
     }
+
+//    @GetMapping("/managemne/order")
+//    public String getOrderListByStatus(Model model, @RequestParam(value = "category", required = false) Category category, OrderUpdateForm orderUpdateForm) {
+//        Category[] categories = Category.values();
+//        List<Product> products;
+//        if (category == null) {
+//            products = productService.findAll();
+//        }else{
+//            products = productService.findByCategory(category);
+//        }
+//        List<ProductDTO> dto = products.stream().map(
+//                product ->
+//                    ProductDTO.builder()
+//                            .name(product.getProductName())
+//                            .category(product.getCategory())
+//                            .price(product.getPrice())
+//                            .build()
+//        ).collect(Collectors.toList());
+//
+//        model.addAttribute("OrderUpdateForm", orderUpdateForm);
+//        model.addAttribute("products",dto);
+//        model.addAttribute("categories",categories);
+//        return "order";
+//    }
 
     @RequestMapping("/management/order/update")
     public String changeOrderStatus(OrderUpdateForm orderUpdateForm) {

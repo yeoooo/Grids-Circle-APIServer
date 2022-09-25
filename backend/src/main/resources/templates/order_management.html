@@ -9,15 +9,21 @@
     <h1 class="text-center" style="color : beige">주문 관리</h1>
 </div>
 
-<div th:each="s:${status}">
     <div class="col-md-12 card" style="margin-bottom: 50px">
     <div class="row">
         <div class="col-md-12 mt-4 d-flex flex-column align-items-start p-3 pt-0">
+            <h5 class="flex-grow-0">주문 현황</h5>
+            <div class="row">
+                <div class="col">
+                    <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="전체" th:href="@{/management/order}"></a>
+                </div>
+                <div class="col" th:each="s : ${status}">
+                    <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${s}" th:href="@{/management/order(status=${s})}"></a>
+                </div>
+            </div>
 
-            <h5 class="flex-grow-0" th:text="${s}"></h5>
             <ul class="list-group products">
-
-                <li class="list-group-item mt-3" th:each="order:${orders.get(s)}" th:if="${order.getOrderStatus() == s}">
+                <li class="list-group-item mt-3" th:each="order:${orders}">
                     <div class="d-flex">
                     <div class="col-2">
                         <div class="row text-muted">주문일</div>
@@ -41,11 +47,13 @@
                     <div class=" row" th:id="${order.getId()}">
                         <hr>
                             <div class="col">
-                                <form id = "OrderUpdateForm" th:action="@{/management/order/update}" th:object="${OrderUpdateForm}">
+                                <form th:id = "${order.getId()}+OrderUpdateForm" th:action="@{/management/order/update}" th:object="${OrderUpdateForm}">
                                         <div class="row text-muted">현재 상태</div>
                                             <select class="form-control" th:name="updateOrderStatus">
+                                    >
+<!--                                        <select class="form-control" th:name="updateOrderStatus"> -->
 <!--                                            <select class="form-control">-->
-                                                <option th:each="OrderStatus : ${status}" th:text="${OrderStatus}"></option>
+                                                <option th:each="OrderStatus : ${status}" th:text="${OrderStatus}" th:selected="${order.getOrderStatus()} == ${OrderStatus}"></option>
                                             </select>
                                         <input type="hidden" th:value="${order.getId()}" th:name="id">
 
@@ -66,25 +74,25 @@
                                                     <div class="row" th:text="${item.getProduct().getProductName()}"></div>
                                             </div>
                                         </li>
-                                    </form>
-                                </ul>
-                                <button class="btn btn-dark col-12" type="submit" form="OrderUpdateForm" style="margin-top: 3px; float:right">상태 저장</button>
+                                    </ul>
+                                </form>
+                                <button class="btn btn-dark col-12" type="submit" th:form="${order.getId()}+OrderUpdateForm" th:id="${order.getId()}" style="margin-top: 3px; float:right">상태 저장</button>
 
                             </div>
                     </div>
-
-
                 </li>
             </ul>
-
         </div>
     </div>
     </div>
-</div>
+
 
 
     <footer th:replace="fragments/footer::footer"/>
 
 </body>
+<script>
+
+</script>
 
 </html>
