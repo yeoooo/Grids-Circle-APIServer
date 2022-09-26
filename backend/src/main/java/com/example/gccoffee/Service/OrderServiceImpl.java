@@ -55,7 +55,7 @@ public class OrderServiceImpl implements OrderService{
             if (targetProduct.isEmpty()){
                 throw new IllegalArgumentException("no such product");
 
-            }else if(targetProduct.get().getQuantity() == 0){
+            }else if(targetProduct.get().getQuantity() <= 0){
                 throw new IllegalArgumentException("product out of stock");
             }
                 if (targetOrder.isEmpty()) {//2022-09-8_yeoooo : 작일 14:00 부터 당일 14:00 까지의 주문이 없으면 새 주문 생성
