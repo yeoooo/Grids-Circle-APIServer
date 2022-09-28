@@ -1,6 +1,7 @@
 package com.example.gccoffee.model;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -21,7 +22,7 @@ import java.util.UUID;
 public class Order extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "order_id")
+    @Column(columnDefinition = "BINARY(16)")
     private UUID id;
 
     @Email(message = "format must be email")

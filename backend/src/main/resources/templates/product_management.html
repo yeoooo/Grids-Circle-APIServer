@@ -21,8 +21,8 @@
                     <div class="col">
                         <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="전체" th:href="@{/management/product}"></a>
                     </div>
-                    <div class="col" th:each="category : ${categories}">
-                        <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${category}" th:href="@{/management/product(category=${category})}"></a>
+                    <div class="col" th:each="c : ${categories}">
+                        <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${c}" th:href="@{/management/product(category=${c})}"></a>
                     </div>
                 </div>
 
@@ -66,8 +66,8 @@
                                 <div class="form-group">
                                     <label class="form-label" >카테고리</label>
                                     <br>
-                                    <select class="form-control">
-                                        <option th:each="category : ${categories}" th:text="${category}"></option>
+                                    <select class="form-control" th:field="*{category}">
+                                        <option th:each="c : ${categories}" th:value="${c}" th:text="${c}"></option>
                                     </select>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                     <label class="form-label" >카테고리</label>
                                     <br>
                                     <select class="form-control" id="updateInputCategory">
-                                        <option th:each="category : ${categories}" th:text="${category}"></option>
+                                        <option th:each="c : ${categories}" th:text="${c}"></option>
                                     </select>
                                 </div>
                             </div>

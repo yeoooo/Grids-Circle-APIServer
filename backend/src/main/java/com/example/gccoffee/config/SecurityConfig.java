@@ -16,8 +16,10 @@ public class SecurityConfig{
         Exception{
         http
                 .authorizeRequests()
+
                 .antMatchers("/css/**", "/js/**", "/assets/**", "/index", "/").permitAll()
-                .antMatchers("/management/**").authenticated()
+//                .antMatchers("/management/**").authenticated()
+                .antMatchers("/management/**").permitAll()
                 .antMatchers("/api/**").permitAll()
                 .anyRequest()
                 .authenticated()

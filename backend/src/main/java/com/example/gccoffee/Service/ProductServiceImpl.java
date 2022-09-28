@@ -27,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findAll() {
-        System.out.println("productService.findAll() = " + productRepository.findAll());
+        log.info("productService.findAll() = {}", productRepository.findAll());
         return productRepository.findAll();
     }
 
@@ -35,6 +35,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public Product save(Product product) {
+        log.info("Product saved with \n ID => {} \n Name => {} \n Category => {} \n price => {} \n quantity => {}",
+                product.getProductId(), product.getProductName(), product.getCategory(), product.getPrice(), product.getQuantity());
         productRepository.save(product);
         return product;
     }
@@ -83,7 +85,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findByCategory(Category category) {
-        //2022-09-19_yeoooo : 추후 예외를 추가해야 할 것 같음
+
         List<Product> found = productRepository.findByCategory(category);
         return found;
     }

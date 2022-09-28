@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Product extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "product_id")
+    @Column(name = "product_id", columnDefinition = "BINARY(16)")
     private UUID productId;
 
     @Setter

@@ -73,8 +73,6 @@ public class ProductController extends BaseTimeEntity {
                 .price(productForm.getPrice())
                 .quantity(productForm.getQuantity())
                 .build();
-//
-//        log.info(" {} contains ? {}", categories, newProductDTO.getCategory());
 
         Product newProduct = newProductDTO.toEntity();
         log.info("product's category => {}",newProduct.getCategory());

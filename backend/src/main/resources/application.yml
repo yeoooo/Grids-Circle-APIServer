@@ -1,21 +1,26 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/dev/java/Grids-Circles-Clone-APIServer
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/GCCoffee?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 8354dnjsdl
+
+  #    url: jdbc:h2:tcp://localhost/~/dev/java/Grids-Circles-Clone-APIServer
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
 
 
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     defer-datasource-initialization: true
 
   sql:
     init:
 #      data-locations: /data.sql
-      platform: h2
+      platform: mysql
       encoding: UTF-8
 #      mode: never
       mode: always

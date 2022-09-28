@@ -14,7 +14,7 @@ import java.util.UUID;
 public class OrderItem extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "order_item_id")
+    @Column(name = "order_item_id", columnDefinition = "BINARY(16)")
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
