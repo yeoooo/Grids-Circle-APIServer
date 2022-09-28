@@ -1,5 +1,7 @@
 package com.example.gccoffee.Service;
 
+import com.example.gccoffee.Exception.NoSuchProductException;
+import com.example.gccoffee.Exception.NotEnoughStockException;
 import com.example.gccoffee.Repository.OrderRepository;
 import com.example.gccoffee.Repository.ProductRepository;
 import com.example.gccoffee.model.*;
@@ -53,10 +55,10 @@ public class OrderServiceImpl implements OrderService{
         for (OrderItem o : orderItems) {
             Optional<Product> targetProduct = productRepository.findById(o.getProduct().getProductId());
             if (targetProduct.isEmpty()){
-                throw new IllegalArgumentException("no such product");
+                throw new NoSuchProductException("상품이 존재하지 않습니다.");
 
             }else if(targetProduct.get().getQuantity() <= 0){
-                throw new IllegalArgumentException("product out of stock");
+                throw new NotEnoughStockException("재고가 부족합니다.");
             }
                 if (targetOrder.isEmpty()) {//2022-09-8_yeoooo : 작일 14:00 부터 당일 14:00 까지의 주문이 없으면 새 주문 생성
                     targetOrder = Optional.of(Order.createOrder(email, address, postCode, OrderStatus.ACCEPTED, o));

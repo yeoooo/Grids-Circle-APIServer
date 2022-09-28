@@ -72,60 +72,9 @@ public class OrderController {
         model.addAttribute("status", statuses);
         return "order_management";
 
-//        HashMap<OrderStatus, List> map = new HashMap<>();
-//
-//        Object[] mapKey = new Object[0];
-//        for (OrderStatus s : status) {//2022-09-14_yeoooo : 카테고리 이름 : 카테고리에 해당하는 제품
-//            map.put(s, orderService.findAll().stream().map(
-//                    order ->
-//                            OrderDTO.builder()
-//                                    .id(order.getId())
-//                                    .address(order.getAddress())
-//                                    .email(order.getEmail())
-//                                    .orderItems(order.getOrderItems())
-//                                    .postcode(order.getPostcode())
-//                                    .orderStatus(order.getOrderStatus())
-//                                    .price(order.getTotalPrice())
-//                                    .createdAt(order.getCreatedAt())
-//                                    .updatedAt(order.getUpdatedAt())
-//                                    .build()
-//            ).collect(Collectors.toList()));
-//            mapKey = map.keySet().toArray();
-//            Arrays.sort(mapKey);
-//            log.info("map => {}",map);
-
-
-//            Arrays.sort(Comparator.comparing());
-
-//        }
-//        model.addAttribute("orders", map);
-//        model.addAttribute("status", mapKey);
 
     }
 
-//    @GetMapping("/managemne/order")
-//    public String getOrderListByStatus(Model model, @RequestParam(value = "category", required = false) Category category, OrderUpdateForm orderUpdateForm) {
-//        Category[] categories = Category.values();
-//        List<Product> products;
-//        if (category == null) {
-//            products = productService.findAll();
-//        }else{
-//            products = productService.findByCategory(category);
-//        }
-//        List<ProductDTO> dto = products.stream().map(
-//                product ->
-//                    ProductDTO.builder()
-//                            .name(product.getProductName())
-//                            .category(product.getCategory())
-//                            .price(product.getPrice())
-//                            .build()
-//        ).collect(Collectors.toList());
-//
-//        model.addAttribute("OrderUpdateForm", orderUpdateForm);
-//        model.addAttribute("products",dto);
-//        model.addAttribute("categories",categories);
-//        return "order";
-//    }
 
     @RequestMapping("/management/order/update")
     public String changeOrderStatus(OrderUpdateForm orderUpdateForm) {
