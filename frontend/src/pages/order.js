@@ -10,9 +10,6 @@ export function Order(c) {
     const [targetCategory, setTargetCategory] = useState("");
 
     const [products, setProducts] = useState([
-        // {productId: 'uuid-1', productName: '콜롬비아 커피 1', category: '커피빈', price: 5000, quantity: 300},
-        // {productId: 'uuid-2', productName: '콜롬비아 커피 2', category: '커피빈', price: 5000, quantity: 300},
-        // {productId: 'uuid-3', productName: '콜롬비아 커피 3', category: '커피빈', price: 5000, quantity: 300},
 
     ]);
 
@@ -91,7 +88,11 @@ export function Order(c) {
             }).then(
                 v => alert("주문이 정상적으로 접수되었습니다."),
                 e => {
-                    alert("서버 장애");
+                    if (e.response.data.message === undefined) {
+                        alert("서버 장애");
+                    }else{
+                        alert(e.response.data.message);
+                    }
                     console.error(e);
                 })
         }

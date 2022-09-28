@@ -20,7 +20,7 @@ export function Product(props) {
     <div className="col-2">
       <img className="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt=""/>
     </div>
-    <div className="col-4">
+    <div className="col">
       <div className="row text-muted"
            style={{fontSize: "10px"}}>
         카테고리
@@ -36,7 +36,7 @@ export function Product(props) {
       <div className="row">{productName}</div>
     </div>
 
-    <div className="col-1">
+    <div className="col">
         <div className="row text-muted"
              style={{fontSize: "10px"}}>가격
         </div>
@@ -51,7 +51,7 @@ export function Product(props) {
       </button>
 
     </div>
-    <div className="col-1">
+    <div className="col">
       <button onClick={handleRemoveBtnClicked} className="btn btn-small btn-outline-danger"
               style={{fontSize: "13px"}}>제거</button>
     </div>
