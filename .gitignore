@@ -1,12 +1,13 @@
-#for mac
-*/.DS_Store
-.DS_Store
+#For mac
+*.DS_Store
 
 #For idea
-*/.idea
+.idea/
 
 #For Gradle
-*/.gradle
+*.gradle
 
-*/.cache
-*/.db
+node_modules/
+*.mv.db
+*/*.json
+
