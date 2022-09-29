@@ -10,7 +10,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,12 +34,12 @@ public class OrderItem extends BaseTimeEntity{
         orderItem.setProduct(product.get());
         orderItem.setOrderPrice(orderPrice);
         orderItem.setCount(count);
-        product.get().removeQuantity(count);
+        product.get().removeStock(count);
         return orderItem;
     }
 
     public void cancel() {
-        getProduct().addQuantity(count);
+        getProduct().addStock(count);
     }
 
     public long getTotalPrice() {

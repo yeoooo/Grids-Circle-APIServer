@@ -57,17 +57,15 @@ public class OrderServiceImpl implements OrderService{
             if (targetProduct.isEmpty()){
                 throw new NoSuchProductException("상품이 존재하지 않습니다.");
 
-            }else if(targetProduct.get().getQuantity() <= 0){
-                throw new NotEnoughStockException("재고가 부족합니다.");
             }
-                if (targetOrder.isEmpty()) {//2022-09-8_yeoooo : 작일 14:00 부터 당일 14:00 까지의 주문이 없으면 새 주문 생성
-                    targetOrder = Optional.of(Order.createOrder(email, address, postCode, OrderStatus.ACCEPTED, o));
-                    log.info("New Order Created : {}", targetOrder);
-                }
-                else {//2022-09-8_yeoooo : 이전 주문이 있으면 해당 주문에 아이템 밀어넣기
-                    targetOrder.get().addOrderItem(o);
-                    log.info("Order Already Exists : {}", targetOrder.get().getOrderItems());
-                }
+            if (targetOrder.isEmpty()) {//2022-09-8_yeoooo : 작일 14:00 부터 당일 14:00 까지의 주문이 없으면 새 주문 생성
+                targetOrder = Optional.of(Order.createOrder(email, address, postCode, OrderStatus.ACCEPTED, o));
+                log.info("New Order Created : {}", targetOrder);
+            }
+            else {//2022-09-8_yeoooo : 이전 주문이 있으면 해당 주문에 아이템 밀어넣기
+                targetOrder.get().addOrderItem(o);
+                log.info("Order Already Exists : {}", targetOrder.get().getOrderItems());
+            }
             }
 
         return orderRepository.save(targetOrder.get());

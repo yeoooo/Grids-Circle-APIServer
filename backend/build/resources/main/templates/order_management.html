@@ -15,10 +15,12 @@
             <h5 class="flex-grow-0">주문 현황</h5>
             <div class="row">
                 <div class="col">
-                    <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="전체" th:href="@{/management/order}"></a>
+                    <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="전체" th:href="@{/management/order/}"></a>
                 </div>
                 <div class="col" th:each="s : ${status}">
-                    <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${s}" th:href="@{/management/order(status=${s})}"></a>
+<!--                    <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${s}" th:href="@{/management/order(status=${s})}"></a>-->
+                    <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${s}" th:href="@{/management/order/{variableStatus}(variableStatus = ${s})}"></a>
+<!--                    <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${s}"></a>-->
                 </div>
             </div>
 
@@ -80,11 +82,11 @@
                                                 <div class="row text-muted">상품명</div>
                                                 <div class="row" th:text="${item.getProduct().getProductName()}"/>
                                             </div>
-                                            <br/>
-                                             <div class="col">
-                                                <div class="row text-muted">상품 재고</div>
-                                                <div class="row" th:text="${item.getProduct().getQuantity()}"/>
-                                            </div>
+<!--                                            <br/>-->
+<!--                                             <div class="col">-->
+<!--                                                <div class="row text-muted">상품 재고</div>-->
+<!--                                                <div class="row" th:text="${item.getProduct().getQuantity()}"/>-->
+<!--                                            </div>-->
                                             <br/>
                                             <div class="col">
                                                 <div class="row text-muted">단가</div>
@@ -112,5 +114,12 @@
 
     <footer th:replace="fragments/footer::footer"/>
 
+    <script>
+        $(".btn").click(function () {
+            console.log(this);
+            $(this).removeClass("btn-outline-dark");
+            $(this).addClass("btn-dark");
+        });
+    </script>
 </body>
 </html>

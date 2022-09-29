@@ -31,11 +31,12 @@ public class OrderRestController {
                 .orderItems(orderService.jsonToOrderItems(lst.get("orderItems")))
                 .build();
 
-        log.info("Order Requested : \n" +
+        log.info("Order Requested : {}\n" +
                         "Got Param(Address) => {}\n" +
                         "Got Param(postCode) => {} \n" +
                         "Got Param(email) => {}\n" +
                         "Got Param(orderItems) => {} ",
+                newOrderDTO.toString(),
                 newOrderDTO.getAddress(),
                 newOrderDTO.getPostcode(),
                 newOrderDTO.getEmail(),

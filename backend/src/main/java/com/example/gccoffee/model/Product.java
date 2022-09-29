@@ -1,11 +1,9 @@
 package com.example.gccoffee.model;
 
+import com.example.gccoffee.Exception.NotEnoughStockException;
 import lombok.*;
-import net.bytebuddy.asm.Advice;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 
@@ -51,12 +49,17 @@ public class Product extends BaseTimeEntity{
         this.quantity = quantity;
     }
 
-    public void addQuantity(int cnt){
+    public void addStock(int cnt){
         this.quantity += cnt;
     }
 
-    public void removeQuantity(int cnt) {
-        this.quantity -= cnt;
+    public void removeStock(int cnt) {
+        int restStock = this.quantity -= cnt;
+        if (restStock < 0) {
+            throw new NotEnoughStockException("재고가 부족합니다.");
+        }
+        this.quantity = restStock;
+
     }
 
 

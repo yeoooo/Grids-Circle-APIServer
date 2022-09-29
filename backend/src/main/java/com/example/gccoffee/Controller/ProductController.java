@@ -9,10 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
 import java.util.*;
@@ -26,7 +23,7 @@ public class ProductController extends BaseTimeEntity {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/management/product")
-    public String getProductList(Model model, @RequestParam(required = false) Optional<Category> category) {
+    public String getProductList(Model model, @PathVariable(required = false) Optional<Category> category) {
         Category[] categories = Category.values();
         List<ProductDTO> products;
 
