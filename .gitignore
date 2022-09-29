@@ -7,7 +7,7 @@
 #For Gradle
 *.gradle
 
-node_modules/
+frontend/.cache/node_modules/
 *.mv.db
 */*.json
 
