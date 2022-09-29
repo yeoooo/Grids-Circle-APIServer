@@ -4,6 +4,7 @@ import {ProductList} from "../components/ProductList";
 import {Summary} from "../components/Summary";
 import axios from "axios";
 import React, {useEffect, useState} from 'react';
+import Footer from "../components/Footer";
 
 
 export function Order(c) {
@@ -111,6 +112,7 @@ export function Order(c) {
                 </div>
             </div>
         </div>
+        <Footer/>
         )
         </>
 }

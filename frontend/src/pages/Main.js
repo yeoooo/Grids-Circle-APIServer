@@ -2,6 +2,7 @@ import React from 'react';
 import indexImg from "../assets/img/products-01.jpg";
 import {Link} from "react-router-dom";
 import '../assets/static/Main.css';
+import Footer from "../components/Footer";
 
 
 
@@ -29,7 +30,22 @@ function Main(){
                         </div>
                     </div>
                 </section>
-
+            <section className="page-section cta">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-9 mx-auto">
+                            <div className="cta-inner bg-faded text-center rounded">
+                                <h2 className="section-heading mb-4">
+                                    <span className="section-heading-upper">우리가 당신에게 하는</span>
+                                    <span className="section-heading-lower">약속</span>
+                                </h2>
+                                <p className="mb-0">매일 물을 줘서 기른 생두를 고양이에게 먹일 것을 우리가 약속합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <Footer/>
         </>
     )
 }
