@@ -18,9 +18,7 @@
                     <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="전체" th:href="@{/management/order/}"></a>
                 </div>
                 <div class="col" th:each="s : ${status}">
-<!--                    <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${s}" th:href="@{/management/order(status=${s})}"></a>-->
                     <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${s}" th:href="@{/management/order/{variableStatus}(variableStatus = ${s})}"></a>
-<!--                    <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${s}"></a>-->
                 </div>
             </div>
 
@@ -115,11 +113,11 @@
     <footer th:replace="fragments/footer::footer"/>
 
     <script>
-        $(".btn").click(function () {
-            console.log(this);
-            $(this).removeClass("btn-outline-dark");
-            $(this).addClass("btn-dark");
-        });
+        // $(".btn").click(function () {
+        //     console.log(this);
+        //     $(this).removeClass("btn-outline-dark");
+        //     $(this).addClass("btn-dark");
+        // });
     </script>
 </body>
 </html>

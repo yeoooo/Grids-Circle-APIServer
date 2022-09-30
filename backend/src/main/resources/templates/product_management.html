@@ -22,34 +22,60 @@
                         <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="전체" th:href="@{/management/product}"></a>
                     </div>
                     <div class="col" th:each="c : ${categories}">
-                        <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${c}" th:href="@{/management/product(category=${c})}"></a>
+                        <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${c}" th:href="@{/management/product/{variableCategory}(variableCategory=${c})}"></a>
                     </div>
                 </div>
 
                 <ul class="list-group products">
-                    <li class="list-group-item d-flex mt-2" th:each="p:${products}" th:id="${p.getName()}" th:value="${p.getId()}">
+                    <li class="list-group-item mt-2" th:each="p,i:${products}" th:id="${p.getName()}"
+                        th:value="${p.getId()}">
+                        <div class="d-flex">
+                            <div class="col-1"><img class="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt="">
+                            </div>
+                            <input type="hidden" th:id="${p.getName}+_category" th:value="${p.getCategory()}">
+                            <div class="col">
+                                <div class="row text-muted" style="font-size: 10px">제품명</div>
+                                <div class="row" th:text="${p.getName()}" id="name"></div>
+                            </div>
+                            <div class="col-2">
+                                <div class="row text-muted" style="font-size: 10px">등록일</div>
+                                <div class="row" th:text="${p.getUpdatedAt().toLocalDate()}"
+                                     style="font-size: 12px"></div>
+                            </div>
+                            <div class="col">
+                                <div class="row text-muted" style="font-size: 10px">가격</div>
+                                <div class="row" th:text="${p.getPrice()}+'원'" style="font-size: 12px"
+                                     th:id="${p.getName()}+_price"></div>
+                            </div>
+                            <div class="col">
+                                <div class="row text-muted" style="font-size: 10px">재고</div>
+                                <div class="row" th:text="${p.getQuantity()}" style="font-size: 12px"
+                                     th:id="${p.getName()}+_quantity"></div>
+                            </div>
+                            <div class="col-1">
+                                <a class="btn btn-small btn-outline-dark" style="font-size: 13px"
+                                                  th:desc="${p.getDescription()}"
+                                                  onclick="updateProduct(this)"
+                                                  role="button" th:href="@{'#'+'Collapse_'+${i.index}}"
+                                                  th:aria-controls="Collapse_+${i.index}"
+                                                  data-bs-toggle="collapse"
+                                                  aria-expanded="false"
+                                                  th:id="${p.getName()}+_updateBtn">
+                                    수정
+                                </a>
+                            </div>
 
-                        <div class="col-1"><img class="img-fluid" src="https://i.imgur.com/HKOFQYa.jpeg" alt=""></div>
-                        <input type="hidden" th:id="${p.getName}+_category" th:value="${p.getCategory()}">
-                        <div class="col">
-                            <div class="row text-muted" style="font-size: 10px">제품명</div>
-                            <div class="row" th:text="${p.getName()}" id="name"></div>
+                            <div class="col-1"><a class="btn btn-small btn-outline-danger" id="deleteBtn"
+                                                  onclick="deleteProduct(this)" th:id="${p.getName()}+_updateBtn"
+                                                  style="font-size: 13px">삭제</a></div>
                         </div>
-                        <div class="col-2">
-                            <div class="row text-muted" style="font-size: 10px">등록일</div>
-                            <div class="row" th:text="${p.getUpdatedAt().toLocalDate()}" style = "font-size: 12px"></div>
-                        </div>
-                        <div class="col">
-                            <div class="row text-muted" style="font-size: 10px">가격</div>
-                            <div class="row" th:text="${p.getPrice()}+'원'" style="font-size: 12px" th:id="${p.getName()}+_price"></div>
-                        </div>
-                        <div class="col">
-                            <div class="row text-muted" style="font-size: 10px">재고</div>
-                            <div class="row" th:text="${p.getQuantity()}" style="font-size: 12px" th:id="${p.getName()}+_quantity"></div>
-                        </div>
-                        <div class="col-1"><a class="btn btn-small btn-outline-dark" style="font-size: 13px" onclick="updateProduct(this.id)" th:id="${p.getName()}+_updateBtn">수정</a></div>
+                        <div class="row">
+                            <div class="collapse col" th:id="Collapse_+${i.index}">
 
-                        <div class="col-1"><a class="btn btn-small btn-outline-danger" id="deleteBtn" onclick="deleteProduct(this.id)" th:id="${p.getName()}+_updateBtn" style="font-size: 13px">삭제</a></div>
+                                    <textarea th:id="${p.getName()}+summernote"></textarea>
+                                </div>
+                            </div>
+<!--                        </div>-->
                     </li>
                 </ul>
             </div>
@@ -134,39 +160,52 @@
     productUpdateForm.hidden=true
     back.hidden=true
 
-    function deleteProduct(id) {
-        product_id = id;
-        if(confirm(document.getElementById(id).parentElement.parentElement.getAttribute("id") + " 삭제하시겠습니까?")){
+    function deleteProduct(e) {
+        product_id = e.id;
+        if(confirm(document.getElementById(e.id).parentElement.parentElement.parentElement.getAttribute("id") + " 삭제하시겠습니까?")){
             location = "product/delete"+
-                "?id=" + document.getElementById(product_id).parentElement.parentElement.getAttribute("value");
+                "?id=" + document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("value");
         }
     }
-    function updateProduct(id) {
-        product_id = id;
+    function updateProduct(e) {
+        product_id = e.id;
         productForm.hidden = true;
         submitBtn.hidden = true;
         productUpdateForm.hidden = false;
         updateSubmitBtn.hidden = false;
         back.hidden = false;
-        console.log(document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_category').value);
+        var note = $('#' + e.parentElement.parentElement.parentElement.getAttribute("id") + 'summernote');
 
+        $('.show').removeClass('show');
 
+        $(note).summernote({
+        placeholder: "contents",
+        tabsize: 2,
+        height: 100,
+        disableResizeEditor: true,
+        toolbar: [
+        ['style', ['bold', 'italic', 'underline']],
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ]});
 
-        $("#updateInputCategory").val(document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_category').value).prop("selected", true);
-        // document.getElementById("updateInputCategory").setAttribute("value", document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_category').value);
-        document.getElementById("updateInputName").setAttribute("value", document.getElementById(id).parentElement.parentElement.getAttribute("id"));
-        document.getElementById("updateInputPrice").setAttribute("value", document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_price').innerText.slice(0,-1));
-        document.getElementById("updateInputQuantity").setAttribute("value", document.getElementById(document.getElementById(id).parentElement.parentElement.getAttribute("id")+'_quantity').innerText);
+        $(note).summernote('reset');
+        $(note).summernote('insertText', e.getAttribute("desc"));
+
+        $("#updateInputCategory").val(document.getElementById(document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id")+'_category').value).prop("selected", true);
+        document.getElementById("updateInputName").setAttribute("value", document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id"));
+        document.getElementById("updateInputPrice").setAttribute("value", document.getElementById(document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id")+'_price').innerText.slice(0,-1));
+        document.getElementById("updateInputQuantity").setAttribute("value", document.getElementById(document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id")+'_quantity').innerText);
     }
 
     function submitUpdate() {
 
-
         productUpdateForm.setAttribute("action", "/management/product/update" +
-            "?id=" + document.getElementById(product_id).parentElement.parentElement.getAttribute("value") +
+            "?id=" + document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("value") +
             "\&name=" + document.getElementById("updateInputName").value +
             "\&price=" + document.getElementById("updateInputPrice").value +
             "\&quantity=" + document.getElementById("updateInputQuantity").value);
+
         productUpdateForm.submit();
     }
 </script>

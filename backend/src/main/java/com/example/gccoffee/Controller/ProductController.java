@@ -22,8 +22,8 @@ public class ProductController extends BaseTimeEntity {
     private final ProductService productService;
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    @GetMapping("/management/product")
-    public String getProductList(Model model, @PathVariable(required = false) Optional<Category> category) {
+    @GetMapping({"/management/product", "/management/product/{variableCategory}"})
+    public String getProductList(Model model, @PathVariable(value = "variableCategory", required = false) Optional<Category> category) {
         Category[] categories = Category.values();
         List<ProductDTO> products;
 

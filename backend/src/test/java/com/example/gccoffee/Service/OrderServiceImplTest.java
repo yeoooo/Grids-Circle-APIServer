@@ -39,7 +39,7 @@ class OrderServiceImplTest {
 //            this.price = price;
 //            this.quantity = quantity;
 //        }
-        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.COFFEE_BEAN_PACKAGE, "커피 조아?", 100L, 3);
+        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.BEAN, "커피 조아?", 100L, 3);
 
 
         //when
@@ -63,7 +63,7 @@ class OrderServiceImplTest {
     public void stockTest() throws Exception {
         //given
 
-        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.COFFEE_BEAN_PACKAGE, "커피 조아?", 100L, 3);
+        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.BEAN, "커피 조아?", 100L, 3);
         //when
         productService.save(p);
 
@@ -71,7 +71,7 @@ class OrderServiceImplTest {
         //when
 
         //then
-     Assertions.assertThrows(IllegalArgumentException.class, () -> {
+     assertThrows(IllegalArgumentException.class, () -> {
 //         orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 3);
 //         orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
 //         orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
@@ -85,7 +85,7 @@ class OrderServiceImplTest {
     public void totalPriceTest() throws Exception {
         //given
 
-        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.COFFEE_BEAN_PACKAGE, "커피 조아?", 100L, 3);
+        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.BEAN, "커피 조아?", 100L, 3);
         //when
         productService.save(p);
 
@@ -94,7 +94,7 @@ class OrderServiceImplTest {
 //        orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
 
 //        then
-        Assertions.assertEquals( 1000,orderService.findByEmail("asd@naver.com").get(0).getTotalPrice()
+        assertEquals( 1000,orderService.findByEmail("asd@naver.com").get(0).getTotalPrice()
                 , "100원짜리 5개의 상품을 주문한 주문서의 총 가격은 1천원이다");
     }
     @Test
@@ -104,7 +104,7 @@ class OrderServiceImplTest {
     public void orderCancelTest() throws Exception {
         //given
 
-        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.COFFEE_BEAN_PACKAGE, "커피 조아?", 100L, 3);
+        Product p = new Product(UUID.randomUUID(),"CoffeeJoa", Category.BEAN, "커피 조아?", 100L, 3);
         productService.save(p);
 
 //        Order o = orderService.order("asd@naver.com", "here", "zip123", p.getProductId(), 5);
@@ -113,6 +113,6 @@ class OrderServiceImplTest {
 //        productService.findById(p.getProductId()).get().getQuantity();
 //
         //then
-        Assertions.assertEquals(orderService.findByEmail("asd@naver.com").get(0).getOrderStatus(), OrderStatus.CANCELLED, "주문 상태는 취소로 바뀌어 있어야한다.");
+        assertEquals(orderService.findByEmail("asd@naver.com").get(0).getOrderStatus(), OrderStatus.CANCELLED, "주문 상태는 취소로 바뀌어 있어야한다.");
     }
 }
