@@ -19,9 +19,9 @@ function Main(){
                                     <span className="section-heading-lower">진짜 맛있어요 !</span>
                                 </h2>
                                 <p className="mb-3">GRIDS & CIRCLE의 모든 커피는 매장에서 직접 기른 생두를 고양이에게 먹입니다!</p>
-                                <Link to="/product">
+                                <Link to="/products">
                                     <div className="intro-button mx-auto">
-                                        <a className="btn btn-primary btn-lg" href="#!">
+                                        <a className="btn btn-primary btn-lg">
                                             판매 상품
                                         </a>
                                     </div>

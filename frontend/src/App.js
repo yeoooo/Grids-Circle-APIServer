@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import Main from "./pages/Main";
 import Order from "./pages/order";
+import ProductInfo from "./pages/productsInfo";
 
 
 function App() {
@@ -32,7 +33,14 @@ function App() {
                                   <div className="nav-link text-uppercase">Home</div>
                               </li>
                           </Link>
-                      <Link to="/order">
+
+                          <Link to="/products">
+                              <li className="nav-item px-lg-4">
+                                  <div className="nav-link text-uppercase">Product</div>
+                              </li>
+                          </Link>
+
+                          <Link to="/order">
                               <li className="nav-item px-lg-4">
                                   <div className="nav-link text-uppercase">Order</div>
                               </li>
@@ -44,6 +52,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Main />}></Route>
                 <Route path="/order" element={<Order />}></Route>
+                <Route path="/products" element={<ProductInfo />}></Route>
 
             </Routes>
           </BrowserRouter>
