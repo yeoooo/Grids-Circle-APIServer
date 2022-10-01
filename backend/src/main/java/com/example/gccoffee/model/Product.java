@@ -24,6 +24,7 @@ public class Product extends BaseTimeEntity{
     private Category category;
 
     @Setter
+    @Column(columnDefinition = "BLOB")
     private String description;
 
     public long price;

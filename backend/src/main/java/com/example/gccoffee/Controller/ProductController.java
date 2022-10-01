@@ -84,18 +84,20 @@ public class ProductController extends BaseTimeEntity {
     }
 
     @RequestMapping("/management/product/update")
-    public String updateProduct(@RequestParam("id") UUID id, @RequestParam("name") String productName, @RequestParam("price") long price, @RequestParam("quantity") int quantity) {
+    public String updateProduct(@RequestParam("id") UUID id, @RequestParam("name") String productName, @RequestParam("price") long price, @RequestParam("quantity") int quantity, @RequestParam("description") String description) {
+//    public String updateProduct(@RequestParam("id") UUID id, @RequestParam("name") String productName, @RequestParam("price") long price, @RequestParam("quantity") int quantity) {
         Optional<Product> targetProduct = productService.findById(id);
             log.info("product updated => with\n" +
                     "id = {}\n"+
                     "name = {}\n"+
                     "price = {}\n"+
-                    "quantity = {}\n",
-                    targetProduct.get(),productName,price,quantity);
+                    "quantity = {}\n"+
+                    "description = {}\n",
+                    targetProduct.get(),productName,price,quantity,description);
         if (targetProduct.isEmpty()) {
             throw new IllegalStateException("No Product found.");
         }else{
-            productService.update(targetProduct.get(), productName, price, quantity, null);
+            productService.update(targetProduct.get(), productName, price, quantity, description);
         }
 
         return "redirect:/management/product";

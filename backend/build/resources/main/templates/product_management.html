@@ -71,9 +71,10 @@
                         </div>
                         <div class="row">
                             <div class="collapse col" th:id="Collapse_+${i.index}">
-
+<!--                                <form id = "productUpdateForm" th:action="@{/management/product/update}" th:object="${productForm}" method="post">-->
                                     <textarea th:id="${p.getName()}+summernote"></textarea>
-                                </div>
+<!--                                </form>-->
+                            </div>
                             </div>
 <!--                        </div>-->
                     </li>
@@ -192,6 +193,7 @@
         $(note).summernote('reset');
         $(note).summernote('insertText', e.getAttribute("desc"));
 
+
         $("#updateInputCategory").val(document.getElementById(document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id")+'_category').value).prop("selected", true);
         document.getElementById("updateInputName").setAttribute("value", document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id"));
         document.getElementById("updateInputPrice").setAttribute("value", document.getElementById(document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id")+'_price').innerText.slice(0,-1));
@@ -199,12 +201,16 @@
     }
 
     function submitUpdate() {
+        // console.log($('.show')[0].children[0].value);
+        // alert(desc);
 
         productUpdateForm.setAttribute("action", "/management/product/update" +
             "?id=" + document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("value") +
             "\&name=" + document.getElementById("updateInputName").value +
             "\&price=" + document.getElementById("updateInputPrice").value +
-            "\&quantity=" + document.getElementById("updateInputQuantity").value);
+            // "\&quantity=" + document.getElementById("updateInputQuantity").value);
+            "\&quantity=" + document.getElementById("updateInputQuantity").value +
+            "\&description=" + $('.show')[0].children[0].value.replace(/(<([^>]+)>)/ig, ""));
 
         productUpdateForm.submit();
     }
