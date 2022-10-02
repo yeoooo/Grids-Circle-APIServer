@@ -18,8 +18,8 @@ public class SecurityConfig{
                 .authorizeRequests()
 
                 .antMatchers("/css/**", "./static/**", "/assets/**", "/index", "/","/products").permitAll()
-                .antMatchers("/management/**").authenticated()
-//                .antMatchers("/management/**").permitAll()
+//                .antMatchers("/management/**").authenticated()
+                .antMatchers("/management/**").permitAll()
                 .antMatchers("/api/**").permitAll()
                 .anyRequest()
                 .authenticated()

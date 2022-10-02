@@ -23,6 +23,7 @@
                     </div>
                     <div class="col" th:each="c : ${categories}">
                         <a class="col btn btn-sm btn-outline-dark" style="font-size: 13px" th:text="${c}" th:href="@{/management/product/{variableCategory}(variableCategory=${c})}"></a>
+
                     </div>
                 </div>
 
@@ -71,12 +72,9 @@
                         </div>
                         <div class="row">
                             <div class="collapse col" th:id="Collapse_+${i.index}">
-<!--                                <form id = "productUpdateForm" th:action="@{/management/product/update}" th:object="${productForm}" method="post">-->
                                     <textarea th:id="${p.getName()}+summernote"></textarea>
-<!--                                </form>-->
                             </div>
                             </div>
-<!--                        </div>-->
                     </li>
                 </ul>
             </div>
@@ -100,15 +98,18 @@
                             </div>
                             <div class="mb-3">
                                 <label th:for="productName" class="form-label">상품명</label>
-                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName">
+                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${orders.get('productName') == null}">
+                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${orders.get('productName') != null}" th:placeholder="${order.get('productName').getMessage()}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" >가격</label>
-                                <input type="number" class="form-control mb-1" th:field="*{price}" id="inputPrice">
+                                <input type="number" class="form-control mb-1" th:field="*{price}" id="inputPrice" th:if="${orders.get('price') == null}">
+<!--                                <input class="form-control mb-1" type="number" th:field="*{price}" id="inputPrice" th:if="${orders.get('price')}" th:placeholder="${order.get('price').getMessage()}">-->
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">재고</label>
-                                <input type="number" class="form-control" th:field="*{quantity}" id="inputQuantity">
+                                <input type="number" class="form-control" th:field="*{quantity}" id="inputQuantity" th:if="${orders.get('quantity') != null}">
+<!--                                <input class="form-control mb-1" type="number" th:field="*{quantity}" id="inputQuantity" th:if="${orders.get('quantity') != null}" th:placeholder="${order.get('quantity').getMessage()}">-->
                             </div>
                         </form>
                         <form id = "productUpdateForm" th:action="@{/management/product/update}" th:object="${productForm}" method="post">
@@ -201,16 +202,13 @@
     }
 
     function submitUpdate() {
-        // console.log($('.show')[0].children[0].value);
-        // alert(desc);
-
         productUpdateForm.setAttribute("action", "/management/product/update" +
             "?id=" + document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("value") +
             "\&name=" + document.getElementById("updateInputName").value +
             "\&price=" + document.getElementById("updateInputPrice").value +
-            // "\&quantity=" + document.getElementById("updateInputQuantity").value);
             "\&quantity=" + document.getElementById("updateInputQuantity").value +
             "\&description=" + $('.show')[0].children[0].value.replace(/(<([^>]+)>)/ig, ""));
+        //  2022-10-01_yeoooo : summernote.value는 <p>,<br> 등 갖가지 태그를 같이 가져옴 -> 정규표현식을 통해 처리
 
         productUpdateForm.submit();
     }

@@ -80,11 +80,6 @@
                                                 <div class="row text-muted">상품명</div>
                                                 <div class="row" th:text="${item.getProduct().getProductName()}"/>
                                             </div>
-<!--                                            <br/>-->
-<!--                                             <div class="col">-->
-<!--                                                <div class="row text-muted">상품 재고</div>-->
-<!--                                                <div class="row" th:text="${item.getProduct().getQuantity()}"/>-->
-<!--                                            </div>-->
                                             <br/>
                                             <div class="col">
                                                 <div class="row text-muted">단가</div>
@@ -108,16 +103,7 @@
     </div>
     </div>
 
-
-
     <footer th:replace="fragments/footer::footer"/>
 
-    <script>
-        // $(".btn").click(function () {
-        //     console.log(this);
-        //     $(this).removeClass("btn-outline-dark");
-        //     $(this).addClass("btn-dark");
-        // });
-    </script>
 </body>
 </html>
