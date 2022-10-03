@@ -6,18 +6,18 @@ import com.example.gccoffee.model.*;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import javax.validation.Valid;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Controller
@@ -28,7 +28,9 @@ public class ProductController extends BaseTimeEntity {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @GetMapping({"/management/product", "/management/product/{variableCategory}"})
-    public String getProductList(Model model, @PathVariable(value = "variableCategory", required = false) Optional<Category> category) {
+//    public String getProductList(Model model, @PathVariable(value = "variableCategory", required = false) Optional<Category> category, @RequestParam("errors") HashMap<String, ErrorResult> errors) {
+    public String getProductList(Model model, @PathVariable(value = "variableCategory", required = false) Optional<Category> category, @RequestParam(value = "errors", required = false) String errors) {
+//    public String getProductList(Model model, @PathVariable(value = "variableCategory", required = false) Optional<Category> category) {
         Category[] categories = Category.values();
         List<ProductDTO> products;
 
@@ -59,15 +61,57 @@ public class ProductController extends BaseTimeEntity {
             ).collect(Collectors.toList());;
         }
 
+        if (errors != null){
+            Base64.Decoder decoder = Base64.getDecoder();
+            String decoded = new String(decoder.decode(errors));
+            decoded = decoded.replace("{", "");
+
+//            log.info("decoded => {} ", decoded.split("(\\),)").getClass());
+//            Map<String, ErrorResult> map =
+            Map<String, ErrorResult> myMap = new HashMap<String, ErrorResult>();
+//            String[] pairs = decoded.split("(ErrorResult)+\\([^)]*\\)");
+            Matcher m = Pattern.compile("[A-z]+(\\=)+(ErrorResult)+\\([^)]*\\)").matcher(decoded);
+
+
+            List<String> matches = new ArrayList<>();
+            while(m.find()){
+                log.info("decoded => {} ", m.group());
+                matches.add(m.group());
+            }
+
+//
+//            for (int i=0;i<pairs.length;i++) {
+//                String pair = pairs[i];
+//                String[] keyValue = pair.split("=");
+
+//                myMap.put(keyValue[0], Integer.valueOf(keyValue[1]));
+//            }
+
+        }
         model.addAttribute("products", products);
         model.addAttribute("categories", categories);
         model.addAttribute("productForm", new ProductForm());
+        model.addAttribute("errors", errors);
 
         return "product_management";
     }
 
     @PostMapping("/management/product")
-    public String register(@Valid @ModelAttribute ProductForm productForm) {
+    public String register(@Valid ProductForm productForm, BindingResult result) {
+        if(result.hasErrors()){
+            Map<String,ErrorResult> errorMessages = new HashMap<>();
+            for (FieldError fieldError : result.getFieldErrors()) {
+                errorMessages.put(fieldError.getField(),new ErrorResult("BAD", fieldError.getDefaultMessage()));
+            }
+            Base64.Encoder encoder = Base64.getEncoder();
+
+
+            byte[] encoded = encoder.encode(errorMessages.toString().getBytes(StandardCharsets.UTF_8));
+            log.info("requesting product to => {}", "redirect:/management/product?errors="+new String(encoded));
+//            log.info("requesting product to => {}", "redirect:/management/product?errors="+);
+            return "redirect:/management/product?errors="+new String(encoded);
+
+        }
         ProductDTO newProductDTO = ProductDTO
                 .builder()
                 .name(productForm.getProductName())

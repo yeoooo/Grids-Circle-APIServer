@@ -99,8 +99,11 @@
                             <div class="mb-3">
                                 <label th:for="productName" class="form-label">상품명</label>
                                 <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName">
-<!--                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${orders.get('productName') == null}">-->
-<!--                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${orders.get('productName') != null}" th:placeholder="${order.get('productName').getMessage()}">-->
+                                <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></p>
+<!--                                    <p th:text="${key}"></p>-->
+<!--                                </div>-->
+<!--                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${errors.get('productName') != null}">-->
+<!--                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${#strings.isEmpty(errors.get('productName'))}" th:placeholder="${errors.get('productName').getMessage()}">-->
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" >가격</label>

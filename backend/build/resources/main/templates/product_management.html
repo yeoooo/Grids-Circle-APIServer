@@ -98,17 +98,23 @@
                             </div>
                             <div class="mb-3">
                                 <label th:for="productName" class="form-label">상품명</label>
-                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${orders.get('productName') == null}">
-                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${orders.get('productName') != null}" th:placeholder="${order.get('productName').getMessage()}">
+                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName">
+                                <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></p>
+<!--                                    <p th:text="${key}"></p>-->
+<!--                                </div>-->
+<!--                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${errors.get('productName') != null}">-->
+<!--                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${#strings.isEmpty(errors.get('productName'))}" th:placeholder="${errors.get('productName').getMessage()}">-->
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" >가격</label>
-                                <input type="number" class="form-control mb-1" th:field="*{price}" id="inputPrice" th:if="${orders.get('price') == null}">
+                                <input type="number" class="form-control mb-1" th:field="*{price}" id="inputPrice">
+<!--                                <input type="number" class="form-control mb-1" th:field="*{price}" id="inputPrice" th:if="${orders.get('price') == null}">-->
 <!--                                <input class="form-control mb-1" type="number" th:field="*{price}" id="inputPrice" th:if="${orders.get('price')}" th:placeholder="${order.get('price').getMessage()}">-->
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">재고</label>
-                                <input type="number" class="form-control" th:field="*{quantity}" id="inputQuantity" th:if="${orders.get('quantity') != null}">
+                                <input type="number" class="form-control" th:field="*{quantity}" id="inputQuantity">
+<!--                                <input type="number" class="form-control" th:field="*{quantity}" id="inputQuantity" th:if="${orders.get('quantity') != null}">-->
 <!--                                <input class="form-control mb-1" type="number" th:field="*{quantity}" id="inputQuantity" th:if="${orders.get('quantity') != null}" th:placeholder="${order.get('quantity').getMessage()}">-->
                             </div>
                         </form>

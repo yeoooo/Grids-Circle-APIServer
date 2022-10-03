@@ -10,10 +10,8 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-@Getter
 public class ErrorResult {
     private String code;
     private String message;
-//    private List<FieldError> errors = new ArrayList<>();
 }
 
