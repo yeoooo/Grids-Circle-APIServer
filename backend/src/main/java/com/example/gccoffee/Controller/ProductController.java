@@ -61,37 +61,29 @@ public class ProductController extends BaseTimeEntity {
             ).collect(Collectors.toList());;
         }
 
+        Map<String, String> errorMap = new HashMap<>();
         if (errors != null){
             Base64.Decoder decoder = Base64.getDecoder();
             String decoded = new String(decoder.decode(errors));
-            decoded = decoded.replace("{", "");
+            log.info("map => {}",decoded);
+//            List<String> res = List.of(decoded.replaceAll("[{}]", "").split(","));
+            List<String> res = List.of(decoded.replaceAll("[{}]", "").split(",\\s"));
 
-//            log.info("decoded => {} ", decoded.split("(\\),)").getClass());
-//            Map<String, ErrorResult> map =
-            Map<String, ErrorResult> myMap = new HashMap<String, ErrorResult>();
-//            String[] pairs = decoded.split("(ErrorResult)+\\([^)]*\\)");
-            Matcher m = Pattern.compile("[A-z]+(\\=)+(ErrorResult)+\\([^)]*\\)").matcher(decoded);
-
-
-            List<String> matches = new ArrayList<>();
-            while(m.find()){
-                log.info("decoded => {} ", m.group());
-                matches.add(m.group());
+            for (String r : res) {
+                String[] keyVal = r.split("=");
+                errorMap.put(keyVal[0], keyVal[1]);
             }
 
-//
-//            for (int i=0;i<pairs.length;i++) {
-//                String pair = pairs[i];
-//                String[] keyValue = pair.split("=");
-
-//                myMap.put(keyValue[0], Integer.valueOf(keyValue[1]));
-//            }
-
         }
+        log.info("map => {}", errorMap);
+        log.info("map => {}", errorMap.keySet());
+        log.info("map => {}", errorMap.get("productName"));
+        log.info("map => {}", errorMap.get("price"));
+        log.info("map => {}", errorMap.get("quantity"));
         model.addAttribute("products", products);
         model.addAttribute("categories", categories);
         model.addAttribute("productForm", new ProductForm());
-        model.addAttribute("errors", errors);
+        model.addAttribute("errors", errorMap);
 
         return "product_management";
     }
@@ -99,16 +91,15 @@ public class ProductController extends BaseTimeEntity {
     @PostMapping("/management/product")
     public String register(@Valid ProductForm productForm, BindingResult result) {
         if(result.hasErrors()){
-            Map<String,ErrorResult> errorMessages = new HashMap<>();
+            Map<String,String> errorMessages = new HashMap<>();
             for (FieldError fieldError : result.getFieldErrors()) {
-                errorMessages.put(fieldError.getField(),new ErrorResult("BAD", fieldError.getDefaultMessage()));
+                errorMessages.put(fieldError.getField(), fieldError.getDefaultMessage());
             }
             Base64.Encoder encoder = Base64.getEncoder();
 
 
             byte[] encoded = encoder.encode(errorMessages.toString().getBytes(StandardCharsets.UTF_8));
             log.info("requesting product to => {}", "redirect:/management/product?errors="+new String(encoded));
-//            log.info("requesting product to => {}", "redirect:/management/product?errors="+);
             return "redirect:/management/product?errors="+new String(encoded);
 
         }
