@@ -7,19 +7,21 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class ProductForm {
-    private Long id;
+    private UUID id;
     @NotEmpty(message = "상품 이름은 비어있으면 안됩니다!")
-//    @NotBlank
+    @NotBlank(message = "상품 이름은 비어있으면 안됩니다!")
     private String productName;
     private Category category;
     @Min(value = 1, message = "가격은 1 이상이어야 합니다!")
     private long price;
     @Min(value = 1, message = "재고는 1 이상이어야 합니다!")
     private int quantity;
+    private String description;
 
 
 

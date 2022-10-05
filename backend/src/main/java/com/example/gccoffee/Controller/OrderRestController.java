@@ -36,6 +36,7 @@ public class OrderRestController {
                         "Got Param(postCode) => {} \n" +
                         "Got Param(email) => {}\n" +
                         "Got Param(orderItems) => {} ",
+                        "Got Param() => {} ",
                 newOrderDTO.toString(),
                 newOrderDTO.getAddress(),
                 newOrderDTO.getPostcode(),

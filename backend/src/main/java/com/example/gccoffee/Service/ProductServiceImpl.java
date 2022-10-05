@@ -1,5 +1,6 @@
 package com.example.gccoffee.Service;
 
+import com.example.gccoffee.Exception.NoSuchProductException;
 import com.example.gccoffee.Repository.ProductRepository;
 import com.example.gccoffee.model.Category;
 import com.example.gccoffee.model.Product;
@@ -27,7 +28,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findAll() {
-        log.info("productService.findAll() = {}", productRepository.findAll());
         return productRepository.findAll();
     }
 
@@ -68,7 +68,7 @@ public class ProductServiceImpl implements ProductService {
     public Optional<Product> findById(UUID id) {
         Optional<Product> product =  productRepository.findById(id);
         if (product.isEmpty()) {
-            throw new IllegalStateException("there's no such product");
+            throw new NoSuchProductException("상품이 존재하지 않습니다.");
         }else{
             return product;
         }

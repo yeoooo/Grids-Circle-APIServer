@@ -20,12 +20,9 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
     public List<Product> findByCategory(Category category);
 
     public static final String FIND_BY_NAME_QUERY = "select p from PRODUCT p where p.PRODUCT_NAME = :productName";
-//    @Query(FIND_BY_NAME_QUERY)
+
     public Optional<Product> findByProductName(String productName);
 
-//    public static final String FIND_ID_BY_NAME_QUERY = "select p.productId from Product p where p.productName = :productName";
-//    @Query(FIND_ID_BY_NAME_QUERY)
-//    public Optional<UUID> findIdByName(String productName);
 
 
 }

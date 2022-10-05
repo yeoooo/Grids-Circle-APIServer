@@ -24,10 +24,6 @@ public class OrderController {
     private final ProductService productService;
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-//    @GetMapping("/order")
-//    public String order() {
-//        return "order";
-//    }
 
     @GetMapping({"/management/order/{variableStatus}", "/management/order"})
     public String getOrderList(Model model, @PathVariable(value = "variableStatus", required = false)Optional<OrderStatus> variableStatus) {
@@ -64,7 +60,6 @@ public class OrderController {
                             .build()
             ).collect(Collectors.toList());
         }
-        log.info("OrderStatus requestParam is : {}", variableStatus.isPresent());
         model.addAttribute("orders", orders);
         model.addAttribute("status", statuses);
         return "order_management";
@@ -75,7 +70,7 @@ public class OrderController {
 
     @RequestMapping("/management/order/update")
     public String changeOrderStatus(OrderUpdateForm orderUpdateForm) {
-        log.info("id = {}_Order Status will be changed with => {}", orderUpdateForm.getId(),orderUpdateForm.getUpdateOrderStatus());
+        log.warn("id = {}_Order Status will be changed with => {}", orderUpdateForm.getId(),orderUpdateForm.getUpdateOrderStatus());
         orderService.changeOrderStatus(orderService.findById(orderUpdateForm.getId()).get(), orderUpdateForm.getUpdateOrderStatus());
 
         return "redirect:/management/order";

@@ -29,10 +29,10 @@ public class OrderItem extends BaseTimeEntity{
     private int count;
 
 
-    public static OrderItem createOrderItem(Optional<Product> product, long orderPrice, int count) {
+    public static OrderItem createOrderItem(Optional<Product> product, int count) {
         OrderItem orderItem = new OrderItem();
         orderItem.setProduct(product.get());
-        orderItem.setOrderPrice(orderPrice);
+        orderItem.setOrderPrice(product.get().getPrice());
         orderItem.setCount(count);
         product.get().removeStock(count);
         return orderItem;

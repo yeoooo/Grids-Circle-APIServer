@@ -98,25 +98,15 @@
                             </div>
                             <div class="mb-3">
                                 <label th:for="productName" class="form-label">상품명</label>
-<!--                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName">-->
-<!--                                <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></p>-->
-<!--                                    <p th:text="${key}"></p>-->
-<!--                                </div>-->
                                 <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName">
-<!--                                <input class="form-control mb-1" type="text" th:field="*{productName}" id="inputName" th:if="${errors.get('productName') != null}" th:placeholder="${errors.get('productName')}">-->
-<!--                                <p th:text="${errors.get('productName')+'adasdas'}"></p>-->
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" >가격</label>
-<!--                                <input type="number" class="form-control mb-1" th:field="*{price}" id="inputPrice">-->
                                 <input type="number" class="form-control mb-1" th:field="*{price}" id="inputPrice">
-<!--                                <p th:if="${errors.get('price') != null}" th:text="${errors.get('price')}"/>-->
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">재고</label>
-<!--                                <input type="number" class="form-control" th:field="*{quantity}" id="inputQuantity">-->
                                 <input type="number" class="form-control" th:field="*{quantity}" id="inputQuantity">
-<!--                                <p th:if="${errors.get('quantity') != null}" th:text="${errors.get('quantity')}"/>-->
                             </div>
                         </form>
                         <form id = "productUpdateForm" th:action="@{/management/product/update}" th:object="${productForm}" method="post">
@@ -165,7 +155,7 @@
         /*[/]*/
         /*]]>*/
     }
-    
+
     let updateSubmitBtn = document.getElementById("updateSubmitBtn")
     let productUpdateForm = document.getElementById("productUpdateForm");
     let productForm = document.getElementById("productForm");

@@ -22,7 +22,6 @@ public class ProductRestController {
         List<Product> products = category
                 .map(productService::findByCategory)
                 .orElse(productService.findAll());
-        log.info("API REQUESTED ALL Product LOG => {}", products);
 
         return products;
 

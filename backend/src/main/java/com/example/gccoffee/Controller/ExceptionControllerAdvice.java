@@ -1,43 +1,44 @@
 package com.example.gccoffee.Controller;
 
-import com.example.gccoffee.Exception.ErrorResult;
+import com.example.gccoffee.Exception.DuplicatedProductException;
+import com.example.gccoffee.Exception.NoSuchOrderException;
+import com.example.gccoffee.Exception.NoSuchProductException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.ArrayList;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.HashMap;
-import java.util.List;
-
+import java.util.Map;
 
 @Slf4j
-//@ControllerAdvice
+@ControllerAdvice
 public class ExceptionControllerAdvice {
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler({BindException.class})
-    public String productExHandler(BindException e, Model model) {
-        BindingResult result = e.getBindingResult();
-        HashMap<String,ErrorResult> errorMessages = new HashMap();
-//        HashMap<String,String> errorMessages = new HashMap();
-//        List<String> errorMessages = new ArrayList<>();
-//
-        for (FieldError fieldError : result.getFieldErrors()) {
-            errorMessages.put(fieldError.getField(),new ErrorResult("BAD", fieldError.getDefaultMessage()));
-//            errorMessages.put(fieldError.getField(),"gdgd");
-//            errorMessages.add(fieldError.getField());
-            log.error("productName test => {}", errorMessages.get("productName"));
-            log.error("price test => {}", errorMessages.get("price"));
-            log.error("quantity test => {}", errorMessages.get("quantity"));
-            log.error("keySet test => {}", errorMessages.keySet());
+    Map<String, String> errorMessages = new HashMap<>();
+    Base64.Encoder encoder = Base64.getEncoder();
+
+    @ExceptionHandler({BindException.class})
+    public String productExHandler(BindingResult result) {
+        if (result.hasErrors()) {
+            for (FieldError fieldError : result.getFieldErrors()) {
+                errorMessages.put(fieldError.getField(), fieldError.getDefaultMessage());
+            }
         }
-        log.error("[ProductManagementExceptionHandle] Errors has occurred => {}", errorMessages.toString());
-        model.addAttribute("errors",errorMessages);
-        return "product_management";
+        byte[] encoded = encoder.encode(errorMessages.toString().getBytes(StandardCharsets.UTF_8));
+            log.error("[productExHandler] request To => {}", "redirect:/management/product?errors=" + new String(encoded));
+            return "redirect:/management/product?errors=" + new String(encoded);
     }
+    @ExceptionHandler({DuplicatedProductException.class, NoSuchProductException.class, NoSuchOrderException.class})
+    public String orderAndProductCommonExHandler(RuntimeException e) {
+        errorMessages.put("common", e.getMessage());
+        byte[] encoded = encoder.encode(errorMessages.toString().getBytes(StandardCharsets.UTF_8));
+        log.error("[duplicatedProductExHandler] : {}", e.getStackTrace());
+        return "redirect:/management/product?errors=" + new String(encoded);
+
+    }
+
 }

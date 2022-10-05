@@ -18,10 +18,7 @@ public class TimeTest {
         System.out.println(localDateTime);
         //then
         System.out.println(LocalDate.now().withYear(2022).withMonth(9).withDayOfMonth(7));
-//        System.out.println(System.out.println(LocalDate.now().withYear(2022).withMonth(5).withDayOfMonth(13));
-//        System.out.println(System.out.println(LocalDate.now().withYear(2022).withMonth(5).withDayOfMonth(13));
-//        System.out.println(System.out.println(LocalDate.now().withYear(2022).withMonth(5).withDayOfMonth(13));
-//        System.out.println(System.out.println(LocalDate.now().withYear(2022).withMonth(5).withDayOfMonth(12));
 
     }
+
 }

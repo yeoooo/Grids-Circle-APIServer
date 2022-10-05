@@ -1,5 +1,6 @@
 package com.example.gccoffee.Service;
 
+import com.example.gccoffee.Exception.NoSuchOrderException;
 import com.example.gccoffee.Exception.NoSuchProductException;
 import com.example.gccoffee.Exception.NotEnoughStockException;
 import com.example.gccoffee.Repository.OrderRepository;
@@ -34,7 +35,6 @@ public class OrderServiceImpl implements OrderService{
         for (Object o : (List) json) {
             orderItems.add(OrderItem.createOrderItem(
                     productRepository.findById(UUID.fromString(((HashMap<String, ?>) o).get("productId").toString())),
-                    Long.valueOf(((HashMap<String, Integer>) o).get("price")),
                     (int) ((HashMap<String, ?>) o).get("quantity")
             ));
         }
@@ -56,7 +56,6 @@ public class OrderServiceImpl implements OrderService{
             Optional<Product> targetProduct = productRepository.findById(o.getProduct().getProductId());
             if (targetProduct.isEmpty()){
                 throw new NoSuchProductException("상품이 존재하지 않습니다.");
-
             }
             if (targetOrder.isEmpty()) {//2022-09-8_yeoooo : 작일 14:00 부터 당일 14:00 까지의 주문이 없으면 새 주문 생성
                 targetOrder = Optional.of(Order.createOrder(email, address, postCode, OrderStatus.ACCEPTED, o));
@@ -78,10 +77,10 @@ public class OrderServiceImpl implements OrderService{
     public void cancelOrder(UUID uuid) {
         Optional<Order> foundOne = orderRepository.findById(uuid);
         if (foundOne.isEmpty()) {
-            throw new IllegalStateException("Already deleted Order");
+            throw new NoSuchOrderException("주문이 존재하지 않습니다.");
         }else{
             foundOne.get().cancelOrder();
-            log.info("order deleted : {}", foundOne);
+            log.warn("order deleted : {}", foundOne);
         }
     }
 
