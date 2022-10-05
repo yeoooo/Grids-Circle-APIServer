@@ -104,6 +104,18 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    @Transactional
+    public Order delete(UUID id) {
+        Optional<Order> target = orderRepository.findById(id);
+        if (target.isEmpty()) {
+            throw new NoSuchOrderException("해당 주문이 존재하지 않습니다.");
+        }else{
+            orderRepository.delete(target.get());
+        }
+        return target.get();
+    }
+
+    @Override
     public List<Order> findByEmail(String email) {
         return orderRepository.findByEmail(email);
     }

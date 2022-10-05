@@ -33,10 +33,10 @@ public class ExceptionControllerAdvice {
             return "redirect:/management/product?errors=" + new String(encoded);
     }
     @ExceptionHandler({DuplicatedProductException.class, NoSuchProductException.class, NoSuchOrderException.class})
-    public String orderAndProductCommonExHandler(RuntimeException e) {
+    public String CommonExHandler(RuntimeException e) {
         errorMessages.put("common", e.getMessage());
         byte[] encoded = encoder.encode(errorMessages.toString().getBytes(StandardCharsets.UTF_8));
-        log.error("[duplicatedProductExHandler] : {}", e.getStackTrace());
+        log.error("[CommonExHandler] : {}", e.getStackTrace());
         return "redirect:/management/product?errors=" + new String(encoded);
 
     }

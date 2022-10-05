@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 public class OrderController {
 
     private final OrderService orderService;
-    private final ProductService productService;
     private final Logger log = LoggerFactory.getLogger(getClass());
 
 
@@ -63,16 +62,20 @@ public class OrderController {
         model.addAttribute("orders", orders);
         model.addAttribute("status", statuses);
         return "order_management";
-
-
     }
-
 
     @RequestMapping("/management/order/update")
     public String changeOrderStatus(OrderUpdateForm orderUpdateForm) {
         log.warn("id = {}_Order Status will be changed with => {}", orderUpdateForm.getId(),orderUpdateForm.getUpdateOrderStatus());
         orderService.changeOrderStatus(orderService.findById(orderUpdateForm.getId()).get(), orderUpdateForm.getUpdateOrderStatus());
 
+        return "redirect:/management/order";
+
+    }
+    @RequestMapping("/management/order/delete")
+    public String deleteOrder(@RequestParam("id") UUID id) {
+        log.warn("id = {}_Order will be deleted", id);
+        orderService.delete(id);
         return "redirect:/management/order";
 
     }

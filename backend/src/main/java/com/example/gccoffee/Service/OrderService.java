@@ -27,5 +27,7 @@ public interface OrderService {
 
     public Optional<Order> findById(UUID id);
 
+    public Order delete(UUID uuid);
+
 
 }

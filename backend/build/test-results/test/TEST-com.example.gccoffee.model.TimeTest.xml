@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.gccoffee.model.TimeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-05T10:49:59" hostname="igyeong-wons-MacBook-Pro.local" time="0.011">
+<testsuite name="com.example.gccoffee.model.TimeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-05T13:27:12" hostname="igyeong-wons-MacBook-Pro.local" time="0.011">
   <properties/>
   <testcase name="TimeTest()" classname="com.example.gccoffee.model.TimeTest" time="0.011"/>
   <system-out><![CDATA[2022-10-05T14:00

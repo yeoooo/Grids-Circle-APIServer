@@ -55,7 +55,6 @@
                             </div>
                             <div class="col-1">
                                 <a class="btn btn-small btn-outline-dark" style="font-size: 13px"
-                                                  th:desc="${p.getDescription()}"
                                                   onclick="updateProduct(this)"
                                                   role="button" th:href="@{'#'+'Collapse_'+${i.index}}"
                                                   th:aria-controls="Collapse_+${i.index}"
@@ -72,7 +71,7 @@
                         </div>
                         <div class="row">
                             <div class="collapse col" th:id="Collapse_+${i.index}">
-                                    <textarea th:id="${p.getName()}+summernote"></textarea>
+                                    <textarea th:id="${p.getName()}+summernote" th:text="${p.getDescription}"></textarea>
                             </div>
                             </div>
                     </li>
@@ -184,27 +183,25 @@
         back.hidden = false;
         var note = $('#' + e.parentElement.parentElement.parentElement.getAttribute("id") + 'summernote');
 
-        $('.show').removeClass('show');
+            $('.show').removeClass('show');
 
-        $(note).summernote({
-        placeholder: "contents",
-        tabsize: 2,
-        height: 100,
-        disableResizeEditor: true,
-        toolbar: [
-        ['style', ['bold', 'italic', 'underline']],
-        ['fontsize', ['fontsize']],
-        ['color', ['color']],
-        ]});
-
-        $(note).summernote('reset');
-        $(note).summernote('insertText', e.getAttribute("desc"));
+            note.summernote({
+            placeholder: "상품에 대한 설명을 입력해주세요.",
+            tabsize: 2,
+            height: 100,
+            disableResizeEditor: true,
+            toolbar: [
+            ['style', ['bold', 'italic', 'underline']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ]});
 
 
         $("#updateInputCategory").val(document.getElementById(document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id")+'_category').value).prop("selected", true);
         document.getElementById("updateInputName").setAttribute("value", document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id"));
         document.getElementById("updateInputPrice").setAttribute("value", document.getElementById(document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id")+'_price').innerText.slice(0,-1));
         document.getElementById("updateInputQuantity").setAttribute("value", document.getElementById(document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("id")+'_quantity').innerText);
+
     }
 
     function submitUpdate() {
