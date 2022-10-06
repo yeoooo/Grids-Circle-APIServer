@@ -94,7 +94,7 @@
                                     </ul>
                                 </form>
                                 <button class="btn btn-dark col-12" type="submit" th:form="${i.index}+OrderUpdateForm" style="margin-top: 3px; float:right">상태 저장</button>
-                                <a class="btn btn-danger col-12" type="button" style="margin-top: 3px; float:right" th:href="@{/management/order/delete?(id = ${order.getId()})}">주문 삭제</a>
+                                <a class="btn btn-danger col-12" type="button" onclick="deleteOrder(this)" style="margin-top: 3px; float:right" th:orderId="${order.getId()}" >주문 삭제</a>
 
 
                             </div>
@@ -106,6 +106,13 @@
     </div>
 
     <footer th:replace="fragments/footer::footer"/>
+<script>
+    function deleteOrder(e){
+        if(confirm("주문을 삭제 하시겠습니까?")){
+            location = "/management/order/delete?id=" + e.getAttribute("orderId");
+        }
 
+    }
+</script>
 </body>
 </html>
