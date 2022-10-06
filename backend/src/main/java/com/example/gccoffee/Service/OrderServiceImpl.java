@@ -87,6 +87,9 @@ public class OrderServiceImpl implements OrderService{
     @Override
     @Transactional
     public Order changeOrderStatus(Order order, OrderStatus orderStatus) {
+        if (orderStatus == OrderStatus.CANCELLED) {
+            order.cancelOrder();
+        }
         return orderRepository.save(
                 order.builder()
                         .dto(OrderDTO.builder()
@@ -110,6 +113,7 @@ public class OrderServiceImpl implements OrderService{
         if (target.isEmpty()) {
             throw new NoSuchOrderException("해당 주문이 존재하지 않습니다.");
         }else{
+            target.get().cancelOrder();
             orderRepository.delete(target.get());
         }
         return target.get();

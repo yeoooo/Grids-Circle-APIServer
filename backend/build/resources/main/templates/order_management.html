@@ -107,8 +107,6 @@
 
     <footer th:replace="fragments/footer::footer"/>
 <script>
-
-
     function deleteOrder(e){
         if(confirm("주문을 삭제 하시겠습니까?")){
             location = "/management/order/delete?id=" + e.getAttribute("orderId");
