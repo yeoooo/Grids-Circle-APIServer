@@ -112,7 +112,7 @@ class OrderServiceImplTest {
         //given
         Optional<Product> p = productService.findByName("커피짱2");
         List<OrderItem> o = new ArrayList<>();
-        o.add(OrderItem.createOrderItem(p, 5));
+        o.add(OrderItem.createOrderItem(p, 1));
         Order order = orderService.order("asd@naver.com", "here", "zip123", o);
         //when
         order.cancelOrder();

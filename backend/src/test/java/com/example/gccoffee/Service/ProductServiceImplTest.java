@@ -1,5 +1,6 @@
 package com.example.gccoffee.Service;
 
+import com.example.gccoffee.Exception.NoSuchProductException;
 import com.example.gccoffee.Repository.ProductRepository;
 import com.example.gccoffee.model.Category;
 import com.example.gccoffee.model.OrderStatus;
@@ -16,6 +17,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Optional;
+
 @SpringBootTest
 @Slf4j
 class ProductServiceImplTest {
@@ -45,25 +48,15 @@ class ProductServiceImplTest {
     }
 
     @Test
+    @Transactional
+    @Rollback
     public void productDeleteTest() throws Exception {
-        //given
-        Product p = Product
-                .builder()
-                .dto(ProductDTO.builder()
-                        .name("CoffeeJoa")
-                        .category(Category.BEAN)
-                        .price(100)
-                        .quantity(100)
-                        .build())
-                .build();
-        productService.save(p);
+        Product p = productService.findByName("커피짱2").get();
+        System.out.println("p = " + p);
         //when
         productService.delete(p.getProductId());
         //then
-        Assertions.assertThrows(IllegalStateException.class, () -> {
-            productService.findById(p.getProductId());
-        });
-
+        org.assertj.core.api.Assertions.assertThat(productService.findByName("커피짱2").isEmpty());
     }
 
     @Test
