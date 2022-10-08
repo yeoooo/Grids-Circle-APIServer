@@ -47,7 +47,7 @@ export function Order(c) {
                     flag = true;
                     return {...v, count: v.count -1}
                 }else{//선택된 상품의 개수가 0 이하인 경우
-                    setItems(items.filter((p) =>  p.productId !== productId ));
+                    setItems(items.data.filter((p) =>  p.productId !== productId ));
                     return;
                 }
             }else{
@@ -62,11 +62,11 @@ export function Order(c) {
     useEffect(() => {
         if(targetCategory.length > 0){
         axios.get('http://localhost:8080/api/v1/products?category='+targetCategory)
-                .then(v => setProducts(v.data));
+                .then(v => setProducts(v.data.data));
         }
         return () =>{
             axios.get('http://localhost:8080/api/v1/products')
-                .then(v => setProducts(v.data));
+                .then(v => setProducts(v.data.data));
         };
 
 

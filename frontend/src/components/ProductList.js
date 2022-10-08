@@ -10,8 +10,10 @@ export function ProductList({products = [], onAddClick, onRemoveClick, setTarget
     const [categories, setCategory] = useState([]);
 
     useEffect(() => {
+
         axios.get('http://localhost:8080/api/v1/category')
-            .then(v => setCategory(v.data));
+            .then(v => setCategory(v.data.data)
+                );
     }, []);
 
   return (
@@ -34,7 +36,9 @@ export function ProductList({products = [], onAddClick, onRemoveClick, setTarget
           <li key={v.productId} className="list-group-item d-flex mt-3">
             <Product {...v} onAddClick={onAddClick} onRemoveClick={onRemoveClick}/>
           </li>
-        )}
+        )
+
+        }
       </ul>
     </React.Fragment>
   )

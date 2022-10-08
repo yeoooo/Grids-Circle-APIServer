@@ -8,14 +8,14 @@ export function ProductInfo(productInfo=[]) {
     useEffect(() => {
         return () => {
             axios.get('http://localhost:8080/api/v1/products')
-                .then(v => setProducts(v.data));
+                .then(v => setProducts(v.data.data));
         };
     },[]);
 
     return (
         <>
             {products.map((v, index) => {
-                if (index % 2 == 0) {
+                if (index % 2 === 0) {
                     return <>(
                         <section className="page-section">
                             <div className="container">

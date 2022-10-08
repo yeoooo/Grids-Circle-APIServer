@@ -1,5 +1,6 @@
 package com.example.gccoffee.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.CreatedDate;
@@ -32,6 +33,8 @@ public class Order extends BaseTimeEntity{
     @Setter
     private String postcode;
 
+    @JsonIgnore
+    //2022-10-8_yeoooo : Json 순환구조 방지
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 

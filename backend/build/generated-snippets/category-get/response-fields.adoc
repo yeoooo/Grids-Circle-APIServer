@@ -1,0 +1,16 @@
+|===
+|Path|Type|Description
+
+|`+statusCode+`
+|`+Number+`
+|상태코드
+
+|`+serverDatetime+`
+|`+String+`
+|응답시간
+
+|`+data+`
+|`+Array+`
+|데이터
+
+|===

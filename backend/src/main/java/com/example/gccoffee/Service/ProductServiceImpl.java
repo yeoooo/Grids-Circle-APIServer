@@ -34,11 +34,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public Product save(Product product) {
+    public UUID save(Product product) {
         log.info("Product saved with \n ID => {} \n Name => {} \n Category => {} \n price => {} \n quantity => {}",
                 product.getProductId(), product.getProductName(), product.getCategory(), product.getPrice(), product.getQuantity());
         productRepository.save(product);
-        return product;
+        return product.getProductId();
     }
 
     @Override

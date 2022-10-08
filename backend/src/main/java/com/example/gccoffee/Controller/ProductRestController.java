@@ -1,5 +1,6 @@
 package com.example.gccoffee.Controller;
 
+import com.example.gccoffee.ApiResponse;
 import com.example.gccoffee.Service.OrderService;
 import com.example.gccoffee.Service.ProductService;
 import com.example.gccoffee.model.*;
@@ -18,19 +19,20 @@ public class ProductRestController {
     private final ProductService productService;
 
     @GetMapping("/api/v1/products")
-    public List<Product> productList(@RequestParam Optional<Category> category) {
+    public ApiResponse<List<Product>> productList(@RequestParam Optional<Category> category) {
         List<Product> products = category
                 .map(productService::findByCategory)
                 .orElse(productService.findAll());
+        return ApiResponse.ok(products);
 
-        return products;
+
 
     }
 
     @GetMapping("/api/v1/category")
-    public List<Category> categories() {
+    public ApiResponse<List<Category>> categories() {
         List<Category> categories = List.of(Category.values());
-        return categories;
+        return ApiResponse.ok(categories);
 
     }
 

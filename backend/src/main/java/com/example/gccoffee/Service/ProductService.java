@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ProductService {
-    public Product save(Product product);
+    public UUID save(Product product);
 
     public Product cancel(Product product);
 

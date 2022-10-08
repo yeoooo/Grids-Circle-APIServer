@@ -2,14 +2,22 @@ package com.example.gccoffee.Service;
 
 import com.example.gccoffee.Exception.NotEnoughStockException;
 import com.example.gccoffee.model.*;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import com.example.gccoffee.model.Order;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.aspectj.lang.annotation.After;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
+
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.http.MediaType;
+import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.annotation.Rollback;
+
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Array;
@@ -20,7 +28,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @SpringBootTest
+
 class OrderServiceImplTest {
 
     @Autowired
@@ -48,11 +63,21 @@ class OrderServiceImplTest {
 
 
         //when
+
         o.add(OrderItem.createOrderItem(productService.findByName("커피짱2"), 1));
-        orderService.order("asd@naver.com", "here", "zip123", o);
+        OrderDTO newOrderDTO = OrderDTO.builder()
+                .email("email@naver.com")
+                .address("address")
+                .orderStatus(OrderStatus.ACCEPTED)
+                .postcode("postcode")
+                .orderItems(o)
+                .build();
+        orderService.order(newOrderDTO);
 
         //then
         org.assertj.core.api.Assertions.assertThat(!orderService.findAll().isEmpty());
+
+
 
     }
     @Test
@@ -62,11 +87,19 @@ class OrderServiceImplTest {
         //given
         Optional<Product> p = productService.findByName("커피짱2");
         List<OrderItem> o = new ArrayList<>();
+        OrderDTO newOrderDTO = OrderDTO.builder()
+                .email("email@naver.com")
+                .address("address")
+                .orderStatus(OrderStatus.ACCEPTED)
+                .postcode("postcode")
+                .orderItems(o)
+                .build();
+
         //when
         //then
      assertThrows(Exception.class, () -> {
-        o.add(OrderItem.createOrderItem(p, 10));
-         orderService.order("asd@naver.com", "here", "zip123", o);
+         o.add(OrderItem.createOrderItem(p, 10));
+         orderService.order(newOrderDTO);
      }, "재고보다 많은 주문은 예외를 일으켜야 한다.");
     }
 
@@ -77,11 +110,18 @@ class OrderServiceImplTest {
         //given
         Optional<Product> p = productService.findByName("커피짱2");
         List<OrderItem> o = new ArrayList<>();
+        OrderDTO newOrderDTO = OrderDTO.builder()
+                .email("email@naver.com")
+                .address("address")
+                .orderStatus(OrderStatus.ACCEPTED)
+                .postcode("postcode")
+                .orderItems(o)
+                .build();
         //when
         o.add(OrderItem.createOrderItem(p, 1));
-        orderService.order("asd@naver.com", "here", "zip123", o);
-        orderService.order("asd@naver.com", "here", "zip123", o);
-        orderService.order("asd@naver.com", "here", "zip123", o);
+        orderService.order(newOrderDTO);
+        orderService.order(newOrderDTO);
+        orderService.order(newOrderDTO);
         //then
         org.assertj.core.api.Assertions.assertThat(orderService.findAll().size()).isEqualTo(1);
         //2022-10-5_yeoooo : 여러번 일어난 주문이 작일 2시와 당일 2시에 일어났다면 하나의 주문서로 처리해야 한다.
@@ -98,12 +138,19 @@ class OrderServiceImplTest {
         List<OrderItem> o = new ArrayList<>();
         //when
         o.add(OrderItem.createOrderItem(p, 5));
+        OrderDTO newOrderDTO = OrderDTO.builder()
+                .email("email@naver.com")
+                .address("address")
+                .orderStatus(OrderStatus.ACCEPTED)
+                .postcode("postcode")
+                .orderItems(o)
+                .build();
 
-        Order order = orderService.order("asd@naver.com", "here", "zip123", o);
-        orderService.order("asd@naver.com", "here", "zip123", o);
+        UUID id = orderService.order(newOrderDTO);
+        orderService.order(newOrderDTO);
 
 //        then
-        assertEquals( 1000,orderService.findByEmail("asd@naver.com").get(0).getTotalPrice()
+        assertEquals( 1000,orderService.findById(id).get().getTotalPrice()
                 , "100원짜리 5개의 상품을 주문한 주문서 2개의 총 가격은 1000원이다");
     }
     @Test
@@ -114,10 +161,18 @@ class OrderServiceImplTest {
         Optional<Product> p = productService.findByName("커피짱2");
         List<OrderItem> o = new ArrayList<>();
         o.add(OrderItem.createOrderItem(p, 1));
-        Order order = orderService.order("asd@naver.com", "here", "zip123", o);
+        OrderDTO newOrderDTO = OrderDTO.builder()
+                .email("email@naver.com")
+                .address("address")
+                .orderStatus(OrderStatus.ACCEPTED)
+                .postcode("postcode")
+                .orderItems(o)
+                .build();
+        UUID id = orderService.order(newOrderDTO);
+        Optional<Order> targetOrder = orderService.findById(id);
         //when
-        order.cancelOrder();
+        targetOrder.get().cancelOrder();
         //then
-        assertEquals(orderService.findByEmail("asd@naver.com").get(0).getOrderStatus(), OrderStatus.CANCELLED, "주문 상태는 취소로 바뀌어 있어야한다.");
+        assertEquals(targetOrder.get().getOrderStatus(), OrderStatus.CANCELLED, "주문 상태는 취소로 바뀌어 있어야한다.");
     }
 }
