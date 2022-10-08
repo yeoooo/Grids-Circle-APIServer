@@ -146,8 +146,6 @@ class ProductServiceImplTest {
         }
         org.assertj.core.api.Assertions.assertThat(foundBean.size() != 0);
         org.assertj.core.api.Assertions.assertThat(foundCup.size() != 0);
-
-
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.gccoffee.Service;
 
 import com.example.gccoffee.model.Order;
+import com.example.gccoffee.model.OrderDTO;
 import com.example.gccoffee.model.OrderItem;
 import com.example.gccoffee.model.OrderStatus;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import java.util.UUID;
 
 @Service
 public interface OrderService {
-    public Order order(String email, String address, String postCode, List<OrderItem> orderItems) ;
+    public UUID order(OrderDTO orderDTO) ;
 
     public void cancelOrder(UUID o);
 

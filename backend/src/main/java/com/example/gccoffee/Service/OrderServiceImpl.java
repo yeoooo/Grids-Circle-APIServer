@@ -34,7 +34,9 @@ public class OrderServiceImpl implements OrderService{
         List<OrderItem> orderItems = new ArrayList<>();
         for (Object o : (List) json) {
             orderItems.add(OrderItem.createOrderItem(
-                    productRepository.findById(UUID.fromString(((HashMap<String, ?>) o).get("productId").toString())),
+                    productRepository.findById(UUID.fromString((String) ((HashMap<String, ?>) o).get("productId"))),
+                    //2022-10-8_yeoooo : orderItem이 save되지 않았기 때문에 id가 generated 되지 않음 -> null
+                    //따라서 orderTest()에서 호출했을 경우 해당 구문을 실행할 수 없음
                     (int) ((HashMap<String, ?>) o).get("quantity")
             ));
         }
@@ -43,22 +45,23 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     @Transactional
-    public Order order(String email, String address, String postCode , List<OrderItem> orderItems) {
+//    public UUID order(String email, String address, String postCode , List<OrderItem> orderItems) {
+    public UUID order(OrderDTO orderDTO) {
         LocalDateTime now = LocalDateTime.now();
         Optional<Order> targetOrder;
         if(now.isAfter(now.withHour(14).withMinute(0))){
             //2022-09-19_yeoooo : 들어온 주문이 14시 이후인 경우
-            targetOrder = orderRepository.findByEmailAndDayOrderAfter(email, now);
+            targetOrder = orderRepository.findByEmailAndDayOrderAfter(orderDTO.getEmail(), now);
         }else{
-            targetOrder = orderRepository.findByEmailAndDayOrder(email, now);
+            targetOrder = orderRepository.findByEmailAndDayOrder(orderDTO.getEmail(), now);
         }
-        for (OrderItem o : orderItems) {
+        for (OrderItem o : orderDTO.getOrderItems()) {
             Optional<Product> targetProduct = productRepository.findById(o.getProduct().getProductId());
             if (targetProduct.isEmpty()){
                 throw new NoSuchProductException("상품이 존재하지 않습니다.");
             }
             if (targetOrder.isEmpty()) {//2022-09-8_yeoooo : 작일 14:00 부터 당일 14:00 까지의 주문이 없으면 새 주문 생성
-                targetOrder = Optional.of(Order.createOrder(email, address, postCode, OrderStatus.ACCEPTED, o));
+                targetOrder = Optional.of(Order.createOrder(orderDTO.getEmail(), orderDTO.getAddress(), orderDTO.getPostcode(), OrderStatus.ACCEPTED, o));
                 log.info("New Order Created : {}", targetOrder);
             }
             else {//2022-09-8_yeoooo : 이전 주문이 있으면 해당 주문에 아이템 밀어넣기
@@ -67,7 +70,7 @@ public class OrderServiceImpl implements OrderService{
             }
             }
 
-        return orderRepository.save(targetOrder.get());
+        return orderRepository.save(targetOrder.get()).getId();
 
     }
 

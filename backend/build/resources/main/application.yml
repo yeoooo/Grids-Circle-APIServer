@@ -30,5 +30,5 @@ spring:
     init:
       platform: mysql
       encoding: UTF-8
-      mode: always
+      mode: never
 
