@@ -22,17 +22,13 @@ public class OrderRestController {
     @PostMapping("/api/v1/orders")
         public ApiResponse<OrderDTO> orderRequest(@RequestBody HashMap<String, Object> map) {
             OrderDTO newOrderDTO = OrderDTO.builder()
-//                .email(orderDTO.getEmail())
-//                .address(orderDTO.getAddress())
-//                .orderStatus(OrderStatus.ACCEPTED)
-//                .postcode(orderDTO.getPostcode())
-//                .orderItems(orderDTO.getOrderItems())
                 .email((String) map.get("email"))
                 .address((String) map.get("address"))
                 .orderStatus(OrderStatus.ACCEPTED)
                 .postcode((String) map.get("postcode"))
                 .orderItems(orderService.jsonToOrderItems(map.get("orderItems")))
                 .build();
+
 
         log.info("Order Requested : {}\n" +
                         "Got Param(Address) => {}\n" +
@@ -46,8 +42,6 @@ public class OrderRestController {
                 newOrderDTO.getEmail(),
                 newOrderDTO.getOrderItems());
 
-//        System.out.println("result = >" + orderDTO);
-//        orderService.order(newOrderDTO.getEmail(), newOrderDTO.getAddress(), newOrderDTO.getPostcode(), newOrderDTO.getOrderItems());
         orderService.order(newOrderDTO);
         return ApiResponse.ok(newOrderDTO);
     }

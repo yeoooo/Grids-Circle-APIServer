@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.constraints.Null;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -31,15 +32,33 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<OrderItem> jsonToOrderItems(Object json) {
+        System.out.println("json = " + json);
+        System.out.println("json type = " + json.getClass());
         List<OrderItem> orderItems = new ArrayList<>();
-        for (Object o : (List) json) {
-            orderItems.add(OrderItem.createOrderItem(
-                    productRepository.findById(UUID.fromString((String) ((HashMap<String, ?>) o).get("productId"))),
-                    //2022-10-8_yeoooo : orderItem이 save되지 않았기 때문에 id가 generated 되지 않음 -> null
-                    //따라서 orderTest()에서 호출했을 경우 해당 구문을 실행할 수 없음
-                    (int) ((HashMap<String, ?>) o).get("quantity")
-            ));
+        try {
+            for (Object o : (List) json) {
+                orderItems.add(OrderItem.createOrderItem(
+                        productRepository.findById(UUID.fromString(((HashMap<String, String>) o).get("productId"))),
+                        //2022-10-8_yeoooo : orderItem이 save되지 않았기 때문에 id가 generated 되지 않음 -> null
+                        //따라서 orderTest()에서 호출했을 경우 해당 구문을 실행할 수 없음
+                        ((HashMap<String, Integer>) o).get("quantity")
+                ));
+            }
+        } catch (NullPointerException e) {
+            for (Object o : (List) json) {
+                Map<String, ?> map = (Map<String, String>) ((HashMap<String, ?>) o).get("product");
+                orderItems.add(OrderItem.createOrderItem(
+                        productRepository.findById(UUID.fromString(map.get("productId").toString())
+                        ), (int) map.get("quantity")));
+            }
         }
+
+/**
+ * on actual json => [OrderItem(id=null, product=Product(productId=7148d468-4714-11ed-9d89-2ba0a24d9a1f, productName=커피짱2, category=BEAN, description=이 콩은 두 번째로 맛있습니다., price=100, quantity=5), order=null, orderPrice=100, count=1)]
+ * class java.util.ArrayList
+ * on test json => [{createdAt=null, updatedAt=null, id=null, product={createdAt=2022-10-08T23:22:43.105233, updatedAt=2022-10-08T23:22:43.105233, productId=feb8db25-4491-440f-985d-fba59732cb2f, productName=테스트콩, category=BEAN, description=테스트용, price=1000, quantity=14}, order=null, orderPrice=1000, count=1, totalPrice=1000}]
+ * class java.util.ArrayList
+ */
         return orderItems;
     }
 
