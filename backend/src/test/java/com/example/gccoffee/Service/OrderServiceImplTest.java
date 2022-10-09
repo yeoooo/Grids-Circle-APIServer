@@ -1,38 +1,20 @@
 package com.example.gccoffee.Service;
 
-import com.example.gccoffee.Exception.NotEnoughStockException;
 import com.example.gccoffee.model.*;
 import com.example.gccoffee.model.Order;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.aspectj.lang.annotation.After;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.http.MediaType;
-import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.annotation.Rollback;
 
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.Array;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 
@@ -43,28 +25,42 @@ class OrderServiceImplTest {
     @Autowired
     ProductService productService;
 
+    public static UUID productId;
+
+    @Transactional
+    @BeforeEach
+    public void setUp() {
+        Product p = Product
+                .builder()
+                .dto(ProductDTO.builder()
+//                        .id(productId)
+                        //2022-10-8_yeoooo : generated 될 field가 입력되면 save되지 않는다. 꼭 참고
+                        .name("테스트콩")
+                        .price(1000)
+                        .category(Category.BEAN)
+                        .quantity(15)
+                        .description("테스트용")
+                        .build())
+                .build();
+
+        productId = productService.save(p);
+
+        p = productService.findById(productId).get();
+
+
+    }
+
     @Test
     @DisplayName("주문 테스트")
     @Transactional
     public void orderTest() throws Exception {
         //given
-        UUID id = UUID.randomUUID();
-        Product p = Product
-                .builder()
-                .dto(ProductDTO.builder()
-                        .id(id)
-                        .name("CoffeeJoa")
-                        .category(Category.BEAN)
-                        .price(100)
-                        .quantity(100)
-                        .build())
-                .build();
         List<OrderItem> o = new ArrayList<>();
+        o.add(OrderItem.createOrderItem(productService.findByName("테스트콩1"), 1));
 
 
         //when
 
-        o.add(OrderItem.createOrderItem(productService.findByName("커피짱2"), 1));
         OrderDTO newOrderDTO = OrderDTO.builder()
                 .email("email@naver.com")
                 .address("address")
@@ -85,7 +81,7 @@ class OrderServiceImplTest {
     @Transactional
     public void stockTest() throws Exception {
         //given
-        Optional<Product> p = productService.findByName("커피짱2");
+        Optional<Product> p = productService.findByName("테스트콩1");
         List<OrderItem> o = new ArrayList<>();
         OrderDTO newOrderDTO = OrderDTO.builder()
                 .email("email@naver.com")
@@ -108,7 +104,7 @@ class OrderServiceImplTest {
     @Transactional
     public void batchProcessing() throws Exception {
         //given
-        Optional<Product> p = productService.findByName("커피짱2");
+        Optional<Product> p = productService.findByName("테스트콩1");
         List<OrderItem> o = new ArrayList<>();
         OrderDTO newOrderDTO = OrderDTO.builder()
                 .email("email@naver.com")
@@ -133,7 +129,7 @@ class OrderServiceImplTest {
     public void totalPriceTest() throws Exception {
         //given
 
-        Optional<Product> p = productService.findByName("커피짱2");
+        Optional<Product> p = productService.findByName("테스트콩1");
 
         List<OrderItem> o = new ArrayList<>();
         //when
@@ -158,7 +154,7 @@ class OrderServiceImplTest {
     @Transactional
     public void orderCancelTest() throws Exception {
         //given
-        Optional<Product> p = productService.findByName("커피짱2");
+        Optional<Product> p = productService.findByName("테스트콩1");
         List<OrderItem> o = new ArrayList<>();
         o.add(OrderItem.createOrderItem(p, 1));
         OrderDTO newOrderDTO = OrderDTO.builder()

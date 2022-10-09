@@ -36,7 +36,7 @@ public class ExceptionControllerAdvice {
     public String CommonExHandler(RuntimeException e) {
         errorMessages.put("common", e.getMessage());
         byte[] encoded = encoder.encode(errorMessages.toString().getBytes(StandardCharsets.UTF_8));
-        log.error("[CommonExHandler] : {}", e.getStackTrace());
+        log.error("[CommonExHandler] : {}", e.getMessage());
         return "redirect:/management/product?errors=" + new String(encoded);
 
     }

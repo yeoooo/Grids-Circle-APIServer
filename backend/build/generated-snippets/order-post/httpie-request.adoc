@@ -1,5 +1,33 @@
 [source,bash]
 ----
-$ echo '{"id":null,"email":"email@naver.com","address":"address","postcode":"postcode","orderItems":[{"createdAt":null,"updatedAt":null,"id":null,"product":{"createdAt":"2022-10-09T00:29:24.838321","updatedAt":"2022-10-09T00:29:24.838321","productId":"f4361d3e-1032-4b11-a8b3-10140b4a15a5","productName":"테스트콩","category":"BEAN","description":"테스트용","price":1000,"quantity":14},"order":null,"orderPrice":1000,"count":1,"totalPrice":1000}],"orderStatus":"ACCEPTED","price":0,"createdAt":null,"updatedAt":null}' | http POST 'http://localhost:8080/api/v1/orders' \
+$ echo '{
+  "id" : null,
+  "email" : "email@naver.com",
+  "address" : "address",
+  "postcode" : "postcode",
+  "orderItems" : [ {
+    "createdAt" : null,
+    "updatedAt" : null,
+    "id" : null,
+    "product" : {
+      "createdAt" : "2022-10-09T18:45:55.172617",
+      "updatedAt" : "2022-10-09T18:45:55.172617",
+      "productId" : "f63fe42a-2b5d-400b-9ac3-ca0011d5c24d",
+      "productName" : "테스트콩",
+      "category" : "BEAN",
+      "description" : "테스트용",
+      "price" : 1000,
+      "quantity" : 14
+    },
+    "order" : null,
+    "orderPrice" : 1000,
+    "count" : 1,
+    "totalPrice" : 1000
+  } ],
+  "orderStatus" : "ACCEPTED",
+  "price" : 0,
+  "createdAt" : null,
+  "updatedAt" : null
+}' | http POST 'http://localhost:8080/api/v1/orders' \
     'Content-Type:application/json;charset=UTF-8'
 ----

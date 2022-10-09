@@ -23,7 +23,7 @@ export function Order(c) {
         if (found) {
             updatedItems = items.map(v => {
                 if (v.productId === productId) {
-                    if (v.quantity-1 < v.count) {
+                    if (v.quantity < v.count) {
                         alert("선택된 양이 재고보다 많습니다.")
                         return v;
                     } else {
@@ -34,7 +34,12 @@ export function Order(c) {
                 }
             });
         }else{
-            updatedItems = [...items, {...product, count: 1}];
+            if(product.name >= 1){
+                updatedItems = [...items, {...product, count: 1}];
+            }else{
+                alert("재고가 소진되었습니다.");
+                return product;
+            }
         }
         setItems(updatedItems);
     };
@@ -47,7 +52,7 @@ export function Order(c) {
                     flag = true;
                     return {...v, count: v.count -1}
                 }else{//선택된 상품의 개수가 0 이하인 경우
-                    setItems(items.data.filter((p) =>  p.productId !== productId ));
+                    setItems(items.filter((p) =>  p.productId !== productId ));
                     return;
                 }
             }else{
@@ -93,6 +98,7 @@ export function Order(c) {
                         alert("서버 장애");
                     }else{
                         alert(e.response.data.message);
+                        window.location.reload();
                     }
                     console.error(e);
                 })

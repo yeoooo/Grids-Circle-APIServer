@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - OrderServiceImplTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>OrderServiceImplTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.gccoffee.Service.html">com.example.gccoffee.Service</a> &gt; OrderServiceImplTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">5</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.116s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">주문 일괄 처리 테스트</td>
+<td class="success">batchProcessing()</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">주문 취소 테스트</td>
+<td class="success">orderCancelTest()</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">주문 테스트</td>
+<td class="success">orderTest()</td>
+<td class="success">0.037s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">재고 테스트</td>
+<td class="success">stockTest()</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">가격 테스트</td>
+<td class="success">totalPriceTest()</td>
+<td class="success">0.049s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2022-10-09 18:45:55.392  INFO 40512 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.gccoffee.Service.OrderServiceImplTest], using SpringBootContextLoader
+2022-10-09 18:45:55.393  INFO 40512 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.example.gccoffee.Service.OrderServiceImplTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2022-10-09 18:45:55.393  INFO 40512 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.gccoffee.Service.OrderServiceImplTest]: OrderServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2022-10-09 18:45:55.395  INFO 40512 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.gccoffee.GcCoffeeApplication for test class com.example.gccoffee.Service.OrderServiceImplTest
+2022-10-09 18:45:55.395  INFO 40512 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2022-10-09 18:45:55.395  INFO 40512 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@b549c4a, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@72412c3d, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@457f43a2, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4016d5fe, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6f8fa77a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@14d44e72, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2b097d19, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@5d46f4a3, org.springframework.test.context.event.EventPublishingTestExecutionListener@4fe03c06, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@79f14c56, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@19f007c4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@73790bb5, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3d3709d0, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4ed761dc, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@578081e5]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.3)
+
+2022-10-09 18:45:55.404  INFO 40512 --- [    Test worker] c.e.g.Service.OrderServiceImplTest       : Starting OrderServiceImplTest using Java 15.0.5 on igyeong-wons-MacBook-Pro.local with PID 40512 (started by kyeong in /Users/kyeong/dev/java/Grids-Circles-Clone-APIServer/backend)
+2022-10-09 18:45:55.404  INFO 40512 --- [    Test worker] c.e.g.Service.OrderServiceImplTest       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-10-09 18:45:55.470  INFO 40512 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-09 18:45:55.475  INFO 40512 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 2 JPA repository interfaces.
+2022-10-09 18:45:55.539  INFO 40512 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-09 18:45:55.541  INFO 40512 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-10-09 18:45:55.560  INFO 40512 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-10-09 18:45:55.560  INFO 40512 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+Hibernate: alter table order_item drop foreign key FKt4dc2r9nbvbujrljv3e23iibt
+Hibernate: alter table order_item drop foreign key FK551losx9j75ss5d6bfsqvijna
+Hibernate: drop table if exists order_item
+Hibernate: drop table if exists orders
+Hibernate: drop table if exists product
+Hibernate: create table order_item (order_item_id BINARY(16) not null, created_at datetime(6), updated_at datetime(6), count integer not null, order_price bigint not null, order_id BINARY(16), product_id BINARY(16), primary key (order_item_id)) engine=InnoDB
+Hibernate: create table orders (id BINARY(16) not null, created_at datetime(6), updated_at datetime(6), address varchar(255), email varchar(255), order_status integer, postcode varchar(255), primary key (id)) engine=InnoDB
+Hibernate: create table product (product_id BINARY(16) not null, created_at datetime(6), updated_at datetime(6), category integer, description BLOB, price bigint not null, product_name varchar(255), quantity integer not null, primary key (product_id)) engine=InnoDB
+Hibernate: alter table order_item add constraint FKt4dc2r9nbvbujrljv3e23iibt foreign key (order_id) references orders (id)
+Hibernate: alter table order_item add constraint FK551losx9j75ss5d6bfsqvijna foreign key (product_id) references product (product_id)
+2022-10-09 18:45:55.671  INFO 40512 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-09 18:45:55.671  INFO 40512 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-09 18:45:55.748  INFO 40512 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3fcc58f8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@51f714d1, org.springframework.security.web.context.SecurityContextPersistenceFilter@65669def, org.springframework.security.web.header.HeaderWriterFilter@7002dacc, org.springframework.security.web.authentication.logout.LogoutFilter@7e168d90, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7bb3cbb4, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@2889d997, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@77e8492f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@15d25244, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@73602e88, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1263d20d, org.springframework.security.web.session.SessionManagementFilter@36b1b28, org.springframework.security.web.access.ExceptionTranslationFilter@34788780, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@424c8ebe]
+2022-10-09 18:45:55.782  WARN 40512 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-09 18:45:55.813  INFO 40512 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-10-09 18:45:55.885  INFO 40512 --- [    Test worker] c.e.g.Service.OrderServiceImplTest       : Started OrderServiceImplTest in 0.488 seconds (JVM running for 3.872)
+2022-10-09 18:45:55.887  INFO 40512 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@38de4f1d testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@5973d3ec, testMethod = totalPriceTest@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7b59f3aa testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f79a760, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7a527389, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@69637b10, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6c8bca63, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40258c2f, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@6bd21eb7]; rollback [false]
+2022-10-09 18:45:55.888  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.ProductServiceImpl  : Product saved with 
+ ID =&gt; null 
+ Name =&gt; 테스트콩 
+ Category =&gt; BEAN 
+ price =&gt; 1000 
+ quantity =&gt; 15
+Hibernate: insert into product (created_at, updated_at, category, description, price, product_name, quantity, product_id) values (?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select product0_.product_id as product_1_2_, product0_.created_at as created_2_2_, product0_.updated_at as updated_3_2_, product0_.category as category4_2_, product0_.description as descript5_2_, product0_.price as price6_2_, product0_.product_name as product_7_2_, product0_.quantity as quantity8_2_ from product product0_ where product0_.product_name=?
+Hibernate: update product set updated_at=?, category=?, description=?, price=?, product_name=?, quantity=? where product_id=?
+Hibernate: select * from Orders  WHERE email = ? AND created_at &gt; DATE_FORMAT(?,'%Y-%m-%d 14:00:00')
+2022-10-09 18:45:55.901  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.OrderServiceImpl    : New Order Created : Optional[com.example.gccoffee.model.Order@4c255e8]
+Hibernate: insert into orders (created_at, updated_at, address, email, order_status, postcode, id) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into order_item (created_at, updated_at, count, order_id, order_price, product_id, order_item_id) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: select * from Orders  WHERE email = ? AND created_at &gt; DATE_FORMAT(?,'%Y-%m-%d 14:00:00')
+2022-10-09 18:45:55.927  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.OrderServiceImpl    : Order Already Exists : [OrderItem(id=51b89b74-deaf-4350-8c2b-80fd902989cc, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=1), order=com.example.gccoffee.model.Order@4c255e8, orderPrice=100, count=5), OrderItem(id=51b89b74-deaf-4350-8c2b-80fd902989cc, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=1), order=com.example.gccoffee.model.Order@4c255e8, orderPrice=100, count=5)]
+2022-10-09 18:45:55.935  INFO 40512 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Committed transaction for test: [DefaultTestContext@38de4f1d testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@5973d3ec, testMethod = totalPriceTest@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7b59f3aa testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f79a760, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7a527389, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@69637b10, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6c8bca63, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40258c2f, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2022-10-09 18:45:55.936  INFO 40512 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@38de4f1d testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@bf3aa52, testMethod = orderTest@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7b59f3aa testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f79a760, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7a527389, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@69637b10, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6c8bca63, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40258c2f, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@6bd21eb7]; rollback [true]
+2022-10-09 18:45:55.937  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.ProductServiceImpl  : Product saved with 
+ ID =&gt; null 
+ Name =&gt; 테스트콩 
+ Category =&gt; BEAN 
+ price =&gt; 1000 
+ quantity =&gt; 15
+Hibernate: insert into product (created_at, updated_at, category, description, price, product_name, quantity, product_id) values (?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select product0_.product_id as product_1_2_, product0_.created_at as created_2_2_, product0_.updated_at as updated_3_2_, product0_.category as category4_2_, product0_.description as descript5_2_, product0_.price as price6_2_, product0_.product_name as product_7_2_, product0_.quantity as quantity8_2_ from product product0_ where product0_.product_name=?
+Hibernate: update product set updated_at=?, category=?, description=?, price=?, product_name=?, quantity=? where product_id=?
+Hibernate: select * from Orders  WHERE email = ? AND created_at &gt; DATE_FORMAT(?,'%Y-%m-%d 14:00:00')
+Hibernate: select orderitems0_.order_id as order_id6_0_0_, orderitems0_.order_item_id as order_it1_0_0_, orderitems0_.order_item_id as order_it1_0_1_, orderitems0_.created_at as created_2_0_1_, orderitems0_.updated_at as updated_3_0_1_, orderitems0_.count as count4_0_1_, orderitems0_.order_id as order_id6_0_1_, orderitems0_.order_price as order_pr5_0_1_, orderitems0_.product_id as product_7_0_1_ from order_item orderitems0_ where orderitems0_.order_id=?
+2022-10-09 18:45:55.942  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.OrderServiceImpl    : Order Already Exists : [OrderItem(id=51b89b74-deaf-4350-8c2b-80fd902989cc, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@618c387d, orderPrice=100, count=5), OrderItem(id=null, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@618c387d, orderPrice=100, count=1)]
+Hibernate: select order0_.id as id1_1_, order0_.created_at as created_2_1_, order0_.updated_at as updated_3_1_, order0_.address as address4_1_, order0_.email as email5_1_, order0_.order_status as order_st6_1_, order0_.postcode as postcode7_1_ from orders order0_
+2022-10-09 18:45:55.972  INFO 40512 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@38de4f1d testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@bf3aa52, testMethod = orderTest@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7b59f3aa testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f79a760, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7a527389, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@69637b10, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6c8bca63, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40258c2f, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2022-10-09 18:45:55.973  INFO 40512 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@38de4f1d testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@180466a9, testMethod = orderCancelTest@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7b59f3aa testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f79a760, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7a527389, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@69637b10, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6c8bca63, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40258c2f, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@6bd21eb7]; rollback [true]
+2022-10-09 18:45:55.974  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.ProductServiceImpl  : Product saved with 
+ ID =&gt; null 
+ Name =&gt; 테스트콩 
+ Category =&gt; BEAN 
+ price =&gt; 1000 
+ quantity =&gt; 15
+Hibernate: insert into product (created_at, updated_at, category, description, price, product_name, quantity, product_id) values (?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select product0_.product_id as product_1_2_, product0_.created_at as created_2_2_, product0_.updated_at as updated_3_2_, product0_.category as category4_2_, product0_.description as descript5_2_, product0_.price as price6_2_, product0_.product_name as product_7_2_, product0_.quantity as quantity8_2_ from product product0_ where product0_.product_name=?
+Hibernate: update product set updated_at=?, category=?, description=?, price=?, product_name=?, quantity=? where product_id=?
+Hibernate: select * from Orders  WHERE email = ? AND created_at &gt; DATE_FORMAT(?,'%Y-%m-%d 14:00:00')
+Hibernate: select orderitems0_.order_id as order_id6_0_0_, orderitems0_.order_item_id as order_it1_0_0_, orderitems0_.order_item_id as order_it1_0_1_, orderitems0_.created_at as created_2_0_1_, orderitems0_.updated_at as updated_3_0_1_, orderitems0_.count as count4_0_1_, orderitems0_.order_id as order_id6_0_1_, orderitems0_.order_price as order_pr5_0_1_, orderitems0_.product_id as product_7_0_1_ from order_item orderitems0_ where orderitems0_.order_id=?
+2022-10-09 18:45:55.979  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.OrderServiceImpl    : Order Already Exists : [OrderItem(id=51b89b74-deaf-4350-8c2b-80fd902989cc, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@4e1349cf, orderPrice=100, count=5), OrderItem(id=null, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@4e1349cf, orderPrice=100, count=1)]
+2022-10-09 18:45:55.982  INFO 40512 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@38de4f1d testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@180466a9, testMethod = orderCancelTest@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7b59f3aa testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f79a760, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7a527389, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@69637b10, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6c8bca63, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40258c2f, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2022-10-09 18:45:55.983  INFO 40512 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@38de4f1d testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@1b61c1, testMethod = batchProcessing@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7b59f3aa testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f79a760, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7a527389, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@69637b10, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6c8bca63, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40258c2f, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@6bd21eb7]; rollback [true]
+2022-10-09 18:45:55.984  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.ProductServiceImpl  : Product saved with 
+ ID =&gt; null 
+ Name =&gt; 테스트콩 
+ Category =&gt; BEAN 
+ price =&gt; 1000 
+ quantity =&gt; 15
+Hibernate: insert into product (created_at, updated_at, category, description, price, product_name, quantity, product_id) values (?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select product0_.product_id as product_1_2_, product0_.created_at as created_2_2_, product0_.updated_at as updated_3_2_, product0_.category as category4_2_, product0_.description as descript5_2_, product0_.price as price6_2_, product0_.product_name as product_7_2_, product0_.quantity as quantity8_2_ from product product0_ where product0_.product_name=?
+Hibernate: update product set updated_at=?, category=?, description=?, price=?, product_name=?, quantity=? where product_id=?
+Hibernate: select * from Orders  WHERE email = ? AND created_at &gt; DATE_FORMAT(?,'%Y-%m-%d 14:00:00')
+Hibernate: select orderitems0_.order_id as order_id6_0_0_, orderitems0_.order_item_id as order_it1_0_0_, orderitems0_.order_item_id as order_it1_0_1_, orderitems0_.created_at as created_2_0_1_, orderitems0_.updated_at as updated_3_0_1_, orderitems0_.count as count4_0_1_, orderitems0_.order_id as order_id6_0_1_, orderitems0_.order_price as order_pr5_0_1_, orderitems0_.product_id as product_7_0_1_ from order_item orderitems0_ where orderitems0_.order_id=?
+2022-10-09 18:45:55.988  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.OrderServiceImpl    : Order Already Exists : [OrderItem(id=51b89b74-deaf-4350-8c2b-80fd902989cc, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@3269ae62, orderPrice=100, count=5), OrderItem(id=null, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@3269ae62, orderPrice=100, count=1)]
+Hibernate: insert into order_item (created_at, updated_at, count, order_id, order_price, product_id, order_item_id) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: select * from Orders  WHERE email = ? AND created_at &gt; DATE_FORMAT(?,'%Y-%m-%d 14:00:00')
+2022-10-09 18:45:55.991  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.OrderServiceImpl    : Order Already Exists : [OrderItem(id=51b89b74-deaf-4350-8c2b-80fd902989cc, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@3269ae62, orderPrice=100, count=5), OrderItem(id=ea8c5184-cdca-4833-9f91-1ccac5f0786c, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@3269ae62, orderPrice=100, count=1), OrderItem(id=null, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@3269ae62, orderPrice=100, count=1)]
+Hibernate: insert into order_item (created_at, updated_at, count, order_id, order_price, product_id, order_item_id) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: select * from Orders  WHERE email = ? AND created_at &gt; DATE_FORMAT(?,'%Y-%m-%d 14:00:00')
+2022-10-09 18:45:55.993  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.OrderServiceImpl    : Order Already Exists : [OrderItem(id=51b89b74-deaf-4350-8c2b-80fd902989cc, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@3269ae62, orderPrice=100, count=5), OrderItem(id=ea8c5184-cdca-4833-9f91-1ccac5f0786c, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@3269ae62, orderPrice=100, count=1), OrderItem(id=1b0100a6-f0e2-4790-a2fb-c4cd51fa7d3e, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@3269ae62, orderPrice=100, count=1), OrderItem(id=null, product=Product(productId=2bda7ba4-47b7-11ed-9d89-2ba0a24d9a1f, productName=테스트콩1, category=BEAN, description=테스트1용 콩., price=100, quantity=0), order=com.example.gccoffee.model.Order@3269ae62, orderPrice=100, count=1)]
+Hibernate: select order0_.id as id1_1_, order0_.created_at as created_2_1_, order0_.updated_at as updated_3_1_, order0_.address as address4_1_, order0_.email as email5_1_, order0_.order_status as order_st6_1_, order0_.postcode as postcode7_1_ from orders order0_
+2022-10-09 18:45:55.997  INFO 40512 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@38de4f1d testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@1b61c1, testMethod = batchProcessing@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7b59f3aa testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f79a760, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7a527389, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@69637b10, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6c8bca63, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40258c2f, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+2022-10-09 18:45:55.998  INFO 40512 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Began transaction (1) for test context [DefaultTestContext@38de4f1d testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@1509dade, testMethod = stockTest@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7b59f3aa testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f79a760, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7a527389, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@69637b10, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6c8bca63, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40258c2f, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@6bd21eb7]; rollback [true]
+2022-10-09 18:45:55.999  INFO 40512 --- [    Test worker] c.e.gccoffee.Service.ProductServiceImpl  : Product saved with 
+ ID =&gt; null 
+ Name =&gt; 테스트콩 
+ Category =&gt; BEAN 
+ price =&gt; 1000 
+ quantity =&gt; 15
+Hibernate: insert into product (created_at, updated_at, category, description, price, product_name, quantity, product_id) values (?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select product0_.product_id as product_1_2_, product0_.created_at as created_2_2_, product0_.updated_at as updated_3_2_, product0_.category as category4_2_, product0_.description as descript5_2_, product0_.price as price6_2_, product0_.product_name as product_7_2_, product0_.quantity as quantity8_2_ from product product0_ where product0_.product_name=?
+2022-10-09 18:45:56.003  INFO 40512 --- [    Test worker] o.s.t.c.transaction.TransactionContext   : Rolled back transaction for test: [DefaultTestContext@38de4f1d testClass = OrderServiceImplTest, testInstance = com.example.gccoffee.Service.OrderServiceImplTest@1509dade, testMethod = stockTest@OrderServiceImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7b59f3aa testClass = OrderServiceImplTest, locations = '{}', classes = '{class com.example.gccoffee.GcCoffeeApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f79a760, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@7a527389, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@69637b10, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6c8bca63, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@40258c2f, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@6692b6c6], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -&gt; true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -&gt; true, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.5</a> at 2022. 10. 9. 오후 6:45:56</p>
+</div>
+</div>
+</body>
+</html>
