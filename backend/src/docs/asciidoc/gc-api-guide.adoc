@@ -1,4 +1,4 @@
-= RESTful Notes API Guide
+= Grids & Circle Order API Guide
 :doctype: book
 :icons: font
 :source-highlighter: highlightjs
@@ -6,16 +6,32 @@
 :toclevels: 4
 :sectlinks:
 
+== product
+=== Curl
+include::{snippets}/product-get/curl-request.adoc[]
+=== Request
+include::{snippets}/product-get/http-request.adoc[]
+=== Response
+include::{snippets}/product-get/http-response.adoc[]
+=== Response field
+include::{snippets}/product-get/response-fields.adoc[]
+
+== category
+=== Curl
 include::{snippets}/category-get/curl-request.adoc[]
-
+=== Request
 include::{snippets}/category-get/http-request.adoc[]
-
+=== Response
 include::{snippets}/category-get/http-response.adoc[]
-
-include::{snippets}/category-get/httpie-request.adoc[]
-
-include::{snippets}/category-get/request-body.adoc[]
-
-include::{snippets}/category-get/response-body.adoc[]
-
+=== Response field
 include::{snippets}/category-get/response-fields.adoc[]
+
+== order
+=== Curl
+include::{snippets}/order-post/curl-request.adoc[]
+=== Request
+include::{snippets}/order-post/http-request.adoc[]
+=== Response
+include::{snippets}/order-post/http-response.adoc[]
+=== Response field
+include::{snippets}/order-post/response-fields.adoc[]
