@@ -5,7 +5,7 @@
 <header th:replace="fragments/bodyHeader::bodyHeader"/>
 <nav th:replace="fragments/navigation::navigation"/>
 <div class="row justify-content-center m-4">
-    <div class="col text-start"><a th:href="@{product}" style="color: beige; text-decoration-line: none;">< 상품 관리</a></div>
+    <div class="col text-start"><a th:href="@{/management/product}" style="color: beige; text-decoration-line: none;">< 상품 관리</a></div>
     <h1 class="text-center" style="color : beige">주문 관리</h1>
 </div>
 
@@ -106,13 +106,13 @@
     </div>
 
     <footer th:replace="fragments/footer::footer"/>
-<script>
+<script th:inline="javascript">
     function deleteOrder(e){
         if(confirm("주문을 삭제 하시겠습니까?")){
             location = "/management/order/delete?id=" + e.getAttribute("orderId");
         }
-
     }
+
 </script>
 </body>
 </html>

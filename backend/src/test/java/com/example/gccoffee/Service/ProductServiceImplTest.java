@@ -1,20 +1,14 @@
 package com.example.gccoffee.Service;
 
-import com.example.gccoffee.Exception.NoSuchProductException;
-import com.example.gccoffee.Repository.ProductRepository;
 import com.example.gccoffee.model.Category;
-import com.example.gccoffee.model.OrderStatus;
 import com.example.gccoffee.model.Product;
 import com.example.gccoffee.model.ProductDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

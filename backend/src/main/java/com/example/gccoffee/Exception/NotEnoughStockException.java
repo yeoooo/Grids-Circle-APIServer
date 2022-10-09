@@ -4,7 +4,8 @@ public class NotEnoughStockException extends RuntimeException {
     public NotEnoughStockException() {
     }
 
-    public NotEnoughStockException(String message) {
-        super(message);
+    public NotEnoughStockException(String cause, String message) {
+        super(cause+"의 "+message);
+
     }
 }

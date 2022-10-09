@@ -10,9 +10,9 @@
     "updatedAt" : null,
     "id" : null,
     "product" : {
-      "createdAt" : "2022-10-09T17:36:24.908521",
-      "updatedAt" : "2022-10-09T17:36:24.908521",
-      "productId" : "3c72784b-5028-40e8-93ce-f9b3e6fd954c",
+      "createdAt" : "2022-10-09T18:45:55.172617",
+      "updatedAt" : "2022-10-09T18:45:55.172617",
+      "productId" : "f63fe42a-2b5d-400b-9ac3-ca0011d5c24d",
       "productName" : "테스트콩",
       "category" : "BEAN",
       "description" : "테스트용",

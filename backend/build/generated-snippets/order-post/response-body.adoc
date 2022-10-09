@@ -8,13 +8,13 @@
     "address" : "address",
     "postcode" : "postcode",
     "orderItems" : [ {
-      "createdAt" : "2022-10-09T17:36:25.027852",
-      "updatedAt" : "2022-10-09T17:36:25.027852",
-      "id" : "d1192178-7c03-4dff-be4a-2fb9dcdd4f11",
+      "createdAt" : "2022-10-09T18:45:55.299253",
+      "updatedAt" : "2022-10-09T18:45:55.299253",
+      "id" : "3023f198-ba98-4a5e-9ed7-92f656430834",
       "product" : {
-        "createdAt" : "2022-10-09T17:36:24.908521",
-        "updatedAt" : "2022-10-09T17:36:24.993252",
-        "productId" : "3c72784b-5028-40e8-93ce-f9b3e6fd954c",
+        "createdAt" : "2022-10-09T18:45:55.172617",
+        "updatedAt" : "2022-10-09T18:45:55.256029",
+        "productId" : "f63fe42a-2b5d-400b-9ac3-ca0011d5c24d",
         "productName" : "테스트콩",
         "category" : "BEAN",
         "description" : "테스트용",
@@ -22,9 +22,9 @@
         "quantity" : 0
       },
       "order" : {
-        "createdAt" : "2022-10-09T17:36:25.020486",
-        "updatedAt" : "2022-10-09T17:36:25.020486",
-        "id" : "2c27a3b4-db05-44ad-983f-72be4523bbab",
+        "createdAt" : "2022-10-09T18:45:55.29194",
+        "updatedAt" : "2022-10-09T18:45:55.29194",
+        "id" : "868abe60-8b09-412f-8a34-bba76793807b",
         "email" : "email@naver.com",
         "address" : "address",
         "postcode" : "postcode",
@@ -40,6 +40,6 @@
     "createdAt" : null,
     "updatedAt" : null
   },
-  "serverDatetime" : "2022-10-09 17:36:25"
+  "serverDatetime" : "2022-10-09 18:45:55"
 }
 ----

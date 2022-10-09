@@ -55,8 +55,8 @@ public class ProductControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(document("product-get",
-                        preprocessRequest(prettyPrint()),   // (2)
-                        preprocessResponse(prettyPrint()),  // (3)
+                        preprocessRequest(prettyPrint()),
+                        preprocessResponse(prettyPrint()),
                                 responseFields(
                                         List.of(
                                                 fieldWithPath("statusCode").type(JsonFieldType.NUMBER).description("상태코드"),
@@ -90,7 +90,7 @@ public class ProductControllerTest {
                                         List.of(
                                         fieldWithPath("statusCode").type(JsonFieldType.NUMBER).description("상태코드"),
                                         fieldWithPath("serverDatetime").type(JsonFieldType.STRING).description("응답시간"),
-                                        fieldWithPath("data").type(JsonFieldType.ARRAY).description("데이터")
+                                        fieldWithPath("data").type(JsonFieldType.ARRAY).description("카테고리")
                                         )
 
                                 )
