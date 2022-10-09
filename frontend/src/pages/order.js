@@ -23,7 +23,7 @@ export function Order(c) {
         if (found) {
             updatedItems = items.map(v => {
                 if (v.productId === productId) {
-                    if (v.quantity < v.count) {
+                    if (v.quantity <= v.count) {
                         alert("선택된 양이 재고보다 많습니다.")
                         return v;
                     } else {
@@ -34,7 +34,7 @@ export function Order(c) {
                 }
             });
         }else{
-            if(product.name >= 1){
+            if(product.quantity >= 1){
                 updatedItems = [...items, {...product, count: 1}];
             }else{
                 alert("재고가 소진되었습니다.");
