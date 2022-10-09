@@ -1,4 +1,8 @@
 [source,options="nowrap"]
 ----
-{"statusCode":200,"data":["BEAN","CUP"],"serverDatetime":"2022-10-09 00:29:25"}
+{
+  "statusCode" : 200,
+  "data" : [ "BEAN", "CUP" ],
+  "serverDatetime" : "2022-10-09 17:36:25"
+}
 ----

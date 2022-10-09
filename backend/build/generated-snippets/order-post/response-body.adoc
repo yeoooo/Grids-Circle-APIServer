@@ -1,4 +1,45 @@
 [source,options="nowrap"]
 ----
-{"statusCode":200,"data":{"id":null,"email":"email@naver.com","address":"address","postcode":"postcode","orderItems":[{"createdAt":"2022-10-09T00:29:24.977442","updatedAt":"2022-10-09T00:29:24.977442","id":"cfca7be9-f4b0-4b6d-b8d3-49567699a78c","product":{"createdAt":"2022-10-09T00:29:24.838321","updatedAt":"2022-10-09T00:29:24.942215","productId":"f4361d3e-1032-4b11-a8b3-10140b4a15a5","productName":"테스트콩","category":"BEAN","description":"테스트용","price":1000,"quantity":0},"order":{"createdAt":"2022-10-09T00:29:24.968868","updatedAt":"2022-10-09T00:29:24.968868","id":"d5ceea8f-f6ec-49b4-a168-f2ec977f8b03","email":"email@naver.com","address":"address","postcode":"postcode","orderStatus":"ACCEPTED","totalPrice":14000},"orderPrice":1000,"count":14,"totalPrice":14000}],"orderStatus":"ACCEPTED","price":0,"createdAt":null,"updatedAt":null},"serverDatetime":"2022-10-09 00:29:24"}
+{
+  "statusCode" : 200,
+  "data" : {
+    "id" : null,
+    "email" : "email@naver.com",
+    "address" : "address",
+    "postcode" : "postcode",
+    "orderItems" : [ {
+      "createdAt" : "2022-10-09T17:36:25.027852",
+      "updatedAt" : "2022-10-09T17:36:25.027852",
+      "id" : "d1192178-7c03-4dff-be4a-2fb9dcdd4f11",
+      "product" : {
+        "createdAt" : "2022-10-09T17:36:24.908521",
+        "updatedAt" : "2022-10-09T17:36:24.993252",
+        "productId" : "3c72784b-5028-40e8-93ce-f9b3e6fd954c",
+        "productName" : "테스트콩",
+        "category" : "BEAN",
+        "description" : "테스트용",
+        "price" : 1000,
+        "quantity" : 0
+      },
+      "order" : {
+        "createdAt" : "2022-10-09T17:36:25.020486",
+        "updatedAt" : "2022-10-09T17:36:25.020486",
+        "id" : "2c27a3b4-db05-44ad-983f-72be4523bbab",
+        "email" : "email@naver.com",
+        "address" : "address",
+        "postcode" : "postcode",
+        "orderStatus" : "ACCEPTED",
+        "totalPrice" : 14000
+      },
+      "orderPrice" : 1000,
+      "count" : 14,
+      "totalPrice" : 14000
+    } ],
+    "orderStatus" : "ACCEPTED",
+    "price" : 0,
+    "createdAt" : null,
+    "updatedAt" : null
+  },
+  "serverDatetime" : "2022-10-09 17:36:25"
+}
 ----

@@ -1,0 +1,21 @@
+= RESTful Notes API Guide
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+include::{snippets}/category-get/curl-request.adoc[]
+
+include::{snippets}/category-get/http-request.adoc[]
+
+include::{snippets}/category-get/http-response.adoc[]
+
+include::{snippets}/category-get/httpie-request.adoc[]
+
+include::{snippets}/category-get/request-body.adoc[]
+
+include::{snippets}/category-get/response-body.adoc[]
+
+include::{snippets}/category-get/response-fields.adoc[]

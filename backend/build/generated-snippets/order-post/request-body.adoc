@@ -1,4 +1,32 @@
 [source,options="nowrap"]
 ----
-{"id":null,"email":"email@naver.com","address":"address","postcode":"postcode","orderItems":[{"createdAt":null,"updatedAt":null,"id":null,"product":{"createdAt":"2022-10-09T00:29:24.838321","updatedAt":"2022-10-09T00:29:24.838321","productId":"f4361d3e-1032-4b11-a8b3-10140b4a15a5","productName":"테스트콩","category":"BEAN","description":"테스트용","price":1000,"quantity":14},"order":null,"orderPrice":1000,"count":1,"totalPrice":1000}],"orderStatus":"ACCEPTED","price":0,"createdAt":null,"updatedAt":null}
+{
+  "id" : null,
+  "email" : "email@naver.com",
+  "address" : "address",
+  "postcode" : "postcode",
+  "orderItems" : [ {
+    "createdAt" : null,
+    "updatedAt" : null,
+    "id" : null,
+    "product" : {
+      "createdAt" : "2022-10-09T17:36:24.908521",
+      "updatedAt" : "2022-10-09T17:36:24.908521",
+      "productId" : "3c72784b-5028-40e8-93ce-f9b3e6fd954c",
+      "productName" : "테스트콩",
+      "category" : "BEAN",
+      "description" : "테스트용",
+      "price" : 1000,
+      "quantity" : 14
+    },
+    "order" : null,
+    "orderPrice" : 1000,
+    "count" : 1,
+    "totalPrice" : 1000
+  } ],
+  "orderStatus" : "ACCEPTED",
+  "price" : 0,
+  "createdAt" : null,
+  "updatedAt" : null
+}
 ----

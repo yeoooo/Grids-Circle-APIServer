@@ -43,6 +43,31 @@ class OrderServiceImplTest {
     @Autowired
     ProductService productService;
 
+    public static UUID productId;
+
+    @Transactional
+    @BeforeEach
+    public void setUp() {
+        Product p = Product
+                .builder()
+                .dto(ProductDTO.builder()
+//                        .id(productId)
+                        //2022-10-8_yeoooo : generated 될 field가 입력되면 save되지 않는다. 꼭 참고
+                        .name("테스트콩")
+                        .price(1000)
+                        .category(Category.BEAN)
+                        .quantity(15)
+                        .description("테스트용")
+                        .build())
+                .build();
+
+        productId = productService.save(p);
+
+        p = productService.findById(productId).get();
+
+
+    }
+
     @Test
     @DisplayName("주문 테스트")
     @Transactional
