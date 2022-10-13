@@ -31,8 +31,6 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public List<OrderItem> jsonToOrderItems(Object json) {
-        System.out.println("json = " + json);
-        System.out.println("json type = " + json.getClass());
         List<OrderItem> orderItems = new ArrayList<>();
         try {
             for (Object o : (List) json) {
@@ -101,7 +99,7 @@ public class OrderServiceImpl implements OrderService{
             throw new NoSuchOrderException("주문이 존재하지 않습니다.");
         }else{
             foundOne.get().cancelOrder();
-            log.warn("order deleted : {}", foundOne);
+            log.info("order deleted : {}", foundOne);
         }
     }
 
@@ -128,7 +126,6 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    @Transactional
     public Order delete(UUID id) {
         Optional<Order> target = orderRepository.findById(id);
         if (target.isEmpty()) {

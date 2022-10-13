@@ -66,7 +66,7 @@ public class OrderController {
 
     @RequestMapping("/management/order/update")
     public String changeOrderStatus(OrderUpdateForm orderUpdateForm) {
-        log.warn("id = {}_Order Status will be changed with => {}", orderUpdateForm.getId(),orderUpdateForm.getUpdateOrderStatus());
+        log.info("id = {}_Order Status will be changed with => {}", orderUpdateForm.getId(),orderUpdateForm.getUpdateOrderStatus());
         orderService.changeOrderStatus(orderService.findById(orderUpdateForm.getId()).get(), orderUpdateForm.getUpdateOrderStatus());
 
         return "redirect:/management/order";
@@ -74,7 +74,7 @@ public class OrderController {
     }
     @RequestMapping("/management/order/delete")
     public String deleteOrder(@RequestParam("id") UUID id) {
-        log.warn("id = {}_Order will be deleted", id);
+        log.info("id = {}_Order will be deleted", id);
         orderService.delete(id);
         return "redirect:/management/order";
 

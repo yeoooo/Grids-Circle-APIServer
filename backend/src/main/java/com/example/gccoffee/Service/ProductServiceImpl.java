@@ -77,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public String delete(UUID id) {
-        Optional<Product> target = findById(id);
+        Optional<Product> target = productRepository.findById(id);
         productRepository.delete(target.get());
         return target.get().toString();
 

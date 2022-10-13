@@ -29,14 +29,14 @@ public class ExceptionControllerAdvice {
             }
         }
         byte[] encoded = encoder.encode(errorMessages.toString().getBytes(StandardCharsets.UTF_8));
-            log.error("[productExHandler] request To => {}", "redirect:/management/product?errors=" + new String(encoded));
+            log.info("[productExHandler] request To => {}", "redirect:/management/product?errors=" + new String(encoded));
             return "redirect:/management/product?errors=" + new String(encoded);
     }
     @ExceptionHandler({DuplicatedProductException.class, NoSuchProductException.class, NoSuchOrderException.class})
     public String CommonExHandler(RuntimeException e) {
         errorMessages.put("common", e.getMessage());
         byte[] encoded = encoder.encode(errorMessages.toString().getBytes(StandardCharsets.UTF_8));
-        log.error("[CommonExHandler] : {}", e.getMessage());
+        log.info("[CommonExHandler] : {}", e.getMessage());
         return "redirect:/management/product?errors=" + new String(encoded);
 
     }

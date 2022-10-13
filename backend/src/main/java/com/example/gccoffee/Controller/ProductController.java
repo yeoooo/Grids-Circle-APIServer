@@ -94,7 +94,7 @@ public class ProductController extends BaseTimeEntity {
             productService.save(newProduct);
             log.info("product : {} is registered with\n price :{} and \nstock quantity : {}\n in category : {} ", newProduct.getProductName(), newProduct.getPrice(), newProduct.getQuantity(),newProduct.getCategory());
         }else{
-            log.error("product name is duplicated one : {}", newProduct.getProductName());
+            log.info("product name is duplicated one : {}", newProduct.getProductName());
             throw new DuplicatedProductException("이미 같은 이름의 상품이 존재합니다.");
         }
 
@@ -104,7 +104,7 @@ public class ProductController extends BaseTimeEntity {
     @RequestMapping("/management/product/update")
     public String updateProduct(@Valid ProductForm productForm) {
         Optional<Product> targetProduct = productService.findById(productForm.getId());
-            log.warn("product updated => with\n" +
+            log.info("product updated => with\n" +
                     "id = {}\n"+
                     "name = {}\n"+
                     "price = {}\n"+
@@ -122,7 +122,7 @@ public class ProductController extends BaseTimeEntity {
 //
     @RequestMapping("/management/product/delete")
     public String deleteProduct(@RequestParam("id") UUID id) {
-        log.warn("requested delete from productId : {} ", id);
+        log.info("requested delete from productId : {} ", id);
         try {
             Optional<Product> foundOne = productService.findById(id);
             productService.delete(foundOne.get().getProductId());

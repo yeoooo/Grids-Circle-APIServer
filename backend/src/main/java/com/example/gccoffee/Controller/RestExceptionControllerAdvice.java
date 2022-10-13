@@ -15,14 +15,14 @@ public class RestExceptionControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(NotEnoughStockException.class)
     public ErrorResult productExHandler(NotEnoughStockException e) {
-        log.error("[ProductExceptionHandle] Not Enough Stock Exception Occurred", e);
+        log.info("[ProductExceptionHandle] Not Enough Stock Exception Occurred", e);
         return new ErrorResult("BAD", e.getMessage());
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(NoSuchProductException.class)
     public ErrorResult productExHandler(NoSuchProductException e) {
-        log.error("[ProductExceptionHandle] No Such Product Exception Occurred", e);
+        log.info("[ProductExceptionHandle] No Such Product Exception Occurred", e);
         return new ErrorResult("BAD", e.getMessage());
     }
 
