@@ -12,9 +12,9 @@ $ curl 'http://localhost:8080/api/v1/orders' -i -X POST \
     "updatedAt" : null,
     "id" : null,
     "product" : {
-      "createdAt" : "2022-10-09T18:45:55.172617",
-      "updatedAt" : "2022-10-09T18:45:55.172617",
-      "productId" : "f63fe42a-2b5d-400b-9ac3-ca0011d5c24d",
+      "createdAt" : "2022-10-13T19:41:20.512642",
+      "updatedAt" : "2022-10-13T19:41:20.512642",
+      "productId" : "caf549d5-fea5-4c55-bb6f-c19515530a1c",
       "productName" : "테스트콩",
       "category" : "BEAN",
       "description" : "테스트용",

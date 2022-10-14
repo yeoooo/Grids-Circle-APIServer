@@ -1,10 +1,9 @@
 package com.example.gccoffee.Service;
 
 import com.example.gccoffee.Exception.NoSuchProductException;
+import com.example.gccoffee.Exception.ProductOnBoardException;
 import com.example.gccoffee.Repository.ProductRepository;
-import com.example.gccoffee.model.Category;
-import com.example.gccoffee.model.Product;
-import com.example.gccoffee.model.ProductDTO;
+import com.example.gccoffee.model.*;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,11 +13,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
     public final ProductRepository productRepository;
+    public final OrderService orderService;
+
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
@@ -67,18 +69,26 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Optional<Product> findById(UUID id) {
         Optional<Product> product =  productRepository.findById(id);
-        if (product.isEmpty()) {
-            throw new NoSuchProductException("상품이 존재하지 않습니다.");
-        }else{
-            return product;
-        }
+        return product;
+
     }
 
     @Override
     @Transactional
     public String delete(UUID id) {
         Optional<Product> target = productRepository.findById(id);
-        productRepository.delete(target.get());
+        if (target.isEmpty()) {
+            throw new NoSuchProductException("상품이 존재하지 않습니다.");
+        }else {
+            for (List<OrderItem> o: orderService.findAll().stream().map(Order::getOrderItems).collect(Collectors.toList())) {
+                //2022-10-14_yeoooo : Order에서 처리되지 않은 product가 존재하는지 전수 조사
+                if (o.stream().map(OrderItem::getProduct).collect(Collectors.toList()).stream().map(Product::getProductId).collect(Collectors.toList()).contains(id)){
+                    throw new ProductOnBoardException("처리되지 않은 주문이 존재합니다.");
+                }
+            }
+            productRepository.delete(target.get());
+            log.info("[ProductService] product delete id : {}", id);
+        }
         return target.get().toString();
 
     }

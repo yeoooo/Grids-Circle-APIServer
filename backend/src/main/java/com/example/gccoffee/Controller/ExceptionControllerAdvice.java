@@ -3,6 +3,7 @@ package com.example.gccoffee.Controller;
 import com.example.gccoffee.Exception.DuplicatedProductException;
 import com.example.gccoffee.Exception.NoSuchOrderException;
 import com.example.gccoffee.Exception.NoSuchProductException;
+import com.example.gccoffee.Exception.ProductOnBoardException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
@@ -32,7 +33,7 @@ public class ExceptionControllerAdvice {
             log.info("[productExHandler] request To => {}", "redirect:/management/product?errors=" + new String(encoded));
             return "redirect:/management/product?errors=" + new String(encoded);
     }
-    @ExceptionHandler({DuplicatedProductException.class, NoSuchProductException.class, NoSuchOrderException.class})
+    @ExceptionHandler({DuplicatedProductException.class, NoSuchProductException.class, NoSuchOrderException.class, ProductOnBoardException.class})
     public String CommonExHandler(RuntimeException e) {
         errorMessages.put("common", e.getMessage());
         byte[] encoded = encoder.encode(errorMessages.toString().getBytes(StandardCharsets.UTF_8));
