@@ -123,10 +123,10 @@ public class ProductController extends BaseTimeEntity {
     @RequestMapping("/management/product/delete")
     public String deleteProduct(@RequestParam("id") UUID id) {
         log.warn("requested delete from productId : {} ", id);
-        try {
-            Optional<Product> foundOne = productService.findById(id);
+        Optional<Product> foundOne = productService.findById(id);
+        if(foundOne.isPresent()){
             productService.delete(foundOne.get().getProductId());
-        }catch(Exception e){
+        }else{
             throw new NoSuchProductException("상품이 존재하지 않습니다.");
         }
 

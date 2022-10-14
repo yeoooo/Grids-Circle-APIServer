@@ -135,6 +135,7 @@ public class OrderServiceImpl implements OrderService{
             throw new NoSuchOrderException("해당 주문이 존재하지 않습니다.");
         }else{
             target.get().cancelOrder();
+            log.info("[OrderService] order delete id : {}", id);
             orderRepository.delete(target.get());
         }
         return target.get();

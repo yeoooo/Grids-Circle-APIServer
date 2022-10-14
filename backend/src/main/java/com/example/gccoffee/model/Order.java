@@ -1,5 +1,6 @@
 package com.example.gccoffee.model;
 
+import com.example.gccoffee.Exception.ProductOnBoardException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -61,7 +62,7 @@ public class Order extends BaseTimeEntity{
 
     public void cancelOrder(){
         if (getOrderStatus() == OrderStatus.SHIPPED) {
-            throw new IllegalArgumentException("배송중인 상품은 취소할 수 없습니다.");
+            throw new ProductOnBoardException("배송중인 상품은 취소할 수 없습니다.");
         }else{
             this.setOrderStatus(OrderStatus.CANCELLED);
             for (OrderItem orderItem : orderItems) {
