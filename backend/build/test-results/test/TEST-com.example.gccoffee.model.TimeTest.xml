@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.gccoffee.model.TimeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-09T09:45:56" hostname="igyeong-wons-MacBook-Pro.local" time="0.0">
-  <properties/>
-  <testcase name="TimeTest()" classname="com.example.gccoffee.model.TimeTest" time="0.0"/>
-  <system-out><![CDATA[2022-10-09T14:00
-2022-09-07
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

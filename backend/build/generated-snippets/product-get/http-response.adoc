@@ -18,13 +18,13 @@ Content-Length: 372
   "data" : [ {
     "createdAt" : "2022-09-07T12:00:00",
     "updatedAt" : "2022-09-08T12:00:00",
-    "productId" : "2b54ce14-47b7-11ed-9d89-2ba0a24d9a1f",
+    "productId" : "92e2e910-4ae3-11ed-9d89-2ba0a24d9a1f",
     "productName" : "테스트콩1",
     "category" : "BEAN",
     "description" : "테스트1용 콩.",
     "price" : 100,
     "quantity" : 6
   } ],
-  "serverDatetime" : "2022-10-09 18:45:55"
+  "serverDatetime" : "2022-10-13 19:41:21"
 }
 ----

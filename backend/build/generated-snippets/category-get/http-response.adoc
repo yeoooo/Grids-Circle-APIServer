@@ -16,6 +16,6 @@ Content-Length: 98
 {
   "statusCode" : 200,
   "data" : [ "BEAN", "CUP" ],
-  "serverDatetime" : "2022-10-09 18:45:55"
+  "serverDatetime" : "2022-10-13 19:41:21"
 }
 ----
