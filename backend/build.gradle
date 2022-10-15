@@ -2,8 +2,9 @@ plugins {
     id 'org.springframework.boot' version '2.7.3'
     id 'io.spring.dependency-management' version '1.0.13.RELEASE'
     id 'java'
-//    id "org.asciidoctor.convert" version "1.5.9.2"
     id 'org.asciidoctor.jvm.convert' version "3.3.2"
+    //grpc plugin
+    id 'com.google.protobuf' version '0.8.18'
 }
 
 group = 'com.example'
@@ -44,6 +45,18 @@ dependencies {
     implementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 //    asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor'
     asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+    /**
+     * grpc start
+     */
+    runtimeOnly 'io.grpc:grpc-netty-shaded:1.50.0'
+    implementation 'io.grpc:grpc-stub:1.50.0'
+    implementation 'io.grpc:grpc-protobuf:1.50.0'
+    implementation 'io.grpc:grpc-gprc-stub:1.50.0'
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+    /**
+     * grpc end
+     */
+
 }
 ext {
     snippetsDir = file('build/generated-snippets')
@@ -76,4 +89,20 @@ build {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+//grpc task
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.21.7"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.50.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
 }
