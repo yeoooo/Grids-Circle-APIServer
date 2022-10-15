@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.example.Service.ProductService";
+package com.example.gccoffee.gRPC;
+
+message getAllProductsRequest{
+
+}
+message getAllProductsResponse{
+  int64 statusCode = 1;
+  string serverDatetime = 2;
+  string data = 3;
+}
+
+service getAllProductService{
+  rpc findAll () returns (getAllProductsResponse) {}
+}
