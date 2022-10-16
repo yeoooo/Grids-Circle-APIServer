@@ -1,0 +1,24 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.example.gccoffee";
+
+service productService{
+  rpc findAll (getAllProductsRequest) returns (GetAllProductResponse);
+}
+
+message getAllProductsRequest{
+
+}
+
+message ProductMessage{
+  string productId = 1;
+  string productName = 2;
+  string category = 3;
+  string description = 4;
+  int64 price = 5;
+  int32 quantity = 6;
+}
+
+message GetAllProductResponse{
+  repeated ProductMessage product = 1;
+}

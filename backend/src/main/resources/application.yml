@@ -32,3 +32,10 @@ spring:
       encoding: UTF-8
       mode: always
 
+grpc:
+  server:
+    port: 8081
+  client:
+    grpc/v1/products:
+      address: 'static://localhost:8082'
+      negotiationtype: plaintext
