@@ -4,6 +4,7 @@ option java_package = "com.example.gccoffee";
 
 service productService{
   rpc findAll (getAllProductsRequest) returns (GetAllProductResponse);
+  rpc Hello (helloRequest) returns (helloResponse);
 }
 
 message getAllProductsRequest{
@@ -21,4 +22,12 @@ message ProductMessage{
 
 message GetAllProductResponse{
   repeated ProductMessage product = 1;
+}
+
+message helloRequest{
+  string name = 1;
+}
+
+message helloResponse{
+  string message = 1;
 }

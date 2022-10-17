@@ -1,20 +1,17 @@
 package com.example.gccoffee.Service;
 
-import com.example.gccoffee.GetAllProductResponse;
-import com.example.gccoffee.ProductMessage;
-import com.example.gccoffee.getAllProductsRequest;
-import com.example.gccoffee.productServiceGrpc;
+import com.example.gccoffee.*;
 import io.grpc.StatusRuntimeException;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GrpcProductClientService {
-    @GrpcClient("grpc/v1/products")
+    @GrpcClient("findAll")
+//    @GrpcClient("test")
     private productServiceGrpc.productServiceBlockingStub productStub;
 
     public String sendMessage() {
-        System.out.println( "gdgd");
         try {
             GetAllProductResponse resp = this.productStub.findAll(getAllProductsRequest.newBuilder().build());
             return resp.getProduct(1).toString();
@@ -22,4 +19,17 @@ public class GrpcProductClientService {
             return "FAILED WITH" + e.getStatus().getCode().name();
         }
     }
+
+//    public String sendMessage(final String name) {
+//        try {
+//            helloResponse resp = this.productStub.hello(helloRequest.newBuilder().setName(name).build());
+//            return resp.getMessage();
+//        } catch (StatusRuntimeException e) {
+//            return "FAILED with " + e.getStatus().getCode().name();
+//        }
+//    }
+
+
+
+
 }

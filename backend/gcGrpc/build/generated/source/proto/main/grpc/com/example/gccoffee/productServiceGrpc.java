@@ -46,6 +46,37 @@ public final class productServiceGrpc {
     return getFindAllMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.example.gccoffee.helloRequest,
+      com.example.gccoffee.helloResponse> getHelloMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Hello",
+      requestType = com.example.gccoffee.helloRequest.class,
+      responseType = com.example.gccoffee.helloResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.gccoffee.helloRequest,
+      com.example.gccoffee.helloResponse> getHelloMethod() {
+    io.grpc.MethodDescriptor<com.example.gccoffee.helloRequest, com.example.gccoffee.helloResponse> getHelloMethod;
+    if ((getHelloMethod = productServiceGrpc.getHelloMethod) == null) {
+      synchronized (productServiceGrpc.class) {
+        if ((getHelloMethod = productServiceGrpc.getHelloMethod) == null) {
+          productServiceGrpc.getHelloMethod = getHelloMethod =
+              io.grpc.MethodDescriptor.<com.example.gccoffee.helloRequest, com.example.gccoffee.helloResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Hello"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.gccoffee.helloRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.gccoffee.helloResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new productServiceMethodDescriptorSupplier("Hello"))
+              .build();
+        }
+      }
+    }
+    return getHelloMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -101,6 +132,13 @@ public final class productServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFindAllMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void hello(com.example.gccoffee.helloRequest request,
+        io.grpc.stub.StreamObserver<com.example.gccoffee.helloResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHelloMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -110,6 +148,13 @@ public final class productServiceGrpc {
                 com.example.gccoffee.getAllProductsRequest,
                 com.example.gccoffee.GetAllProductResponse>(
                   this, METHODID_FIND_ALL)))
+          .addMethod(
+            getHelloMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                com.example.gccoffee.helloRequest,
+                com.example.gccoffee.helloResponse>(
+                  this, METHODID_HELLO)))
           .build();
     }
   }
@@ -135,6 +180,14 @@ public final class productServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getFindAllMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void hello(com.example.gccoffee.helloRequest request,
+        io.grpc.stub.StreamObserver<com.example.gccoffee.helloResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getHelloMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -156,6 +209,13 @@ public final class productServiceGrpc {
     public com.example.gccoffee.GetAllProductResponse findAll(com.example.gccoffee.getAllProductsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getFindAllMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.example.gccoffee.helloResponse hello(com.example.gccoffee.helloRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getHelloMethod(), getCallOptions(), request);
     }
   }
 
@@ -180,9 +240,18 @@ public final class productServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getFindAllMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.gccoffee.helloResponse> hello(
+        com.example.gccoffee.helloRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getHelloMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_FIND_ALL = 0;
+  private static final int METHODID_HELLO = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -204,6 +273,10 @@ public final class productServiceGrpc {
         case METHODID_FIND_ALL:
           serviceImpl.findAll((com.example.gccoffee.getAllProductsRequest) request,
               (io.grpc.stub.StreamObserver<com.example.gccoffee.GetAllProductResponse>) responseObserver);
+          break;
+        case METHODID_HELLO:
+          serviceImpl.hello((com.example.gccoffee.helloRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.gccoffee.helloResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -267,6 +340,7 @@ public final class productServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new productServiceFileDescriptorSupplier())
               .addMethod(getFindAllMethod())
+              .addMethod(getHelloMethod())
               .build();
         }
       }

@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class GrpcProductClientController {
     private final GrpcProductClientService grpcProductClientService;
-
-    @GetMapping("grpc/v1/products")
+//
+    @GetMapping("/findAll")
     public String getProducts() {
         return grpcProductClientService.sendMessage();
     }
+
+//    @GetMapping("/test")
+//    public String printMessage() {
+//        return grpcProductClientService.sendMessage();
+//    }
 }

@@ -36,6 +36,10 @@ grpc:
   server:
     port: 8081
   client:
-    grpc/v1/products:
-      address: 'static://localhost:8082'
+    findAll:
+      address: 'static://127.0.0.1:8082'
+      negotiationtype: plaintext
+
+    test:
+      address: 'static://127.0.0.1:9090'
       negotiationtype: plaintext

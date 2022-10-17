@@ -39,4 +39,12 @@ public class GrpcServerService extends productServiceGrpc.productServiceImplBase
         responseObserver.onCompleted();
     }
 
+    @Override
+    public void hello(helloRequest request, StreamObserver<helloResponse> responseObserver) {
+        helloResponse resp = helloResponse.newBuilder()
+                .setMessage("Hello ==> " + request.getName())
+                .build();
+        responseObserver.onNext(resp);
+        responseObserver.onCompleted();
+    }
 }
