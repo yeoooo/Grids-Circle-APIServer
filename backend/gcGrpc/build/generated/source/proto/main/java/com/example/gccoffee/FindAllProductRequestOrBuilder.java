@@ -3,7 +3,7 @@
 
 package com.example.gccoffee;
 
-public interface getAllProductsRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:getAllProductsRequest)
+public interface FindAllProductRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:FindAllProductRequest)
     com.google.protobuf.MessageOrBuilder {
 }

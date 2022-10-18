@@ -7,14 +7,31 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GrpcProductClientService {
-    @GrpcClient("findAll")
-//    @GrpcClient("test")
+    @GrpcClient("findProduct")
     private productServiceGrpc.productServiceBlockingStub productStub;
 
-    public String sendMessage() {
+    public String findAll() {
         try {
-            GetAllProductResponse resp = this.productStub.findAll(getAllProductsRequest.newBuilder().build());
-            return resp.getProduct(1).toString();
+            FindAllProductResponse resp = this.productStub.findAll(FindAllProductRequest.newBuilder().build());
+            return resp.getProductList().toString();
+        } catch (StatusRuntimeException e) {
+            return "FAILED WITH" + e.getStatus().getCode().name();
+        }
+    }
+
+    public String findById(String id) {
+        try {
+            FindOneProductResponse resp = this.productStub.findById(FindProductByIdRequest.newBuilder().setProductId(id).build());
+            return resp.getProduct().toString();
+        } catch (StatusRuntimeException e) {
+            return "FAILED WITH" + e.getStatus().getCode().name();
+        }
+
+    }
+    public String findByName(String name) {
+        try{
+            FindOneProductResponse resp = this.productStub.findByName(FindProductByNameRequest.newBuilder().setProductName(name).build());
+            return resp.getProduct().toString();
         } catch (StatusRuntimeException e) {
             return "FAILED WITH" + e.getStatus().getCode().name();
         }

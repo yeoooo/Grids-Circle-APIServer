@@ -4,26 +4,25 @@
 package com.example.gccoffee;
 
 /**
- * Protobuf type {@code helloResponse}
+ * Protobuf type {@code FindOneProductResponse}
  */
-public final class helloResponse extends
+public final class FindOneProductResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:helloResponse)
-    helloResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:FindOneProductResponse)
+    FindOneProductResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use helloResponse.newBuilder() to construct.
-  private helloResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use FindOneProductResponse.newBuilder() to construct.
+  private FindOneProductResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private helloResponse() {
-    message_ = "";
+  private FindOneProductResponse() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new helloResponse();
+    return new FindOneProductResponse();
   }
 
   @java.lang.Override
@@ -33,53 +32,41 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.example.gccoffee.ProductService.internal_static_helloResponse_descriptor;
+    return com.example.gccoffee.ProductService.internal_static_FindOneProductResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.example.gccoffee.ProductService.internal_static_helloResponse_fieldAccessorTable
+    return com.example.gccoffee.ProductService.internal_static_FindOneProductResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.example.gccoffee.helloResponse.class, com.example.gccoffee.helloResponse.Builder.class);
+            com.example.gccoffee.FindOneProductResponse.class, com.example.gccoffee.FindOneProductResponse.Builder.class);
   }
 
-  public static final int MESSAGE_FIELD_NUMBER = 1;
-  private volatile java.lang.Object message_;
+  public static final int PRODUCT_FIELD_NUMBER = 1;
+  private com.example.gccoffee.ProductMessage product_;
   /**
-   * <code>string message = 1;</code>
-   * @return The message.
+   * <code>.ProductMessage product = 1;</code>
+   * @return Whether the product field is set.
    */
   @java.lang.Override
-  public java.lang.String getMessage() {
-    java.lang.Object ref = message_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      message_ = s;
-      return s;
-    }
+  public boolean hasProduct() {
+    return product_ != null;
   }
   /**
-   * <code>string message = 1;</code>
-   * @return The bytes for message.
+   * <code>.ProductMessage product = 1;</code>
+   * @return The product.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getMessageBytes() {
-    java.lang.Object ref = message_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      message_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public com.example.gccoffee.ProductMessage getProduct() {
+    return product_ == null ? com.example.gccoffee.ProductMessage.getDefaultInstance() : product_;
+  }
+  /**
+   * <code>.ProductMessage product = 1;</code>
+   */
+  @java.lang.Override
+  public com.example.gccoffee.ProductMessageOrBuilder getProductOrBuilder() {
+    return getProduct();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -96,8 +83,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
+    if (product_ != null) {
+      output.writeMessage(1, getProduct());
     }
     getUnknownFields().writeTo(output);
   }
@@ -108,8 +95,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
+    if (product_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, getProduct());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -121,13 +109,16 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.example.gccoffee.helloResponse)) {
+    if (!(obj instanceof com.example.gccoffee.FindOneProductResponse)) {
       return super.equals(obj);
     }
-    com.example.gccoffee.helloResponse other = (com.example.gccoffee.helloResponse) obj;
+    com.example.gccoffee.FindOneProductResponse other = (com.example.gccoffee.FindOneProductResponse) obj;
 
-    if (!getMessage()
-        .equals(other.getMessage())) return false;
+    if (hasProduct() != other.hasProduct()) return false;
+    if (hasProduct()) {
+      if (!getProduct()
+          .equals(other.getProduct())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -139,76 +130,78 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-    hash = (53 * hash) + getMessage().hashCode();
+    if (hasProduct()) {
+      hash = (37 * hash) + PRODUCT_FIELD_NUMBER;
+      hash = (53 * hash) + getProduct().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.example.gccoffee.helloResponse parseFrom(
+  public static com.example.gccoffee.FindOneProductResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.example.gccoffee.helloResponse parseFrom(
+  public static com.example.gccoffee.FindOneProductResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.example.gccoffee.helloResponse parseFrom(
+  public static com.example.gccoffee.FindOneProductResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.example.gccoffee.helloResponse parseFrom(
+  public static com.example.gccoffee.FindOneProductResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.example.gccoffee.helloResponse parseFrom(byte[] data)
+  public static com.example.gccoffee.FindOneProductResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.example.gccoffee.helloResponse parseFrom(
+  public static com.example.gccoffee.FindOneProductResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.example.gccoffee.helloResponse parseFrom(java.io.InputStream input)
+  public static com.example.gccoffee.FindOneProductResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.example.gccoffee.helloResponse parseFrom(
+  public static com.example.gccoffee.FindOneProductResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.example.gccoffee.helloResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.example.gccoffee.FindOneProductResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.example.gccoffee.helloResponse parseDelimitedFrom(
+  public static com.example.gccoffee.FindOneProductResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.example.gccoffee.helloResponse parseFrom(
+  public static com.example.gccoffee.FindOneProductResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.example.gccoffee.helloResponse parseFrom(
+  public static com.example.gccoffee.FindOneProductResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -221,7 +214,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.example.gccoffee.helloResponse prototype) {
+  public static Builder newBuilder(com.example.gccoffee.FindOneProductResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -237,26 +230,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code helloResponse}
+   * Protobuf type {@code FindOneProductResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:helloResponse)
-      com.example.gccoffee.helloResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:FindOneProductResponse)
+      com.example.gccoffee.FindOneProductResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.example.gccoffee.ProductService.internal_static_helloResponse_descriptor;
+      return com.example.gccoffee.ProductService.internal_static_FindOneProductResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.example.gccoffee.ProductService.internal_static_helloResponse_fieldAccessorTable
+      return com.example.gccoffee.ProductService.internal_static_FindOneProductResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.example.gccoffee.helloResponse.class, com.example.gccoffee.helloResponse.Builder.class);
+              com.example.gccoffee.FindOneProductResponse.class, com.example.gccoffee.FindOneProductResponse.Builder.class);
     }
 
-    // Construct using com.example.gccoffee.helloResponse.newBuilder()
+    // Construct using com.example.gccoffee.FindOneProductResponse.newBuilder()
     private Builder() {
 
     }
@@ -269,25 +262,29 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      message_ = "";
-
+      if (productBuilder_ == null) {
+        product_ = null;
+      } else {
+        product_ = null;
+        productBuilder_ = null;
+      }
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.example.gccoffee.ProductService.internal_static_helloResponse_descriptor;
+      return com.example.gccoffee.ProductService.internal_static_FindOneProductResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.example.gccoffee.helloResponse getDefaultInstanceForType() {
-      return com.example.gccoffee.helloResponse.getDefaultInstance();
+    public com.example.gccoffee.FindOneProductResponse getDefaultInstanceForType() {
+      return com.example.gccoffee.FindOneProductResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.example.gccoffee.helloResponse build() {
-      com.example.gccoffee.helloResponse result = buildPartial();
+    public com.example.gccoffee.FindOneProductResponse build() {
+      com.example.gccoffee.FindOneProductResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -295,9 +292,13 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.example.gccoffee.helloResponse buildPartial() {
-      com.example.gccoffee.helloResponse result = new com.example.gccoffee.helloResponse(this);
-      result.message_ = message_;
+    public com.example.gccoffee.FindOneProductResponse buildPartial() {
+      com.example.gccoffee.FindOneProductResponse result = new com.example.gccoffee.FindOneProductResponse(this);
+      if (productBuilder_ == null) {
+        result.product_ = product_;
+      } else {
+        result.product_ = productBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -336,19 +337,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.example.gccoffee.helloResponse) {
-        return mergeFrom((com.example.gccoffee.helloResponse)other);
+      if (other instanceof com.example.gccoffee.FindOneProductResponse) {
+        return mergeFrom((com.example.gccoffee.FindOneProductResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.example.gccoffee.helloResponse other) {
-      if (other == com.example.gccoffee.helloResponse.getDefaultInstance()) return this;
-      if (!other.getMessage().isEmpty()) {
-        message_ = other.message_;
-        onChanged();
+    public Builder mergeFrom(com.example.gccoffee.FindOneProductResponse other) {
+      if (other == com.example.gccoffee.FindOneProductResponse.getDefaultInstance()) return this;
+      if (other.hasProduct()) {
+        mergeProduct(other.getProduct());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -377,7 +377,9 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              message_ = input.readStringRequireUtf8();
+              input.readMessage(
+                  getProductFieldBuilder().getBuilder(),
+                  extensionRegistry);
 
               break;
             } // case 10
@@ -397,80 +399,123 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object message_ = "";
+    private com.example.gccoffee.ProductMessage product_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.example.gccoffee.ProductMessage, com.example.gccoffee.ProductMessage.Builder, com.example.gccoffee.ProductMessageOrBuilder> productBuilder_;
     /**
-     * <code>string message = 1;</code>
-     * @return The message.
+     * <code>.ProductMessage product = 1;</code>
+     * @return Whether the product field is set.
      */
-    public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        message_ = s;
-        return s;
+    public boolean hasProduct() {
+      return productBuilder_ != null || product_ != null;
+    }
+    /**
+     * <code>.ProductMessage product = 1;</code>
+     * @return The product.
+     */
+    public com.example.gccoffee.ProductMessage getProduct() {
+      if (productBuilder_ == null) {
+        return product_ == null ? com.example.gccoffee.ProductMessage.getDefaultInstance() : product_;
       } else {
-        return (java.lang.String) ref;
+        return productBuilder_.getMessage();
       }
     }
     /**
-     * <code>string message = 1;</code>
-     * @return The bytes for message.
+     * <code>.ProductMessage product = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getMessageBytes() {
-      java.lang.Object ref = message_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        message_ = b;
-        return b;
+    public Builder setProduct(com.example.gccoffee.ProductMessage value) {
+      if (productBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        product_ = value;
+        onChanged();
       } else {
-        return (com.google.protobuf.ByteString) ref;
+        productBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.ProductMessage product = 1;</code>
+     */
+    public Builder setProduct(
+        com.example.gccoffee.ProductMessage.Builder builderForValue) {
+      if (productBuilder_ == null) {
+        product_ = builderForValue.build();
+        onChanged();
+      } else {
+        productBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.ProductMessage product = 1;</code>
+     */
+    public Builder mergeProduct(com.example.gccoffee.ProductMessage value) {
+      if (productBuilder_ == null) {
+        if (product_ != null) {
+          product_ =
+            com.example.gccoffee.ProductMessage.newBuilder(product_).mergeFrom(value).buildPartial();
+        } else {
+          product_ = value;
+        }
+        onChanged();
+      } else {
+        productBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.ProductMessage product = 1;</code>
+     */
+    public Builder clearProduct() {
+      if (productBuilder_ == null) {
+        product_ = null;
+        onChanged();
+      } else {
+        product_ = null;
+        productBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.ProductMessage product = 1;</code>
+     */
+    public com.example.gccoffee.ProductMessage.Builder getProductBuilder() {
+      
+      onChanged();
+      return getProductFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.ProductMessage product = 1;</code>
+     */
+    public com.example.gccoffee.ProductMessageOrBuilder getProductOrBuilder() {
+      if (productBuilder_ != null) {
+        return productBuilder_.getMessageOrBuilder();
+      } else {
+        return product_ == null ?
+            com.example.gccoffee.ProductMessage.getDefaultInstance() : product_;
       }
     }
     /**
-     * <code>string message = 1;</code>
-     * @param value The message to set.
-     * @return This builder for chaining.
+     * <code>.ProductMessage product = 1;</code>
      */
-    public Builder setMessage(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      message_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string message = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMessage() {
-      
-      message_ = getDefaultInstance().getMessage();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string message = 1;</code>
-     * @param value The bytes for message to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMessageBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      message_ = value;
-      onChanged();
-      return this;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.example.gccoffee.ProductMessage, com.example.gccoffee.ProductMessage.Builder, com.example.gccoffee.ProductMessageOrBuilder> 
+        getProductFieldBuilder() {
+      if (productBuilder_ == null) {
+        productBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.example.gccoffee.ProductMessage, com.example.gccoffee.ProductMessage.Builder, com.example.gccoffee.ProductMessageOrBuilder>(
+                getProduct(),
+                getParentForChildren(),
+                isClean());
+        product_ = null;
+      }
+      return productBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -485,23 +530,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:helloResponse)
+    // @@protoc_insertion_point(builder_scope:FindOneProductResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:helloResponse)
-  private static final com.example.gccoffee.helloResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:FindOneProductResponse)
+  private static final com.example.gccoffee.FindOneProductResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.example.gccoffee.helloResponse();
+    DEFAULT_INSTANCE = new com.example.gccoffee.FindOneProductResponse();
   }
 
-  public static com.example.gccoffee.helloResponse getDefaultInstance() {
+  public static com.example.gccoffee.FindOneProductResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<helloResponse>
-      PARSER = new com.google.protobuf.AbstractParser<helloResponse>() {
+  private static final com.google.protobuf.Parser<FindOneProductResponse>
+      PARSER = new com.google.protobuf.AbstractParser<FindOneProductResponse>() {
     @java.lang.Override
-    public helloResponse parsePartialFrom(
+    public FindOneProductResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -520,17 +565,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<helloResponse> parser() {
+  public static com.google.protobuf.Parser<FindOneProductResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<helloResponse> getParserForType() {
+  public com.google.protobuf.Parser<FindOneProductResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.example.gccoffee.helloResponse getDefaultInstanceForType() {
+  public com.example.gccoffee.FindOneProductResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

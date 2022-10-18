@@ -4,18 +4,18 @@
 package com.example.gccoffee;
 
 /**
- * Protobuf type {@code GetAllProductResponse}
+ * Protobuf type {@code FindAllProductResponse}
  */
-public final class GetAllProductResponse extends
+public final class FindAllProductResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:GetAllProductResponse)
-    GetAllProductResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:FindAllProductResponse)
+    FindAllProductResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use GetAllProductResponse.newBuilder() to construct.
-  private GetAllProductResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use FindAllProductResponse.newBuilder() to construct.
+  private FindAllProductResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private GetAllProductResponse() {
+  private FindAllProductResponse() {
     product_ = java.util.Collections.emptyList();
   }
 
@@ -23,7 +23,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new GetAllProductResponse();
+    return new FindAllProductResponse();
   }
 
   @java.lang.Override
@@ -33,15 +33,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.example.gccoffee.ProductService.internal_static_GetAllProductResponse_descriptor;
+    return com.example.gccoffee.ProductService.internal_static_FindAllProductResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.example.gccoffee.ProductService.internal_static_GetAllProductResponse_fieldAccessorTable
+    return com.example.gccoffee.ProductService.internal_static_FindAllProductResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.example.gccoffee.GetAllProductResponse.class, com.example.gccoffee.GetAllProductResponse.Builder.class);
+            com.example.gccoffee.FindAllProductResponse.class, com.example.gccoffee.FindAllProductResponse.Builder.class);
   }
 
   public static final int PRODUCT_FIELD_NUMBER = 1;
@@ -124,10 +124,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.example.gccoffee.GetAllProductResponse)) {
+    if (!(obj instanceof com.example.gccoffee.FindAllProductResponse)) {
       return super.equals(obj);
     }
-    com.example.gccoffee.GetAllProductResponse other = (com.example.gccoffee.GetAllProductResponse) obj;
+    com.example.gccoffee.FindAllProductResponse other = (com.example.gccoffee.FindAllProductResponse) obj;
 
     if (!getProductList()
         .equals(other.getProductList())) return false;
@@ -151,69 +151,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.example.gccoffee.GetAllProductResponse parseFrom(
+  public static com.example.gccoffee.FindAllProductResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseFrom(
+  public static com.example.gccoffee.FindAllProductResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseFrom(
+  public static com.example.gccoffee.FindAllProductResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseFrom(
+  public static com.example.gccoffee.FindAllProductResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseFrom(byte[] data)
+  public static com.example.gccoffee.FindAllProductResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseFrom(
+  public static com.example.gccoffee.FindAllProductResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseFrom(java.io.InputStream input)
+  public static com.example.gccoffee.FindAllProductResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseFrom(
+  public static com.example.gccoffee.FindAllProductResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.example.gccoffee.FindAllProductResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseDelimitedFrom(
+  public static com.example.gccoffee.FindAllProductResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseFrom(
+  public static com.example.gccoffee.FindAllProductResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.example.gccoffee.GetAllProductResponse parseFrom(
+  public static com.example.gccoffee.FindAllProductResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -226,7 +226,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.example.gccoffee.GetAllProductResponse prototype) {
+  public static Builder newBuilder(com.example.gccoffee.FindAllProductResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -242,26 +242,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code GetAllProductResponse}
+   * Protobuf type {@code FindAllProductResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:GetAllProductResponse)
-      com.example.gccoffee.GetAllProductResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:FindAllProductResponse)
+      com.example.gccoffee.FindAllProductResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.example.gccoffee.ProductService.internal_static_GetAllProductResponse_descriptor;
+      return com.example.gccoffee.ProductService.internal_static_FindAllProductResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.example.gccoffee.ProductService.internal_static_GetAllProductResponse_fieldAccessorTable
+      return com.example.gccoffee.ProductService.internal_static_FindAllProductResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.example.gccoffee.GetAllProductResponse.class, com.example.gccoffee.GetAllProductResponse.Builder.class);
+              com.example.gccoffee.FindAllProductResponse.class, com.example.gccoffee.FindAllProductResponse.Builder.class);
     }
 
-    // Construct using com.example.gccoffee.GetAllProductResponse.newBuilder()
+    // Construct using com.example.gccoffee.FindAllProductResponse.newBuilder()
     private Builder() {
 
     }
@@ -287,17 +287,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.example.gccoffee.ProductService.internal_static_GetAllProductResponse_descriptor;
+      return com.example.gccoffee.ProductService.internal_static_FindAllProductResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.example.gccoffee.GetAllProductResponse getDefaultInstanceForType() {
-      return com.example.gccoffee.GetAllProductResponse.getDefaultInstance();
+    public com.example.gccoffee.FindAllProductResponse getDefaultInstanceForType() {
+      return com.example.gccoffee.FindAllProductResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.example.gccoffee.GetAllProductResponse build() {
-      com.example.gccoffee.GetAllProductResponse result = buildPartial();
+    public com.example.gccoffee.FindAllProductResponse build() {
+      com.example.gccoffee.FindAllProductResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -305,8 +305,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.example.gccoffee.GetAllProductResponse buildPartial() {
-      com.example.gccoffee.GetAllProductResponse result = new com.example.gccoffee.GetAllProductResponse(this);
+    public com.example.gccoffee.FindAllProductResponse buildPartial() {
+      com.example.gccoffee.FindAllProductResponse result = new com.example.gccoffee.FindAllProductResponse(this);
       int from_bitField0_ = bitField0_;
       if (productBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
@@ -355,16 +355,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.example.gccoffee.GetAllProductResponse) {
-        return mergeFrom((com.example.gccoffee.GetAllProductResponse)other);
+      if (other instanceof com.example.gccoffee.FindAllProductResponse) {
+        return mergeFrom((com.example.gccoffee.FindAllProductResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.example.gccoffee.GetAllProductResponse other) {
-      if (other == com.example.gccoffee.GetAllProductResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.example.gccoffee.FindAllProductResponse other) {
+      if (other == com.example.gccoffee.FindAllProductResponse.getDefaultInstance()) return this;
       if (productBuilder_ == null) {
         if (!other.product_.isEmpty()) {
           if (product_.isEmpty()) {
@@ -699,23 +699,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:GetAllProductResponse)
+    // @@protoc_insertion_point(builder_scope:FindAllProductResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:GetAllProductResponse)
-  private static final com.example.gccoffee.GetAllProductResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:FindAllProductResponse)
+  private static final com.example.gccoffee.FindAllProductResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.example.gccoffee.GetAllProductResponse();
+    DEFAULT_INSTANCE = new com.example.gccoffee.FindAllProductResponse();
   }
 
-  public static com.example.gccoffee.GetAllProductResponse getDefaultInstance() {
+  public static com.example.gccoffee.FindAllProductResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetAllProductResponse>
-      PARSER = new com.google.protobuf.AbstractParser<GetAllProductResponse>() {
+  private static final com.google.protobuf.Parser<FindAllProductResponse>
+      PARSER = new com.google.protobuf.AbstractParser<FindAllProductResponse>() {
     @java.lang.Override
-    public GetAllProductResponse parsePartialFrom(
+    public FindAllProductResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -734,17 +734,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<GetAllProductResponse> parser() {
+  public static com.google.protobuf.Parser<FindAllProductResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<GetAllProductResponse> getParserForType() {
+  public com.google.protobuf.Parser<FindAllProductResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.example.gccoffee.GetAllProductResponse getDefaultInstanceForType() {
+  public com.example.gccoffee.FindAllProductResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

@@ -4,25 +4,26 @@
 package com.example.gccoffee;
 
 /**
- * Protobuf type {@code getAllProductsRequest}
+ * Protobuf type {@code FindProductByNameRequest}
  */
-public final class getAllProductsRequest extends
+public final class FindProductByNameRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:getAllProductsRequest)
-    getAllProductsRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:FindProductByNameRequest)
+    FindProductByNameRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use getAllProductsRequest.newBuilder() to construct.
-  private getAllProductsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use FindProductByNameRequest.newBuilder() to construct.
+  private FindProductByNameRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private getAllProductsRequest() {
+  private FindProductByNameRequest() {
+    productName_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new getAllProductsRequest();
+    return new FindProductByNameRequest();
   }
 
   @java.lang.Override
@@ -32,15 +33,53 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.example.gccoffee.ProductService.internal_static_getAllProductsRequest_descriptor;
+    return com.example.gccoffee.ProductService.internal_static_FindProductByNameRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.example.gccoffee.ProductService.internal_static_getAllProductsRequest_fieldAccessorTable
+    return com.example.gccoffee.ProductService.internal_static_FindProductByNameRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.example.gccoffee.getAllProductsRequest.class, com.example.gccoffee.getAllProductsRequest.Builder.class);
+            com.example.gccoffee.FindProductByNameRequest.class, com.example.gccoffee.FindProductByNameRequest.Builder.class);
+  }
+
+  public static final int PRODUCTNAME_FIELD_NUMBER = 1;
+  private volatile java.lang.Object productName_;
+  /**
+   * <code>string productName = 1;</code>
+   * @return The productName.
+   */
+  @java.lang.Override
+  public java.lang.String getProductName() {
+    java.lang.Object ref = productName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      productName_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string productName = 1;</code>
+   * @return The bytes for productName.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getProductNameBytes() {
+    java.lang.Object ref = productName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      productName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -57,6 +96,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(productName_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, productName_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -66,6 +108,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(productName_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, productName_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -76,11 +121,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.example.gccoffee.getAllProductsRequest)) {
+    if (!(obj instanceof com.example.gccoffee.FindProductByNameRequest)) {
       return super.equals(obj);
     }
-    com.example.gccoffee.getAllProductsRequest other = (com.example.gccoffee.getAllProductsRequest) obj;
+    com.example.gccoffee.FindProductByNameRequest other = (com.example.gccoffee.FindProductByNameRequest) obj;
 
+    if (!getProductName()
+        .equals(other.getProductName())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -92,74 +139,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + PRODUCTNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getProductName().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.example.gccoffee.getAllProductsRequest parseFrom(
+  public static com.example.gccoffee.FindProductByNameRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseFrom(
+  public static com.example.gccoffee.FindProductByNameRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseFrom(
+  public static com.example.gccoffee.FindProductByNameRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseFrom(
+  public static com.example.gccoffee.FindProductByNameRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseFrom(byte[] data)
+  public static com.example.gccoffee.FindProductByNameRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseFrom(
+  public static com.example.gccoffee.FindProductByNameRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseFrom(java.io.InputStream input)
+  public static com.example.gccoffee.FindProductByNameRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseFrom(
+  public static com.example.gccoffee.FindProductByNameRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.example.gccoffee.FindProductByNameRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseDelimitedFrom(
+  public static com.example.gccoffee.FindProductByNameRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseFrom(
+  public static com.example.gccoffee.FindProductByNameRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.example.gccoffee.getAllProductsRequest parseFrom(
+  public static com.example.gccoffee.FindProductByNameRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -172,7 +221,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.example.gccoffee.getAllProductsRequest prototype) {
+  public static Builder newBuilder(com.example.gccoffee.FindProductByNameRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -188,26 +237,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code getAllProductsRequest}
+   * Protobuf type {@code FindProductByNameRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:getAllProductsRequest)
-      com.example.gccoffee.getAllProductsRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:FindProductByNameRequest)
+      com.example.gccoffee.FindProductByNameRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.example.gccoffee.ProductService.internal_static_getAllProductsRequest_descriptor;
+      return com.example.gccoffee.ProductService.internal_static_FindProductByNameRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.example.gccoffee.ProductService.internal_static_getAllProductsRequest_fieldAccessorTable
+      return com.example.gccoffee.ProductService.internal_static_FindProductByNameRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.example.gccoffee.getAllProductsRequest.class, com.example.gccoffee.getAllProductsRequest.Builder.class);
+              com.example.gccoffee.FindProductByNameRequest.class, com.example.gccoffee.FindProductByNameRequest.Builder.class);
     }
 
-    // Construct using com.example.gccoffee.getAllProductsRequest.newBuilder()
+    // Construct using com.example.gccoffee.FindProductByNameRequest.newBuilder()
     private Builder() {
 
     }
@@ -220,23 +269,25 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      productName_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.example.gccoffee.ProductService.internal_static_getAllProductsRequest_descriptor;
+      return com.example.gccoffee.ProductService.internal_static_FindProductByNameRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.example.gccoffee.getAllProductsRequest getDefaultInstanceForType() {
-      return com.example.gccoffee.getAllProductsRequest.getDefaultInstance();
+    public com.example.gccoffee.FindProductByNameRequest getDefaultInstanceForType() {
+      return com.example.gccoffee.FindProductByNameRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.example.gccoffee.getAllProductsRequest build() {
-      com.example.gccoffee.getAllProductsRequest result = buildPartial();
+    public com.example.gccoffee.FindProductByNameRequest build() {
+      com.example.gccoffee.FindProductByNameRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -244,8 +295,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.example.gccoffee.getAllProductsRequest buildPartial() {
-      com.example.gccoffee.getAllProductsRequest result = new com.example.gccoffee.getAllProductsRequest(this);
+    public com.example.gccoffee.FindProductByNameRequest buildPartial() {
+      com.example.gccoffee.FindProductByNameRequest result = new com.example.gccoffee.FindProductByNameRequest(this);
+      result.productName_ = productName_;
       onBuilt();
       return result;
     }
@@ -284,16 +336,20 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.example.gccoffee.getAllProductsRequest) {
-        return mergeFrom((com.example.gccoffee.getAllProductsRequest)other);
+      if (other instanceof com.example.gccoffee.FindProductByNameRequest) {
+        return mergeFrom((com.example.gccoffee.FindProductByNameRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.example.gccoffee.getAllProductsRequest other) {
-      if (other == com.example.gccoffee.getAllProductsRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.example.gccoffee.FindProductByNameRequest other) {
+      if (other == com.example.gccoffee.FindProductByNameRequest.getDefaultInstance()) return this;
+      if (!other.getProductName().isEmpty()) {
+        productName_ = other.productName_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -320,6 +376,11 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 10: {
+              productName_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 10
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -335,6 +396,82 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+
+    private java.lang.Object productName_ = "";
+    /**
+     * <code>string productName = 1;</code>
+     * @return The productName.
+     */
+    public java.lang.String getProductName() {
+      java.lang.Object ref = productName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        productName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string productName = 1;</code>
+     * @return The bytes for productName.
+     */
+    public com.google.protobuf.ByteString
+        getProductNameBytes() {
+      java.lang.Object ref = productName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        productName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string productName = 1;</code>
+     * @param value The productName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setProductName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      productName_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string productName = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearProductName() {
+      
+      productName_ = getDefaultInstance().getProductName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string productName = 1;</code>
+     * @param value The bytes for productName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setProductNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      productName_ = value;
+      onChanged();
+      return this;
+    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -348,23 +485,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:getAllProductsRequest)
+    // @@protoc_insertion_point(builder_scope:FindProductByNameRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:getAllProductsRequest)
-  private static final com.example.gccoffee.getAllProductsRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:FindProductByNameRequest)
+  private static final com.example.gccoffee.FindProductByNameRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.example.gccoffee.getAllProductsRequest();
+    DEFAULT_INSTANCE = new com.example.gccoffee.FindProductByNameRequest();
   }
 
-  public static com.example.gccoffee.getAllProductsRequest getDefaultInstance() {
+  public static com.example.gccoffee.FindProductByNameRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<getAllProductsRequest>
-      PARSER = new com.google.protobuf.AbstractParser<getAllProductsRequest>() {
+  private static final com.google.protobuf.Parser<FindProductByNameRequest>
+      PARSER = new com.google.protobuf.AbstractParser<FindProductByNameRequest>() {
     @java.lang.Override
-    public getAllProductsRequest parsePartialFrom(
+    public FindProductByNameRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -383,17 +520,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<getAllProductsRequest> parser() {
+  public static com.google.protobuf.Parser<FindProductByNameRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<getAllProductsRequest> getParserForType() {
+  public com.google.protobuf.Parser<FindProductByNameRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.example.gccoffee.getAllProductsRequest getDefaultInstanceForType() {
+  public com.example.gccoffee.FindProductByNameRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

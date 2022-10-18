@@ -15,29 +15,29 @@ public final class productServiceGrpc {
   public static final String SERVICE_NAME = "productService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.example.gccoffee.getAllProductsRequest,
-      com.example.gccoffee.GetAllProductResponse> getFindAllMethod;
+  private static volatile io.grpc.MethodDescriptor<com.example.gccoffee.FindAllProductRequest,
+      com.example.gccoffee.FindAllProductResponse> getFindAllMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "findAll",
-      requestType = com.example.gccoffee.getAllProductsRequest.class,
-      responseType = com.example.gccoffee.GetAllProductResponse.class,
+      requestType = com.example.gccoffee.FindAllProductRequest.class,
+      responseType = com.example.gccoffee.FindAllProductResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.example.gccoffee.getAllProductsRequest,
-      com.example.gccoffee.GetAllProductResponse> getFindAllMethod() {
-    io.grpc.MethodDescriptor<com.example.gccoffee.getAllProductsRequest, com.example.gccoffee.GetAllProductResponse> getFindAllMethod;
+  public static io.grpc.MethodDescriptor<com.example.gccoffee.FindAllProductRequest,
+      com.example.gccoffee.FindAllProductResponse> getFindAllMethod() {
+    io.grpc.MethodDescriptor<com.example.gccoffee.FindAllProductRequest, com.example.gccoffee.FindAllProductResponse> getFindAllMethod;
     if ((getFindAllMethod = productServiceGrpc.getFindAllMethod) == null) {
       synchronized (productServiceGrpc.class) {
         if ((getFindAllMethod = productServiceGrpc.getFindAllMethod) == null) {
           productServiceGrpc.getFindAllMethod = getFindAllMethod =
-              io.grpc.MethodDescriptor.<com.example.gccoffee.getAllProductsRequest, com.example.gccoffee.GetAllProductResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.example.gccoffee.FindAllProductRequest, com.example.gccoffee.FindAllProductResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "findAll"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.gccoffee.getAllProductsRequest.getDefaultInstance()))
+                  com.example.gccoffee.FindAllProductRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.gccoffee.GetAllProductResponse.getDefaultInstance()))
+                  com.example.gccoffee.FindAllProductResponse.getDefaultInstance()))
               .setSchemaDescriptor(new productServiceMethodDescriptorSupplier("findAll"))
               .build();
         }
@@ -46,35 +46,66 @@ public final class productServiceGrpc {
     return getFindAllMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.example.gccoffee.helloRequest,
-      com.example.gccoffee.helloResponse> getHelloMethod;
+  private static volatile io.grpc.MethodDescriptor<com.example.gccoffee.FindProductByIdRequest,
+      com.example.gccoffee.FindOneProductResponse> getFindByIdMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Hello",
-      requestType = com.example.gccoffee.helloRequest.class,
-      responseType = com.example.gccoffee.helloResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "findById",
+      requestType = com.example.gccoffee.FindProductByIdRequest.class,
+      responseType = com.example.gccoffee.FindOneProductResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.example.gccoffee.helloRequest,
-      com.example.gccoffee.helloResponse> getHelloMethod() {
-    io.grpc.MethodDescriptor<com.example.gccoffee.helloRequest, com.example.gccoffee.helloResponse> getHelloMethod;
-    if ((getHelloMethod = productServiceGrpc.getHelloMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.example.gccoffee.FindProductByIdRequest,
+      com.example.gccoffee.FindOneProductResponse> getFindByIdMethod() {
+    io.grpc.MethodDescriptor<com.example.gccoffee.FindProductByIdRequest, com.example.gccoffee.FindOneProductResponse> getFindByIdMethod;
+    if ((getFindByIdMethod = productServiceGrpc.getFindByIdMethod) == null) {
       synchronized (productServiceGrpc.class) {
-        if ((getHelloMethod = productServiceGrpc.getHelloMethod) == null) {
-          productServiceGrpc.getHelloMethod = getHelloMethod =
-              io.grpc.MethodDescriptor.<com.example.gccoffee.helloRequest, com.example.gccoffee.helloResponse>newBuilder()
+        if ((getFindByIdMethod = productServiceGrpc.getFindByIdMethod) == null) {
+          productServiceGrpc.getFindByIdMethod = getFindByIdMethod =
+              io.grpc.MethodDescriptor.<com.example.gccoffee.FindProductByIdRequest, com.example.gccoffee.FindOneProductResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Hello"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "findById"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.gccoffee.helloRequest.getDefaultInstance()))
+                  com.example.gccoffee.FindProductByIdRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.gccoffee.helloResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new productServiceMethodDescriptorSupplier("Hello"))
+                  com.example.gccoffee.FindOneProductResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new productServiceMethodDescriptorSupplier("findById"))
               .build();
         }
       }
     }
-    return getHelloMethod;
+    return getFindByIdMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.example.gccoffee.FindProductByNameRequest,
+      com.example.gccoffee.FindOneProductResponse> getFindByNameMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "findByName",
+      requestType = com.example.gccoffee.FindProductByNameRequest.class,
+      responseType = com.example.gccoffee.FindOneProductResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.gccoffee.FindProductByNameRequest,
+      com.example.gccoffee.FindOneProductResponse> getFindByNameMethod() {
+    io.grpc.MethodDescriptor<com.example.gccoffee.FindProductByNameRequest, com.example.gccoffee.FindOneProductResponse> getFindByNameMethod;
+    if ((getFindByNameMethod = productServiceGrpc.getFindByNameMethod) == null) {
+      synchronized (productServiceGrpc.class) {
+        if ((getFindByNameMethod = productServiceGrpc.getFindByNameMethod) == null) {
+          productServiceGrpc.getFindByNameMethod = getFindByNameMethod =
+              io.grpc.MethodDescriptor.<com.example.gccoffee.FindProductByNameRequest, com.example.gccoffee.FindOneProductResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "findByName"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.gccoffee.FindProductByNameRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.gccoffee.FindOneProductResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new productServiceMethodDescriptorSupplier("findByName"))
+              .build();
+        }
+      }
+    }
+    return getFindByNameMethod;
   }
 
   /**
@@ -127,16 +158,23 @@ public final class productServiceGrpc {
 
     /**
      */
-    public void findAll(com.example.gccoffee.getAllProductsRequest request,
-        io.grpc.stub.StreamObserver<com.example.gccoffee.GetAllProductResponse> responseObserver) {
+    public void findAll(com.example.gccoffee.FindAllProductRequest request,
+        io.grpc.stub.StreamObserver<com.example.gccoffee.FindAllProductResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFindAllMethod(), responseObserver);
     }
 
     /**
      */
-    public void hello(com.example.gccoffee.helloRequest request,
-        io.grpc.stub.StreamObserver<com.example.gccoffee.helloResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHelloMethod(), responseObserver);
+    public void findById(com.example.gccoffee.FindProductByIdRequest request,
+        io.grpc.stub.StreamObserver<com.example.gccoffee.FindOneProductResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFindByIdMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void findByName(com.example.gccoffee.FindProductByNameRequest request,
+        io.grpc.stub.StreamObserver<com.example.gccoffee.FindOneProductResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFindByNameMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -145,16 +183,23 @@ public final class productServiceGrpc {
             getFindAllMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                com.example.gccoffee.getAllProductsRequest,
-                com.example.gccoffee.GetAllProductResponse>(
+                com.example.gccoffee.FindAllProductRequest,
+                com.example.gccoffee.FindAllProductResponse>(
                   this, METHODID_FIND_ALL)))
           .addMethod(
-            getHelloMethod(),
+            getFindByIdMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                com.example.gccoffee.helloRequest,
-                com.example.gccoffee.helloResponse>(
-                  this, METHODID_HELLO)))
+                com.example.gccoffee.FindProductByIdRequest,
+                com.example.gccoffee.FindOneProductResponse>(
+                  this, METHODID_FIND_BY_ID)))
+          .addMethod(
+            getFindByNameMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                com.example.gccoffee.FindProductByNameRequest,
+                com.example.gccoffee.FindOneProductResponse>(
+                  this, METHODID_FIND_BY_NAME)))
           .build();
     }
   }
@@ -175,18 +220,26 @@ public final class productServiceGrpc {
 
     /**
      */
-    public void findAll(com.example.gccoffee.getAllProductsRequest request,
-        io.grpc.stub.StreamObserver<com.example.gccoffee.GetAllProductResponse> responseObserver) {
+    public void findAll(com.example.gccoffee.FindAllProductRequest request,
+        io.grpc.stub.StreamObserver<com.example.gccoffee.FindAllProductResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getFindAllMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void hello(com.example.gccoffee.helloRequest request,
-        io.grpc.stub.StreamObserver<com.example.gccoffee.helloResponse> responseObserver) {
+    public void findById(com.example.gccoffee.FindProductByIdRequest request,
+        io.grpc.stub.StreamObserver<com.example.gccoffee.FindOneProductResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getHelloMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getFindByIdMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void findByName(com.example.gccoffee.FindProductByNameRequest request,
+        io.grpc.stub.StreamObserver<com.example.gccoffee.FindOneProductResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getFindByNameMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -206,16 +259,23 @@ public final class productServiceGrpc {
 
     /**
      */
-    public com.example.gccoffee.GetAllProductResponse findAll(com.example.gccoffee.getAllProductsRequest request) {
+    public com.example.gccoffee.FindAllProductResponse findAll(com.example.gccoffee.FindAllProductRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getFindAllMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.example.gccoffee.helloResponse hello(com.example.gccoffee.helloRequest request) {
+    public com.example.gccoffee.FindOneProductResponse findById(com.example.gccoffee.FindProductByIdRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getHelloMethod(), getCallOptions(), request);
+          getChannel(), getFindByIdMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.example.gccoffee.FindOneProductResponse findByName(com.example.gccoffee.FindProductByNameRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getFindByNameMethod(), getCallOptions(), request);
     }
   }
 
@@ -235,23 +295,32 @@ public final class productServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.example.gccoffee.GetAllProductResponse> findAll(
-        com.example.gccoffee.getAllProductsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.example.gccoffee.FindAllProductResponse> findAll(
+        com.example.gccoffee.FindAllProductRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getFindAllMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.example.gccoffee.helloResponse> hello(
-        com.example.gccoffee.helloRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.example.gccoffee.FindOneProductResponse> findById(
+        com.example.gccoffee.FindProductByIdRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getHelloMethod(), getCallOptions()), request);
+          getChannel().newCall(getFindByIdMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.gccoffee.FindOneProductResponse> findByName(
+        com.example.gccoffee.FindProductByNameRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getFindByNameMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_FIND_ALL = 0;
-  private static final int METHODID_HELLO = 1;
+  private static final int METHODID_FIND_BY_ID = 1;
+  private static final int METHODID_FIND_BY_NAME = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -271,12 +340,16 @@ public final class productServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_FIND_ALL:
-          serviceImpl.findAll((com.example.gccoffee.getAllProductsRequest) request,
-              (io.grpc.stub.StreamObserver<com.example.gccoffee.GetAllProductResponse>) responseObserver);
+          serviceImpl.findAll((com.example.gccoffee.FindAllProductRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.gccoffee.FindAllProductResponse>) responseObserver);
           break;
-        case METHODID_HELLO:
-          serviceImpl.hello((com.example.gccoffee.helloRequest) request,
-              (io.grpc.stub.StreamObserver<com.example.gccoffee.helloResponse>) responseObserver);
+        case METHODID_FIND_BY_ID:
+          serviceImpl.findById((com.example.gccoffee.FindProductByIdRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.gccoffee.FindOneProductResponse>) responseObserver);
+          break;
+        case METHODID_FIND_BY_NAME:
+          serviceImpl.findByName((com.example.gccoffee.FindProductByNameRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.gccoffee.FindOneProductResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -340,7 +413,8 @@ public final class productServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new productServiceFileDescriptorSupplier())
               .addMethod(getFindAllMethod())
-              .addMethod(getHelloMethod())
+              .addMethod(getFindByIdMethod())
+              .addMethod(getFindByNameMethod())
               .build();
         }
       }

@@ -3,8 +3,8 @@
 
 package com.example.gccoffee;
 
-public interface GetAllProductResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:GetAllProductResponse)
+public interface FindAllProductResponseOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:FindAllProductResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

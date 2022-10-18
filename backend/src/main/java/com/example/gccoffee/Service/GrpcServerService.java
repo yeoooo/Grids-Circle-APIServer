@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @GrpcService
@@ -20,7 +21,7 @@ public class GrpcServerService extends productServiceGrpc.productServiceImplBase
     private final ProductService productService;
 
     @Override
-    public void findAll(getAllProductsRequest request, StreamObserver<GetAllProductResponse> responseObserver) {
+    public void findAll(FindAllProductRequest request, StreamObserver<FindAllProductResponse> responseObserver) {
         List<Product> productList = productService.findAll();
         List<ProductMessage> products = new ArrayList<>();
         for(Product p : productList) {
@@ -34,17 +35,49 @@ public class GrpcServerService extends productServiceGrpc.productServiceImplBase
                     .setDescription(p.getDescription())
                     .build());
         }
-        GetAllProductResponse resp = GetAllProductResponse.newBuilder().addAllProduct(products).build();
+        FindAllProductResponse resp = FindAllProductResponse.newBuilder().addAllProduct(products).build();
         responseObserver.onNext(resp);
         responseObserver.onCompleted();
     }
 
     @Override
-    public void hello(helloRequest request, StreamObserver<helloResponse> responseObserver) {
-        helloResponse resp = helloResponse.newBuilder()
-                .setMessage("Hello ==> " + request.getName())
+    public void findById(FindProductByIdRequest request, StreamObserver<FindOneProductResponse> responseObserver) {
+        Optional<Product> founded = productService.findById(UUID.fromString(request.getProductId()));
+        ProductMessage productMessage = ProductMessage
+                .newBuilder()
+                .setProductId(founded.get().getProductId().toString())
+                .setProductName(founded.get().getProductName())
+                .setCategory(founded.get().getCategory().toString())
+                .setPrice(founded.get().getPrice())
+                .setDescription(founded.get().getDescription())
+                .setQuantity(founded.get().getQuantity())
                 .build();
+
+        FindOneProductResponse resp = FindOneProductResponse.newBuilder().setProduct(productMessage).build();
+
         responseObserver.onNext(resp);
         responseObserver.onCompleted();
+    }
+
+    @Override
+    public void findByName(FindProductByNameRequest request, StreamObserver<FindOneProductResponse> responseObserver) {
+        System.out.println("request.getProductName() = " + request.getProductName());
+        Optional<Product> founded = productService.findByName(request.getProductName());
+
+        ProductMessage productMessage = ProductMessage
+                .newBuilder()
+                .setProductId(founded.get().getProductId().toString())
+                .setProductName(founded.get().getProductName())
+                .setCategory(founded.get().getCategory().toString())
+                .setPrice(founded.get().getPrice())
+                .setDescription(founded.get().getDescription())
+                .setQuantity(founded.get().getQuantity())
+                .build();
+
+        FindOneProductResponse resp = FindOneProductResponse.newBuilder().setProduct(productMessage).build();
+
+        responseObserver.onNext(resp);
+        responseObserver.onCompleted();
+
     }
 }

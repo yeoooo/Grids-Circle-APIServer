@@ -15,30 +15,35 @@ public final class ProductService {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_getAllProductsRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_getAllProductsRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ProductMessage_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ProductMessage_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GetAllProductResponse_descriptor;
+    internal_static_FindAllProductRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GetAllProductResponse_fieldAccessorTable;
+      internal_static_FindAllProductRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_helloRequest_descriptor;
+    internal_static_FindAllProductResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_helloRequest_fieldAccessorTable;
+      internal_static_FindAllProductResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_helloResponse_descriptor;
+    internal_static_FindProductByIdRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_helloResponse_fieldAccessorTable;
+      internal_static_FindProductByIdRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_FindProductByNameRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_FindProductByNameRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_FindOneProductResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_FindOneProductResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -48,53 +53,63 @@ public final class ProductService {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024ProductService.proto\"\027\n\025getAllProducts" +
-      "Request\"\200\001\n\016ProductMessage\022\021\n\tproductId\030" +
-      "\001 \001(\t\022\023\n\013productName\030\002 \001(\t\022\020\n\010category\030\003" +
-      " \001(\t\022\023\n\013description\030\004 \001(\t\022\r\n\005price\030\005 \001(\003" +
-      "\022\020\n\010quantity\030\006 \001(\005\"9\n\025GetAllProductRespo" +
-      "nse\022 \n\007product\030\001 \003(\0132\017.ProductMessage\"\034\n" +
-      "\014helloRequest\022\014\n\004name\030\001 \001(\t\" \n\rhelloResp" +
-      "onse\022\017\n\007message\030\001 \001(\t2s\n\016productService\022" +
-      "9\n\007findAll\022\026.getAllProductsRequest\032\026.Get" +
-      "AllProductResponse\022&\n\005Hello\022\r.helloReque" +
-      "st\032\016.helloResponseB\030\n\024com.example.gccoff" +
-      "eeP\001b\006proto3"
+      "\n\024ProductService.proto\"\200\001\n\016ProductMessag" +
+      "e\022\021\n\tproductId\030\001 \001(\t\022\023\n\013productName\030\002 \001(" +
+      "\t\022\020\n\010category\030\003 \001(\t\022\023\n\013description\030\004 \001(\t" +
+      "\022\r\n\005price\030\005 \001(\003\022\020\n\010quantity\030\006 \001(\005\"\027\n\025Fin" +
+      "dAllProductRequest\":\n\026FindAllProductResp" +
+      "onse\022 \n\007product\030\001 \003(\0132\017.ProductMessage\"+" +
+      "\n\026FindProductByIdRequest\022\021\n\tproductId\030\001 " +
+      "\001(\t\"/\n\030FindProductByNameRequest\022\023\n\013produ" +
+      "ctName\030\001 \001(\t\":\n\026FindOneProductResponse\022 " +
+      "\n\007product\030\001 \001(\0132\017.ProductMessage2\314\001\n\016pro" +
+      "ductService\022:\n\007findAll\022\026.FindAllProductR" +
+      "equest\032\027.FindAllProductResponse\022<\n\010findB" +
+      "yId\022\027.FindProductByIdRequest\032\027.FindOnePr" +
+      "oductResponse\022@\n\nfindByName\022\031.FindProduc" +
+      "tByNameRequest\032\027.FindOneProductResponseB" +
+      "\030\n\024com.example.gccoffeeP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_getAllProductsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_getAllProductsRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_getAllProductsRequest_descriptor,
-        new java.lang.String[] { });
     internal_static_ProductMessage_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_ProductMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProductMessage_descriptor,
         new java.lang.String[] { "ProductId", "ProductName", "Category", "Description", "Price", "Quantity", });
-    internal_static_GetAllProductResponse_descriptor =
+    internal_static_FindAllProductRequest_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_FindAllProductRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_FindAllProductRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_FindAllProductResponse_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_GetAllProductResponse_fieldAccessorTable = new
+    internal_static_FindAllProductResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GetAllProductResponse_descriptor,
+        internal_static_FindAllProductResponse_descriptor,
         new java.lang.String[] { "Product", });
-    internal_static_helloRequest_descriptor =
+    internal_static_FindProductByIdRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_helloRequest_fieldAccessorTable = new
+    internal_static_FindProductByIdRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_helloRequest_descriptor,
-        new java.lang.String[] { "Name", });
-    internal_static_helloResponse_descriptor =
+        internal_static_FindProductByIdRequest_descriptor,
+        new java.lang.String[] { "ProductId", });
+    internal_static_FindProductByNameRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_helloResponse_fieldAccessorTable = new
+    internal_static_FindProductByNameRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_helloResponse_descriptor,
-        new java.lang.String[] { "Message", });
+        internal_static_FindProductByNameRequest_descriptor,
+        new java.lang.String[] { "ProductName", });
+    internal_static_FindOneProductResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_FindOneProductResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_FindOneProductResponse_descriptor,
+        new java.lang.String[] { "Product", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

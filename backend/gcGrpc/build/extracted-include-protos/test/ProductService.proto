@@ -3,12 +3,9 @@ option java_multiple_files = true;
 option java_package = "com.example.gccoffee";
 
 service productService{
-  rpc findAll (getAllProductsRequest) returns (GetAllProductResponse);
-  rpc Hello (helloRequest) returns (helloResponse);
-}
-
-message getAllProductsRequest{
-
+  rpc findAll (FindAllProductRequest) returns (FindAllProductResponse);
+  rpc findById (FindProductByIdRequest) returns (FindOneProductResponse);
+  rpc findByName (FindProductByNameRequest) returns (FindOneProductResponse);
 }
 
 message ProductMessage{
@@ -20,14 +17,22 @@ message ProductMessage{
   int32 quantity = 6;
 }
 
-message GetAllProductResponse{
+message FindAllProductRequest{
+
+}
+message FindAllProductResponse{
   repeated ProductMessage product = 1;
 }
 
-message helloRequest{
-  string name = 1;
+message FindProductByIdRequest{
+  string productId = 1;
+}
+message FindProductByNameRequest{
+  string productName = 1;
+}
+message FindOneProductResponse{
+  ProductMessage product = 1;
 }
 
-message helloResponse{
-  string message = 1;
-}
+
+
