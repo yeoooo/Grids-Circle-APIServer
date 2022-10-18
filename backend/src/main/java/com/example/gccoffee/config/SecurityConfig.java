@@ -21,8 +21,10 @@ public class SecurityConfig{
                 .antMatchers("/management/**").authenticated()
 //                .antMatchers("/management/**").permitAll()
                 .antMatchers("/api/**").permitAll()
-                .anyRequest()
-                .authenticated()
+
+//                .anyRequest()
+//                .authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .and()
