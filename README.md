@@ -1,7 +1,11 @@
 # ☕️ Grids-Circles-APIServer
 Circles &amp; Grids 커피 주문 API 서버 주문 관리, 상품관리 개인 프로젝트  
+## 상품, 주문 관리 페이지(thymeleaf)
+![image](https://user-images.githubusercontent.com/71688432/196448603-13e7c1b5-eeb5-4021-a156-c000a411d7fc.png)  
+  
+## 주문 페이지(react)  
+![image](https://user-images.githubusercontent.com/71688432/196463721-c1f7afe9-430b-4b5a-9108-d0cd5edd30c9.png)
 
-![image](https://user-images.githubusercontent.com/71688432/196448603-13e7c1b5-eeb5-4021-a156-c000a411d7fc.png)
 
 
 ## 📝 기록일지  
