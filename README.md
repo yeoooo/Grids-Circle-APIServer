@@ -5,7 +5,7 @@ Circles &amp; Grids 커피 주문 API 서버 주문 관리, 상품관리 개인 
 
 
 ## 📝 기록일지  
-<a href = "https://www.notion.so/Grids-Circles-3fd4a31e23524d78bad2e27a435ffe4d"> <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white"> 
+<a href = "https://www.notion.so/Grids-Circles-3fd4a31e23524d78bad2e27a435ffe4d"> <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white"></a>
 
 ## 📚 사용한 기술 스택 
   ### 개발 도구  
