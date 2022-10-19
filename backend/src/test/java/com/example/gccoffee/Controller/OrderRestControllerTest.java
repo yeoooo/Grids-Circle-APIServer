@@ -12,14 +12,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.ManualRestDocumentation;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.payload.JsonFieldType;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 import java.util.*;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -32,6 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureRestDocs
+@DirtiesContext
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 public class OrderRestControllerTest {
 
@@ -58,6 +65,7 @@ public class OrderRestControllerTest {
 
     @Transactional
     @BeforeEach
+    @Rollback(value = false)
     public void setUp() {
         Product p = Product
                 .builder()
@@ -81,6 +89,8 @@ public class OrderRestControllerTest {
     @Transactional
     public void tearDown() {
         this.restDocumentation.afterTest();
+        productService.truncateRepo();
+
     }
 
 

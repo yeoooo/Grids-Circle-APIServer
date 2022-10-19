@@ -5,6 +5,7 @@ import com.example.gccoffee.model.Order;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.Rollback;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +18,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-
+@DirtiesContext
 class OrderServiceImplTest {
 
     @Autowired
@@ -30,6 +31,7 @@ class OrderServiceImplTest {
     @Transactional
     @BeforeEach
     public void setUp() {
+
         Product p = Product
                 .builder()
                 .dto(ProductDTO.builder()
@@ -57,8 +59,6 @@ class OrderServiceImplTest {
         //given
         List<OrderItem> o = new ArrayList<>();
         o.add(OrderItem.createOrderItem(productService.findByName("테스트콩1"), 1));
-
-
         //when
 
         OrderDTO newOrderDTO = OrderDTO.builder()
@@ -125,7 +125,6 @@ class OrderServiceImplTest {
     @Test
     @DisplayName("가격 테스트")
     @Transactional
-    @Rollback(value = false)
     public void totalPriceTest() throws Exception {
         //given
 

@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.UUID;
 
 @SpringBootTest
 @Slf4j
+@DirtiesContext
 class ProductServiceImplTest {
 
     @Autowired
@@ -41,8 +43,6 @@ class ProductServiceImplTest {
         productId = productService.save(p);
 
         p = productService.findById(productId).get();
-
-
     }
 
     @Test
@@ -71,7 +71,6 @@ class ProductServiceImplTest {
     @Transactional
     public void productDeleteTest() throws Exception {
         Optional<Product> p = productService.findById(productId);
-        System.out.println("p = " + p);
         //when
         productService.delete(p.get().getProductId());
         //then

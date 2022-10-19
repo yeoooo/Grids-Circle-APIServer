@@ -2,6 +2,8 @@ package com.example.gccoffee.Repository;
 
 import com.example.gccoffee.model.Category;
 import com.example.gccoffee.model.Product;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.springframework.data.annotation.QueryAnnotation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,6 +24,8 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
     public static final String FIND_BY_NAME_QUERY = "select p from PRODUCT p where p.PRODUCT_NAME = :productName";
 
     public Optional<Product> findByProductName(String productName);
+
+
 
 
 

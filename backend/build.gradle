@@ -47,6 +47,7 @@ dependencies {
 
     implementation 'net.devh:grpc-server-spring-boot-starter:2.12.0.RELEASE'
     implementation 'net.devh:grpc-client-spring-boot-starter:2.12.0.RELEASE'
+    implementation 'net.devh:grpc-spring-boot-starter:2.13.1.RELEASE'
     implementation files('libs/gcGrpc-1.0-SNAPSHOT.jar')
 
 }
