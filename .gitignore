@@ -4,8 +4,6 @@
 #For idea
 .idea/
 
-#For Gradle
-*.gradle
 
 frontend/node_modules/.cache/
 *.mv.db
