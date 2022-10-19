@@ -4,6 +4,8 @@ import com.example.gccoffee.model.Order;
 import com.example.gccoffee.model.OrderDTO;
 import com.example.gccoffee.model.OrderItem;
 import com.example.gccoffee.model.OrderStatus;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +31,8 @@ public interface OrderService {
     public Optional<Order> findById(UUID id);
 
     public Order delete(UUID uuid);
+
+    void truncateRepo();
 
 
 }

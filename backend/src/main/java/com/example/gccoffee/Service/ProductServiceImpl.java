@@ -5,6 +5,8 @@ import com.example.gccoffee.Exception.ProductOnBoardException;
 import com.example.gccoffee.Repository.ProductRepository;
 import com.example.gccoffee.model.*;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -71,6 +73,12 @@ public class ProductServiceImpl implements ProductService {
         Optional<Product> product =  productRepository.findById(id);
         return product;
 
+    }
+
+    @Override
+    @Cascade(CascadeType.REMOVE)
+    public void truncateRepo() {
+        productRepository.deleteAll();
     }
 
     @Override

@@ -6,6 +6,8 @@ import com.example.gccoffee.Repository.OrderRepository;
 import com.example.gccoffee.Repository.ProductRepository;
 import com.example.gccoffee.model.*;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -153,5 +155,9 @@ public class OrderServiceImpl implements OrderService{
         return orderRepository.findByOrderStatus(orderStatus);
     }
 
-
+    @Override
+    @Cascade(CascadeType.REMOVE)
+    public void truncateRepo() {
+        orderRepository.deleteAll();
+    }
 }

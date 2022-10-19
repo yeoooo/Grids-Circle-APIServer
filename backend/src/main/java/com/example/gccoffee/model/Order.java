@@ -36,7 +36,7 @@ public class Order extends BaseTimeEntity{
 
     @JsonIgnore
     //2022-10-8_yeoooo : Json 순환구조 방지
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @Setter

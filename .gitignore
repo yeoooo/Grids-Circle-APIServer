@@ -4,9 +4,8 @@
 #For idea
 .idea/
 
-
 frontend/node_modules/.cache/
 *.mv.db
 */*.json
 */build
-
+.gradle/*

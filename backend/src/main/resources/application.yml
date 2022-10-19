@@ -32,9 +32,6 @@ spring:
       encoding: UTF-8
       mode: always
 
-server:
-  port: 8080
-
 grpc:
   server:
     port: 8443

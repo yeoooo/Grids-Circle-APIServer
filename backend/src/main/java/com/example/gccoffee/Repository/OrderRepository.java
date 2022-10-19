@@ -2,11 +2,18 @@ package com.example.gccoffee.Repository;
 
 import com.example.gccoffee.model.Order;
 import com.example.gccoffee.model.OrderStatus;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.swing.text.html.parser.Entity;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +48,6 @@ public interface OrderRepository extends JpaRepository<Order, UUID> {
      *
      * @Query(nativeQuery = true, value = FIND_BY_EMAIL_AND_DAYORDER_QUERY_H2)
      * public Optional<Order> findByEmailAndDayOrder(@Param("email")String email, @Param("date") LocalDateTime localDatetime);
-     *
      * @Query(nativeQuery = true, value = FIND_BY_EMAIL_AND_DAYORDER_NEW_QUERY_H2)
      * public Optional<Order> findByEmailAndDayOrderAfter(@Param("email")String email, @Param("date") LocalDateTime localDatetime);
      */
