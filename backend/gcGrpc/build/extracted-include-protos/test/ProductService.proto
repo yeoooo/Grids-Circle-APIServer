@@ -2,7 +2,7 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.example.gccoffee";
 
-service productService{
+service ProductService{
   rpc findAll (FindAllProductRequest) returns (FindAllProductResponse);
   rpc findById (FindProductByIdRequest) returns (FindOneProductResponse);
   rpc findByName (FindProductByNameRequest) returns (FindOneProductResponse);
@@ -18,7 +18,6 @@ message ProductMessage{
 }
 
 message FindAllProductRequest{
-
 }
 message FindAllProductResponse{
   repeated ProductMessage product = 1;

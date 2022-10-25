@@ -3,8 +3,8 @@
 
 package com.example.gccoffee;
 
-public final class ProductService {
-  private ProductService() {}
+public final class ProductServiceOuterClass {
+  private ProductServiceOuterClass() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -62,7 +62,7 @@ public final class ProductService {
       "\n\026FindProductByIdRequest\022\021\n\tproductId\030\001 " +
       "\001(\t\"/\n\030FindProductByNameRequest\022\023\n\013produ" +
       "ctName\030\001 \001(\t\":\n\026FindOneProductResponse\022 " +
-      "\n\007product\030\001 \001(\0132\017.ProductMessage2\314\001\n\016pro" +
+      "\n\007product\030\001 \001(\0132\017.ProductMessage2\314\001\n\016Pro" +
       "ductService\022:\n\007findAll\022\026.FindAllProductR" +
       "equest\032\027.FindAllProductResponse\022<\n\010findB" +
       "yId\022\027.FindProductByIdRequest\032\027.FindOnePr" +
