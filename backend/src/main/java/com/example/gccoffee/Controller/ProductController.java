@@ -28,12 +28,6 @@ public class ProductController extends BaseTimeEntity {
 
     private final GrpcProductClientService grpcProductClientService;
 
-    private final ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
-            .usePlaintext()
-            .build();
-    @GrpcClient("management")
-    private final ProductServiceGrpc.ProductServiceBlockingStub blockingStub = ProductServiceGrpc.newBlockingStub(channel);
-
     @GetMapping({"/management/product", "/management/product/{variableCategory}"})
     public String getProductList(Model model, @PathVariable(value = "variableCategory", required = false) Optional<Category> category, @RequestParam(value = "errors", required = false) String errors)  {
         Category[] categories = Category.values();
