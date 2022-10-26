@@ -4,12 +4,8 @@ package com.example.gccoffee.Service;
 import com.example.gccoffee.*;
 import com.example.gccoffee.model.Product;
 import io.grpc.stub.StreamObserver;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import net.devh.boot.grpc.server.service.GrpcService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -20,10 +16,9 @@ import java.util.UUID;
 
 @GrpcService
 @RequiredArgsConstructor
-public class GrpcServerService extends productServiceGrpc.productServiceImplBase{
+public class GrpcServerService extends ProductServiceGrpc.ProductServiceImplBase{
 
     private final ProductService productService;
-
 
     @Override
     public void findAll(FindAllProductRequest request, StreamObserver<FindAllProductResponse> responseObserver) {
