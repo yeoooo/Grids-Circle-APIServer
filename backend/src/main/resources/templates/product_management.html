@@ -170,7 +170,7 @@
     function deleteProduct(e) {
         product_id = e.id;
         if(confirm(document.getElementById(e.id).parentElement.parentElement.parentElement.getAttribute("id") + " 삭제하시겠습니까?")){
-            location = "product/delete"+
+            location = "/management/product/delete"+
                 "?id=" + document.getElementById(product_id).parentElement.parentElement.parentElement.getAttribute("value");
         }
     }

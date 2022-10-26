@@ -8,11 +8,11 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
     value = "by gRPC proto compiler (version 1.50.0)",
     comments = "Source: ProductService.proto")
 @io.grpc.stub.annotations.GrpcGenerated
-public final class productServiceGrpc {
+public final class ProductServiceGrpc {
 
-  private productServiceGrpc() {}
+  private ProductServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "productService";
+  public static final String SERVICE_NAME = "ProductService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.example.gccoffee.FindAllProductRequest,
@@ -26,10 +26,10 @@ public final class productServiceGrpc {
   public static io.grpc.MethodDescriptor<com.example.gccoffee.FindAllProductRequest,
       com.example.gccoffee.FindAllProductResponse> getFindAllMethod() {
     io.grpc.MethodDescriptor<com.example.gccoffee.FindAllProductRequest, com.example.gccoffee.FindAllProductResponse> getFindAllMethod;
-    if ((getFindAllMethod = productServiceGrpc.getFindAllMethod) == null) {
-      synchronized (productServiceGrpc.class) {
-        if ((getFindAllMethod = productServiceGrpc.getFindAllMethod) == null) {
-          productServiceGrpc.getFindAllMethod = getFindAllMethod =
+    if ((getFindAllMethod = ProductServiceGrpc.getFindAllMethod) == null) {
+      synchronized (ProductServiceGrpc.class) {
+        if ((getFindAllMethod = ProductServiceGrpc.getFindAllMethod) == null) {
+          ProductServiceGrpc.getFindAllMethod = getFindAllMethod =
               io.grpc.MethodDescriptor.<com.example.gccoffee.FindAllProductRequest, com.example.gccoffee.FindAllProductResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "findAll"))
@@ -38,7 +38,7 @@ public final class productServiceGrpc {
                   com.example.gccoffee.FindAllProductRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.example.gccoffee.FindAllProductResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new productServiceMethodDescriptorSupplier("findAll"))
+              .setSchemaDescriptor(new ProductServiceMethodDescriptorSupplier("findAll"))
               .build();
         }
       }
@@ -57,10 +57,10 @@ public final class productServiceGrpc {
   public static io.grpc.MethodDescriptor<com.example.gccoffee.FindProductByIdRequest,
       com.example.gccoffee.FindOneProductResponse> getFindByIdMethod() {
     io.grpc.MethodDescriptor<com.example.gccoffee.FindProductByIdRequest, com.example.gccoffee.FindOneProductResponse> getFindByIdMethod;
-    if ((getFindByIdMethod = productServiceGrpc.getFindByIdMethod) == null) {
-      synchronized (productServiceGrpc.class) {
-        if ((getFindByIdMethod = productServiceGrpc.getFindByIdMethod) == null) {
-          productServiceGrpc.getFindByIdMethod = getFindByIdMethod =
+    if ((getFindByIdMethod = ProductServiceGrpc.getFindByIdMethod) == null) {
+      synchronized (ProductServiceGrpc.class) {
+        if ((getFindByIdMethod = ProductServiceGrpc.getFindByIdMethod) == null) {
+          ProductServiceGrpc.getFindByIdMethod = getFindByIdMethod =
               io.grpc.MethodDescriptor.<com.example.gccoffee.FindProductByIdRequest, com.example.gccoffee.FindOneProductResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "findById"))
@@ -69,7 +69,7 @@ public final class productServiceGrpc {
                   com.example.gccoffee.FindProductByIdRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.example.gccoffee.FindOneProductResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new productServiceMethodDescriptorSupplier("findById"))
+              .setSchemaDescriptor(new ProductServiceMethodDescriptorSupplier("findById"))
               .build();
         }
       }
@@ -88,10 +88,10 @@ public final class productServiceGrpc {
   public static io.grpc.MethodDescriptor<com.example.gccoffee.FindProductByNameRequest,
       com.example.gccoffee.FindOneProductResponse> getFindByNameMethod() {
     io.grpc.MethodDescriptor<com.example.gccoffee.FindProductByNameRequest, com.example.gccoffee.FindOneProductResponse> getFindByNameMethod;
-    if ((getFindByNameMethod = productServiceGrpc.getFindByNameMethod) == null) {
-      synchronized (productServiceGrpc.class) {
-        if ((getFindByNameMethod = productServiceGrpc.getFindByNameMethod) == null) {
-          productServiceGrpc.getFindByNameMethod = getFindByNameMethod =
+    if ((getFindByNameMethod = ProductServiceGrpc.getFindByNameMethod) == null) {
+      synchronized (ProductServiceGrpc.class) {
+        if ((getFindByNameMethod = ProductServiceGrpc.getFindByNameMethod) == null) {
+          ProductServiceGrpc.getFindByNameMethod = getFindByNameMethod =
               io.grpc.MethodDescriptor.<com.example.gccoffee.FindProductByNameRequest, com.example.gccoffee.FindOneProductResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "findByName"))
@@ -100,7 +100,7 @@ public final class productServiceGrpc {
                   com.example.gccoffee.FindProductByNameRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.example.gccoffee.FindOneProductResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new productServiceMethodDescriptorSupplier("findByName"))
+              .setSchemaDescriptor(new ProductServiceMethodDescriptorSupplier("findByName"))
               .build();
         }
       }
@@ -111,50 +111,50 @@ public final class productServiceGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static productServiceStub newStub(io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<productServiceStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<productServiceStub>() {
+  public static ProductServiceStub newStub(io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<ProductServiceStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<ProductServiceStub>() {
         @java.lang.Override
-        public productServiceStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new productServiceStub(channel, callOptions);
+        public ProductServiceStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new ProductServiceStub(channel, callOptions);
         }
       };
-    return productServiceStub.newStub(factory, channel);
+    return ProductServiceStub.newStub(factory, channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static productServiceBlockingStub newBlockingStub(
+  public static ProductServiceBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<productServiceBlockingStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<productServiceBlockingStub>() {
+    io.grpc.stub.AbstractStub.StubFactory<ProductServiceBlockingStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<ProductServiceBlockingStub>() {
         @java.lang.Override
-        public productServiceBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new productServiceBlockingStub(channel, callOptions);
+        public ProductServiceBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new ProductServiceBlockingStub(channel, callOptions);
         }
       };
-    return productServiceBlockingStub.newStub(factory, channel);
+    return ProductServiceBlockingStub.newStub(factory, channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static productServiceFutureStub newFutureStub(
+  public static ProductServiceFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<productServiceFutureStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<productServiceFutureStub>() {
+    io.grpc.stub.AbstractStub.StubFactory<ProductServiceFutureStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<ProductServiceFutureStub>() {
         @java.lang.Override
-        public productServiceFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new productServiceFutureStub(channel, callOptions);
+        public ProductServiceFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new ProductServiceFutureStub(channel, callOptions);
         }
       };
-    return productServiceFutureStub.newStub(factory, channel);
+    return ProductServiceFutureStub.newStub(factory, channel);
   }
 
   /**
    */
-  public static abstract class productServiceImplBase implements io.grpc.BindableService {
+  public static abstract class ProductServiceImplBase implements io.grpc.BindableService {
 
     /**
      */
@@ -206,16 +206,16 @@ public final class productServiceGrpc {
 
   /**
    */
-  public static final class productServiceStub extends io.grpc.stub.AbstractAsyncStub<productServiceStub> {
-    private productServiceStub(
+  public static final class ProductServiceStub extends io.grpc.stub.AbstractAsyncStub<ProductServiceStub> {
+    private ProductServiceStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected productServiceStub build(
+    protected ProductServiceStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new productServiceStub(channel, callOptions);
+      return new ProductServiceStub(channel, callOptions);
     }
 
     /**
@@ -245,16 +245,16 @@ public final class productServiceGrpc {
 
   /**
    */
-  public static final class productServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<productServiceBlockingStub> {
-    private productServiceBlockingStub(
+  public static final class ProductServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<ProductServiceBlockingStub> {
+    private ProductServiceBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected productServiceBlockingStub build(
+    protected ProductServiceBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new productServiceBlockingStub(channel, callOptions);
+      return new ProductServiceBlockingStub(channel, callOptions);
     }
 
     /**
@@ -281,16 +281,16 @@ public final class productServiceGrpc {
 
   /**
    */
-  public static final class productServiceFutureStub extends io.grpc.stub.AbstractFutureStub<productServiceFutureStub> {
-    private productServiceFutureStub(
+  public static final class ProductServiceFutureStub extends io.grpc.stub.AbstractFutureStub<ProductServiceFutureStub> {
+    private ProductServiceFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected productServiceFutureStub build(
+    protected ProductServiceFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new productServiceFutureStub(channel, callOptions);
+      return new ProductServiceFutureStub(channel, callOptions);
     }
 
     /**
@@ -327,10 +327,10 @@ public final class productServiceGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final productServiceImplBase serviceImpl;
+    private final ProductServiceImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(productServiceImplBase serviceImpl, int methodId) {
+    MethodHandlers(ProductServiceImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -367,32 +367,32 @@ public final class productServiceGrpc {
     }
   }
 
-  private static abstract class productServiceBaseDescriptorSupplier
+  private static abstract class ProductServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    productServiceBaseDescriptorSupplier() {}
+    ProductServiceBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.example.gccoffee.ProductService.getDescriptor();
+      return com.example.gccoffee.ProductServiceOuterClass.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("productService");
+      return getFileDescriptor().findServiceByName("ProductService");
     }
   }
 
-  private static final class productServiceFileDescriptorSupplier
-      extends productServiceBaseDescriptorSupplier {
-    productServiceFileDescriptorSupplier() {}
+  private static final class ProductServiceFileDescriptorSupplier
+      extends ProductServiceBaseDescriptorSupplier {
+    ProductServiceFileDescriptorSupplier() {}
   }
 
-  private static final class productServiceMethodDescriptorSupplier
-      extends productServiceBaseDescriptorSupplier
+  private static final class ProductServiceMethodDescriptorSupplier
+      extends ProductServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    productServiceMethodDescriptorSupplier(String methodName) {
+    ProductServiceMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -407,11 +407,11 @@ public final class productServiceGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (productServiceGrpc.class) {
+      synchronized (ProductServiceGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new productServiceFileDescriptorSupplier())
+              .setSchemaDescriptor(new ProductServiceFileDescriptorSupplier())
               .addMethod(getFindAllMethod())
               .addMethod(getFindByIdMethod())
               .addMethod(getFindByNameMethod())

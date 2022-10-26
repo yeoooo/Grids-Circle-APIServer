@@ -33,13 +33,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.example.gccoffee.ProductService.internal_static_FindProductByNameRequest_descriptor;
+    return com.example.gccoffee.ProductServiceOuterClass.internal_static_FindProductByNameRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.example.gccoffee.ProductService.internal_static_FindProductByNameRequest_fieldAccessorTable
+    return com.example.gccoffee.ProductServiceOuterClass.internal_static_FindProductByNameRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.example.gccoffee.FindProductByNameRequest.class, com.example.gccoffee.FindProductByNameRequest.Builder.class);
   }
@@ -245,13 +245,13 @@ private static final long serialVersionUID = 0L;
       com.example.gccoffee.FindProductByNameRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.example.gccoffee.ProductService.internal_static_FindProductByNameRequest_descriptor;
+      return com.example.gccoffee.ProductServiceOuterClass.internal_static_FindProductByNameRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.example.gccoffee.ProductService.internal_static_FindProductByNameRequest_fieldAccessorTable
+      return com.example.gccoffee.ProductServiceOuterClass.internal_static_FindProductByNameRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.example.gccoffee.FindProductByNameRequest.class, com.example.gccoffee.FindProductByNameRequest.Builder.class);
     }
@@ -277,7 +277,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.example.gccoffee.ProductService.internal_static_FindProductByNameRequest_descriptor;
+      return com.example.gccoffee.ProductServiceOuterClass.internal_static_FindProductByNameRequest_descriptor;
     }
 
     @java.lang.Override

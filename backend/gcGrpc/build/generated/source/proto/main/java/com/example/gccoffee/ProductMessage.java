@@ -36,13 +36,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.example.gccoffee.ProductService.internal_static_ProductMessage_descriptor;
+    return com.example.gccoffee.ProductServiceOuterClass.internal_static_ProductMessage_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.example.gccoffee.ProductService.internal_static_ProductMessage_fieldAccessorTable
+    return com.example.gccoffee.ProductServiceOuterClass.internal_static_ProductMessage_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.example.gccoffee.ProductMessage.class, com.example.gccoffee.ProductMessage.Builder.class);
   }
@@ -437,13 +437,13 @@ private static final long serialVersionUID = 0L;
       com.example.gccoffee.ProductMessageOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.example.gccoffee.ProductService.internal_static_ProductMessage_descriptor;
+      return com.example.gccoffee.ProductServiceOuterClass.internal_static_ProductMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.example.gccoffee.ProductService.internal_static_ProductMessage_fieldAccessorTable
+      return com.example.gccoffee.ProductServiceOuterClass.internal_static_ProductMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.example.gccoffee.ProductMessage.class, com.example.gccoffee.ProductMessage.Builder.class);
     }
@@ -479,7 +479,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.example.gccoffee.ProductService.internal_static_ProductMessage_descriptor;
+      return com.example.gccoffee.ProductServiceOuterClass.internal_static_ProductMessage_descriptor;
     }
 
     @java.lang.Override

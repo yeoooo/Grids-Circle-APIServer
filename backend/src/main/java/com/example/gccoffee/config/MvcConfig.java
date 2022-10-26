@@ -11,4 +11,6 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**").allowedOrigins("*");
     }
 
+
+
 }
