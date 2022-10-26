@@ -3,34 +3,21 @@ package com.example.gccoffee.Controller;
 import com.example.gccoffee.*;
 import com.example.gccoffee.Exception.DuplicatedProductException;
 import com.example.gccoffee.Exception.NoSuchProductException;
+import com.example.gccoffee.Service.GrpcProductClientService;
 import com.example.gccoffee.Service.ProductService;
 import com.example.gccoffee.model.*;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.protobuf.Message;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.protobuf.ProtoUtils;
 import lombok.RequiredArgsConstructor;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.codec.protobuf.ProtobufDecoder;
-import org.springframework.http.converter.protobuf.ProtobufJsonFormatHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.Base64Utils;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
-
-import static org.hibernate.loader.internal.AliasConstantsHelper.get;
 
 @Controller
 @RequiredArgsConstructor
@@ -39,35 +26,39 @@ public class ProductController extends BaseTimeEntity {
     private final ProductService productService;
     private final Logger log = LoggerFactory.getLogger(getClass());
 
+    private final GrpcProductClientService grpcProductClientService;
+
     private final ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 9090)
             .usePlaintext()
             .build();
-
+    @GrpcClient("management")
     private final ProductServiceGrpc.ProductServiceBlockingStub blockingStub = ProductServiceGrpc.newBlockingStub(channel);
 
-    @GetMapping("/findAll")
-    public String getProductList(Model model) {
-        FindAllProductRequest req = FindAllProductRequest.newBuilder().build();
-        FindAllProductResponse resp = blockingStub.findAll(req);
-        List<ProductMessage> messages = resp.getProductList();
+    @GetMapping({"/management/product", "/management/product/{variableCategory}"})
+    public String getProductList(Model model, @PathVariable(value = "variableCategory", required = false) Optional<Category> category, @RequestParam(value = "errors", required = false) String errors)  {
+        Category[] categories = Category.values();
+        List<ProductDTO> products = grpcProductClientService.findAll(category);
 
-        List<ProductDTO> products;
+        Map<String, String> errorMap = new HashMap<>();
+        if (errors != null){
+            Base64.Decoder decoder = Base64.getDecoder();
+            String decoded = new String(decoder.decode(errors));
+            List<String> res = List.of(decoded.replaceAll("[{}]", "").split(",\\s"));
 
+            for (String r : res) {
+                String[] keyVal = r.split("=");
+                errorMap.put(keyVal[0], keyVal[1]);
+            }
 
-        products = messages.stream().map(
-                product -> new ProductDTO(
-                        UUID.fromString(product.getProductId()),
-                        product.getProductName(),
-                        product.getDescription(),
-                        Category.valueOf(product.getCategory()),
-                        product.getPrice(),
-                        product.getQuantity(),
-                        LocalDateTime.now(),
-                        LocalDateTime.now())
-        ).collect(Collectors.toList());
+        }
         model.addAttribute("products", products);
+        model.addAttribute("categories", categories);
+        model.addAttribute("productForm", new ProductForm());
+        model.addAttribute("errors", errorMap);
 
-            return "product_management";
+        return "product_management";
+
+
     }
 
 //    @GetMapping({"/management/product", "/management/product/{variableCategory}"})
@@ -130,6 +121,7 @@ public class ProductController extends BaseTimeEntity {
                 .category(productForm.getCategory())
                 .price(productForm.getPrice())
                 .quantity(productForm.getQuantity())
+                .description("")
                 .build();
 
 

@@ -37,7 +37,9 @@ grpc:
 
   client:
     management:
+      negotiation-type: plaintext
       address: "static://localhost:9090"
+
 
 #    test:
 ##      address: "static://localhost:8443"

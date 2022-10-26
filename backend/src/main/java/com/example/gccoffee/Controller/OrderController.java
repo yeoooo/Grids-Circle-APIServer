@@ -1,7 +1,6 @@
 package com.example.gccoffee.Controller;
 
 import com.example.gccoffee.Service.OrderService;
-import com.example.gccoffee.Service.ProductService;
 import com.example.gccoffee.model.*;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -10,9 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.FormView;
-import javax.swing.text.html.Option;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 

@@ -2,13 +2,12 @@ package com.example.gccoffee.Service;
 
 
 import com.example.gccoffee.*;
+import com.example.gccoffee.model.Category;
 import com.example.gccoffee.model.Product;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import net.devh.boot.grpc.server.service.GrpcService;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +21,14 @@ public class GrpcServerService extends ProductServiceGrpc.ProductServiceImplBase
 
     @Override
     public void findAll(FindAllProductRequest request, StreamObserver<FindAllProductResponse> responseObserver) {
-        List<Product> productList = productService.findAll();
+        List<Product> productList;
+
+        if (request.getCategory().isEmpty()){
+            productList = productService.findAll();
+        }else{
+            productList = productService.findByCategory(Category.valueOf(request.getCategory()));
+        }
+
         List<ProductMessage> products = new ArrayList<>();
         for(Product p : productList) {
             products.add(
@@ -33,6 +39,8 @@ public class GrpcServerService extends ProductServiceGrpc.ProductServiceImplBase
                     .setCategory(p.getCategory().toString())
                     .setQuantity(p.getQuantity())
                     .setDescription(p.getDescription())
+                    .setCreatedAt(p.getCreatedAt().toString())
+                    .setUpdatedAt(p.getUpdatedAt().toString())
                     .build());
         }
         FindAllProductResponse resp = FindAllProductResponse.newBuilder().addAllProduct(products).build();
