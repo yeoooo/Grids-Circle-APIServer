@@ -31,15 +31,17 @@ spring:
       platform: mysql
       encoding: UTF-8
       mode: always
-
 grpc:
   server:
-    port: 8443
-  client:
-    findProduct:
-      address: 'static://127.0.0.1:8082'
-      negotiationtype: plaintext
+    port: 9090
 
-    test:
-      address: 'static://127.0.0.1:9090'
-      negotiationtype: plaintext
+  client:
+    management:
+      address: "static://localhost:9090"
+
+#    test:
+##      address: "static://localhost:8443"
+#      address:
+#      negotiationtype: plaintext
+
+
