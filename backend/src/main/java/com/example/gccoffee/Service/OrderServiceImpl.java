@@ -87,7 +87,7 @@ public class OrderServiceImpl implements OrderService{
                 log.info("Order Already Exists : {}", targetOrder.get().getOrderItems());
             }
             }
-
+        orderRepository.flush();
         return orderRepository.save(targetOrder.get()).getId();
 
     }
