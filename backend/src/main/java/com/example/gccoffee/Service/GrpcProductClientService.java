@@ -19,7 +19,6 @@ public class GrpcProductClientService {
     @GrpcClient("management")
     private ProductServiceGrpc.ProductServiceBlockingStub blockingStub;
 
-
     public List<ProductDTO> findAll(Optional<Category> category) {
         try {
             FindAllProductRequest req;
@@ -32,37 +31,20 @@ public class GrpcProductClientService {
             List<ProductMessage> messages = resp.getProductList();
             List<ProductDTO> products;
 
-            if (category.isEmpty()) {
-                products = messages.stream().map(
-                        product -> new ProductDTO(
-                                UUID.fromString(product.getProductId()),
-                                product.getProductName(),
-                                product.getDescription(),
-                                Category.valueOf(product.getCategory()),
-                                product.getPrice(),
-                                product.getQuantity(),
-                                LocalDateTime.parse(product.getCreatedAt()),
-                                LocalDateTime.parse(product.getUpdatedAt()))
-                ).collect(Collectors.toList());
-            } else {
-                products = messages.stream().map(
-                        product -> new ProductDTO(
-                                UUID.fromString(product.getProductId()),
-                                product.getProductName(),
-                                product.getDescription(),
-                                Category.valueOf(product.getCategory()),
-                                product.getPrice(),
-                                product.getQuantity(),
-                                LocalDateTime.parse(product.getCreatedAt()),
-                                LocalDateTime.parse(product.getUpdatedAt()))
-                ).collect(Collectors.toList());
-                ;
-        }
-//                FindAllProductResponse resp = this.blockingStub.findAll(FindAllProductRequest.newBuilder().build());
-//                return resp.getProductList().toString();
+            products = messages.stream().map(
+                    product -> new ProductDTO(
+                            UUID.fromString(product.getProductId()),
+                            product.getProductName(),
+                            product.getDescription(),
+                            Category.valueOf(product.getCategory()),
+                            product.getPrice(),
+                            product.getQuantity(),
+                            LocalDateTime.parse(product.getCreatedAt()),
+                            LocalDateTime.parse(product.getUpdatedAt()))
+            ).collect(Collectors.toList());
+
             return products;
             } catch(StatusRuntimeException e){
-//                return "FAILED WITH" + e.getStatus().getCode().name();
                 return new ArrayList<>();
             }
 
