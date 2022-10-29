@@ -14,19 +14,19 @@ Circles &amp; Grids 커피 주문 API 서버 주문 관리, 상품관리 개인 
 ## 📚 사용한 기술 스택 
   ### 개발 도구  
   ---
-  - <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white"> &nbsp; -v 11
-  - <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> 
-  - <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white"> 
+  - <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white"> &nbsp; -v 16
+  - <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> -v 2.7.3
+  - <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white"> -v 18.2.0
   - <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"> 
   - JPA
   - Spring Rest Docs
   - Lombok
-  - gRPC  
+  - gRPC -v 2.13.1
   
   ### 개발 환경  
   ---
-  - DB-dev - <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> &nbsp; -v 8
-  - DB - H2
+  - DB-dev - <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> &nbsp; -v 8.0.31
+  - DB - H2 -v 1.4.200
   - IDE - Intellij  
   
   ### 기록 및 코드 관리
