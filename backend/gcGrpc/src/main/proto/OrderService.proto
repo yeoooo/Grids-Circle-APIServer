@@ -1,0 +1,35 @@
+syntax = "proto3";
+import "";
+option java_multiple_files = true;
+option java_package = "com.example.gccoffee";
+
+service OrderService{
+  rpc findAll (FindAllOrderRequest) returns (FindAllOrderResponse);
+}
+
+message OrderMessage{
+  string orderId = 1;
+  string email = 2;
+  string address = 3;
+  string postcode = 4;
+  repeated OrderItemMessage orderItem= 5;
+  string orderStatus = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
+}
+
+message OrderItemMessage{
+  string orderItemId = 1;
+  repeated ProductMessage products = 2;
+  OrderMessage order = 3;
+  int64 orderPrice = 4;
+  int32 count = 5;
+}
+
+message FindAllOrderRequest{
+  optional string status = 1;
+}
+message FindAllOrderResponse{
+  repeated OrderMessage product = 1;
+}
+
