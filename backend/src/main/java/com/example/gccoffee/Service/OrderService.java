@@ -18,7 +18,7 @@ public interface OrderService {
 
     public void cancelOrder(UUID o);
 
-    public Order changeOrderStatus(Order order, OrderStatus orderStatus);
+    public void changeOrderStatus(Order order, OrderStatus orderStatus);
 
     public List<Order> findByEmail(String email);
 

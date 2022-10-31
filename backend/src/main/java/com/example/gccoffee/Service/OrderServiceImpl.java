@@ -107,24 +107,16 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     @Transactional
-    public Order changeOrderStatus(Order order, OrderStatus orderStatus) {
+    public void changeOrderStatus(Order order, OrderStatus orderStatus) {
         if (orderStatus == OrderStatus.CANCELLED) {
             order.cancelOrder();
         }
-        return orderRepository.save(
-                order.builder()
-                        .dto(OrderDTO.builder()
-                .id(order.getId())
-                .address(order.getAddress())
-                .orderStatus(orderStatus)
-                .price(order.getTotalPrice())
-                .orderItems(order.getOrderItems())
-                .postcode(order.getPostcode())
-                .createdAt(order.getCreatedAt())
-                .updatedAt(order.getUpdatedAt())
-                .email(order.getEmail())
-                .build())
-                .build());
+
+        order.setOrderStatus(orderStatus);
+//        return orderRepository.save(
+//                Order.builder().dto(orderDTO)
+//                .build());
+//        return
     }
 
     @Override
